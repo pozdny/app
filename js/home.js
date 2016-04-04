@@ -151,7 +151,6 @@ Framework7.prototype.plugins.home = function (app, globalPluginParams) {
          * @private
          */
         function compileTemplate() {
-
             if (!options.template) {
                 // Cache compiled templates
                 if (!app._compiledTemplates.home) {
