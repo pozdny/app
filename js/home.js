@@ -145,6 +145,7 @@ Framework7.prototype.plugins.home = function (app, globalPluginParams) {
                 }
             }
         }
+
         /**
          * Compiles the template
          *
