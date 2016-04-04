@@ -1,0 +1,728 @@
+/*
+	==================
+	[FONTS]
+	==================
+*/
+@font-face {
+  font-family: SFUIDisplayThin;
+  src: url(../fonts/SFUIDisplay-Thin.otf); }
+
+@font-face {
+  font-family: SFUIDisplayLight;
+  src: url(../fonts/SFUIText-Light.otf); }
+
+@font-face {
+  font-family: SFUITextMedium;
+  src: url(../fonts/SFUIText-Medium.otf); }
+
+@font-face {
+  font-family: SFUITextRegular;
+  src: url(../fonts/SFUIText-Regular.otf); }
+
+@font-face {
+  font-family: SFUITextSemibold;
+  src: url(../fonts/SFUIText-Semibold.otf); }
+
+/*
+	==================
+	[MAIN]
+	==================
+*/
+html {
+  height: 100%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent; }
+
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-size: 13px;
+  position: relative;
+  font-family: SFUITextMedium; }
+
+.page {
+  background: #f2f2f2; }
+
+.empty-block {
+  text-align: center;
+  font-size: 1.2em; }
+
+.no-tap {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  -webkit-animation-fill-mode: forwards; }
+
+/*
+	==================
+	[LOAD PAGE]
+	==================
+*/
+#loadPage {
+  width: 100%;
+  height: 100%;
+  padding: 160px 0 0; }
+
+.welcome-icon {
+  position: relative;
+  /* top:120px;*/
+  margin: 0 auto; }
+  .welcome-icon i.icon {
+    width: 150px;
+    height: 150px; }
+    .welcome-icon i.icon.icon-welcome {
+      background: url("../images/splash_icon.svg") no-repeat;
+      background-size: contain; }
+
+/*
+	==================
+	[LOAD PAGE ANIMATION]
+	==================
+*/
+.trueAnimation {
+  opacity: 1;
+  -webkit-transition: opacity 500ms linear;
+  transition: opacity 500ms linear; }
+
+.hideAnimation {
+  opacity: 0;
+  -webkit-transition: opacity 500ms linear;
+  transition: opacity 500ms linear; }
+
+.halfAnimation {
+  opacity: 0.4;
+  -webkit-transition: opacity 500ms linear;
+  transition: opacity 500ms linear; }
+
+/*
+	==================
+	[NAVBAR]
+	==================
+*/
+.navbar, .subnavbar, .toolbar {
+  background: #F9F9F9; }
+
+.navbar .navbar-inner .back.link {
+  width: 50px; }
+  .navbar .navbar-inner .back.link.active-state {
+    pointer-events: none; }
+
+.navbar .subnavbar {
+  /*&:after{
+      height:0px;
+    }*/ }
+
+.navbar .navbar-inner .icon.icon-back {
+  width: 12px;
+  height: 20px;
+  background: url("../images/icons/back.svg") no-repeat;
+  margin-left: 15px; }
+
+.navbar .navbar-inner .icon.icon-add {
+  width: 21px;
+  height: 21px;
+  background: url("../images/icons/add.png") no-repeat; }
+
+.navbar .navbar-inner .icon.icon-settings {
+  width: 21px;
+  height: 21px;
+  background: url("../images/icons/settings.svg") no-repeat; }
+
+.navbar .navbar-inner .icon.icon-save {
+  width: 27px;
+  height: 21px;
+  background: url("../images/icons/save.png") no-repeat; }
+
+.navbar .navbar-inner .icon.icon-diagram {
+  width: 21px;
+  height: 21px;
+  background: url("../images/icons/diagram.png") no-repeat; }
+
+.navbar .navbar-inner .icon.icon-edit {
+  width: 21px;
+  height: 21px;
+  background: url("../images/icons/edit.png") no-repeat; }
+
+.navbar .navbar-inner .icon[class*="icon-"] {
+  background-size: 100% 100%;
+  background-position: center center; }
+
+/*
+	==================
+	[TOOLBAR]
+	==================
+*/
+.toolbar {
+  font-family: SFUITextRegular; }
+  .toolbar .toolbar-inner .tabbar-label {
+    /*font-size:0.7em;*/ }
+  .toolbar .toolbar-inner .icon {
+    width: 30px;
+    height: 30px;
+    background-position: center center;
+    /*margin-right:40px;*/ }
+    .toolbar .toolbar-inner .icon.icon-home {
+      background: url("../images/icons/home.svg") no-repeat;
+      background-size: 100% auto; }
+    .toolbar .toolbar-inner .icon.icon-calendar {
+      background: url("../images/icons/calendar.svg") no-repeat;
+      background-size: 25px 25px; }
+    .toolbar .toolbar-inner .icon.icon-info {
+      background: url("../images/icons/info.svg") no-repeat;
+      background-size: 23px 25px; }
+  .toolbar .toolbar-inner a {
+    color: #AAAAAA; }
+  .toolbar .toolbar-inner a.active {
+    color: #00D56F; }
+  .toolbar .toolbar-inner i.icon[class*="icon-"], .toolbar .toolbar-inner a.active i.icon[class*="icon-"] {
+    background-position: 50% 50%;
+    pointer-events: none; }
+  .toolbar .toolbar-inner a.active .icon.icon-home {
+    background: url("../images/icons/home_active.svg") no-repeat;
+    background-size: 100% auto; }
+  .toolbar .toolbar-inner a.active .icon.icon-calendar {
+    background: url("../images/icons/calendar_active.svg") no-repeat;
+    background-size: 25px 25px; }
+  .toolbar .toolbar-inner a.active .icon.icon-info {
+    background: url("../images/icons/info_active.svg") no-repeat;
+    background-size: 23px 25px; }
+
+.content-block-title {
+  margin: 10px 15px; }
+
+/*
+	==================
+	[SETTINGS]
+	==================
+*/
+#page-settings {
+  font-family: SFUITextRegular; }
+  #page-settings .list-block {
+    margin: 0px; }
+    #page-settings .list-block ul:before {
+      content: none; }
+    #page-settings .list-block ul .item-media .icon.icon-sounds {
+      width: 27px;
+      height: 27px;
+      background: url("../images/icons/sounds_off.svg") no-repeat; }
+      #page-settings .list-block ul .item-media .icon.icon-sounds.active {
+        width: 27px;
+        height: 27px;
+        background: url("../images/icons/sounds_on.svg") no-repeat; }
+    #page-settings .list-block ul .item-media .icon.icon-notifications {
+      width: 27px;
+      height: 27px;
+      background: url("../images/icons/notifications_off.svg") no-repeat; }
+      #page-settings .list-block ul .item-media .icon.icon-notifications.active {
+        width: 27px;
+        height: 27px;
+        background: url("../images/icons/notifications_on.svg") no-repeat; }
+    #page-settings .list-block ul .item-media .icon[class*="icon-"], #page-settings .list-block ul .item-media .icon[class*="icon-"].active {
+      background-size: 100% 100%;
+      background-position: center center; }
+    #page-settings .list-block ul .item-inner .item-title.label {
+      width: 50%; }
+    #page-settings .list-block ul .item-input {
+      text-align: right; }
+  #page-settings .label-switch input[type=checkbox]:checked + .checkbox {
+    background: #00A2FF; }
+
+/*
+	==================
+	[INFO]
+	==================
+*/
+#page-info .info-img.img-1, #info-item .info-img.img-1 {
+  background: url("../images/attractions/1.jpg") no-repeat; }
+
+#page-info .info-img.img-2, #info-item .info-img.img-2 {
+  background: url("../images/attractions/2.jpg") no-repeat; }
+
+#page-info .info-img.img-3, #info-item .info-img.img-3 {
+  background: url("../images/attractions/3.jpg") no-repeat; }
+
+#page-info .info-img.img-4, #info-item .info-img.img-4 {
+  background: url("../images/attractions/4.jpg") no-repeat; }
+
+#page-info .info-img.img-5, #info-item .info-img.img-5 {
+  background: url("../images/attractions/5.jpg") no-repeat; }
+
+#page-info .info-img.img-6, #info-item .info-img.img-6 {
+  background: url("../images/attractions/6.jpg") no-repeat; }
+
+#page-info .info-img.img-7, #info-item .info-img.img-7 {
+  background: url("../images/attractions/7.jpg") no-repeat; }
+
+#page-info .info-img.img-8, #info-item .info-img.img-8 {
+  background: url("../images/attractions/8.jpg") no-repeat; }
+
+#page-info .info-img.img-9, #info-item .info-img.img-9 {
+  background: url("../images/attractions/9.jpg") no-repeat; }
+
+#page-info .info-img.img-10, #info-item .info-img.img-10 {
+  background: url("../images/attractions/10.jpg") no-repeat; }
+
+#page-info .info-img.img-11, #info-item .info-img.img-11 {
+  background: url("../images/attractions/11.jpg") no-repeat; }
+
+#page-info .info-img.img-12, #info-item .info-img.img-12 {
+  background: url("../images/attractions/12.jpg") no-repeat; }
+
+#page-info .info-img.img-13, #info-item .info-img.img-13 {
+  background: url("../images/attractions/13.jpg") no-repeat; }
+
+#page-info .info-img.img-14, #info-item .info-img.img-14 {
+  background: url("../images/attractions/14.jpg") no-repeat; }
+
+#page-info .info-img.img-15, #info-item .info-img.img-15 {
+  background: url("../images/attractions/15.jpg") no-repeat; }
+
+#page-info .info-img.img-16, #info-item .info-img.img-16 {
+  background: url("../images/attractions/16.jpg") no-repeat; }
+
+#page-info .info-img[class*="img-"], #info-item .info-img[class*="img-"] {
+  background-size: cover;
+  background-position: center center; }
+
+#page-info .info-block .row {
+  margin-bottom: 3px; }
+  #page-info .info-block .row .info-img {
+    position: relative;
+    width: calc((100% - 3px*1)/ 2);
+    height: 180px; }
+    #page-info .info-block .row .info-img .title {
+      font-family: SFUITextSemibold;
+      position: absolute;
+      bottom: 0;
+      padding: 0 5px;
+      box-sizing: border-box;
+      width: 100%;
+      height: 50px;
+      background: rgba(0, 0, 0, 0.7);
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-align: start;
+      -webkit-align-items: start;
+          -ms-flex-align: start;
+              align-items: start;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      color: #fff; }
+  #page-info .info-block .row a.link.active-state {
+    opacity: 0.3;
+    -webkit-transition-duration: 0ms;
+    transition-duration: 0ms; }
+
+#info-item .swiperSlider .swiper-container {
+  position: absolute;
+  width: 100%;
+  top: 44px;
+  bottom: 50px; }
+  #info-item .swiperSlider .swiper-container .swiper-slide {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+    #info-item .swiperSlider .swiper-container .swiper-slide .info-img {
+      width: 100%;
+      height: 250px;
+      -webkit-flex-shrink: 0;
+          -ms-flex-negative: 0;
+              flex-shrink: 0; }
+    #info-item .swiperSlider .swiper-container .swiper-slide .item-name {
+      font-family: SFUITextSemibold;
+      color: #000;
+      font-weight: bold;
+      margin: 0px;
+      padding: 5px 20px;
+      font-size: 1.2em; }
+    #info-item .swiperSlider .swiper-container .swiper-slide .content-block {
+      font-family: SFUITextRegular;
+      color: #131314;
+      margin: 0px 0px 20px 0;
+      font-size: 1.1em;
+      padding: 0 20px 0 20px;
+      overflow: auto;
+      /*max-height:300px;*/
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+          -ms-flex: 1;
+              flex: 1; }
+
+.swiper-pagination {
+  bottom: 50px;
+  text-align: center;
+  width: 100%; }
+  .swiper-pagination .swiper-pagination-bullet {
+    margin: 0 5px;
+    width: 7px;
+    height: 7px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #000;
+    opacity: .2; }
+    .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+      background: #0198FF;
+      opacity: .8; }
+
+/*
+	==================
+	[HOME]
+	==================
+*/
+#page-home .home-block {
+  font-family: SFUITextMedium;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start; }
+  #page-home .home-block .top-block {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    padding: 10px;
+    background: #fff; }
+    #page-home .home-block .top-block .icon {
+      -webkit-box-flex: 1;
+      -webkit-flex-grow: 1;
+          -ms-flex-positive: 1;
+              flex-grow: 1;
+      background: red;
+      height: 200px;
+      background: url("../images/icons/fire.svg") no-repeat;
+      background-size: 100% 100%;
+      background-position: center center; }
+    #page-home .home-block .top-block .time {
+      -webkit-box-flex: 2;
+      -webkit-flex-grow: 2;
+          -ms-flex-positive: 2;
+              flex-grow: 2;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      font-family: SFUITextLight;
+      background: yellow; }
+      #page-home .home-block .top-block .time .days {
+        background: blue;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center; }
+      #page-home .home-block .top-block .time .row-time {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row; }
+        #page-home .home-block .top-block .time .row-time div {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -webkit-flex-direction: column;
+              -ms-flex-direction: column;
+                  flex-direction: column;
+          -webkit-box-align: center;
+          -webkit-align-items: center;
+              -ms-flex-align: center;
+                  align-items: center; }
+        #page-home .home-block .top-block .time .row-time .hours {
+          -webkit-box-flex: 1;
+          -webkit-flex-grow: 1;
+              -ms-flex-positive: 1;
+                  flex-grow: 1; }
+        #page-home .home-block .top-block .time .row-time .minutes {
+          -webkit-box-flex: 1;
+          -webkit-flex-grow: 1;
+              -ms-flex-positive: 1;
+                  flex-grow: 1; }
+        #page-home .home-block .top-block .time .row-time .seconds {
+          -webkit-box-flex: 1;
+          -webkit-flex-grow: 1;
+              -ms-flex-positive: 1;
+                  flex-grow: 1; }
+  #page-home .home-block .bottom-block {
+    position: relative; }
+    #page-home .home-block .bottom-block:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: auto;
+      right: auto;
+      height: 1px;
+      width: 100%;
+      background-color: #c8c7cc;
+      display: block;
+      z-index: 15;
+      -webkit-transform-origin: 50% 0;
+      transform-origin: 50% 0;
+      -webkit-transform: scaleY(0.5);
+              transform: scaleY(0.5); }
+    #page-home .home-block .bottom-block .content-block-title {
+      color: #929292;
+      text-transform: none; }
+    #page-home .home-block .bottom-block .list-block {
+      margin-bottom: 10px; }
+      #page-home .home-block .bottom-block .list-block a {
+        color: #929292; }
+      #page-home .home-block .bottom-block .list-block ul li .item-content:after {
+        content: '';
+        position: absolute;
+        left: auto;
+        bottom: 0;
+        right: 0;
+        top: auto;
+        height: 1px;
+        width: 97%;
+        background-color: #c8c7cc;
+        display: block;
+        z-index: 15;
+        -webkit-transform-origin: 50% 100%;
+        transform-origin: 50% 100%;
+        -webkit-transform: scaleY(0.5);
+                transform: scaleY(0.5); }
+      #page-home .home-block .bottom-block .list-block ul li .item-content .item-media {
+        min-width: 27px; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-0 {
+          width: 24px;
+          height: 21px;
+          background: url("../images/icons/games/0_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-1 {
+          width: 18px;
+          height: 21px;
+          background: url("../images/icons/games/1_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-2 {
+          width: 22px;
+          height: 19px;
+          background: url("../images/icons/games/2_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-3 {
+          width: 27px;
+          height: 21px;
+          background: url("../images/icons/games/3_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-4 {
+          width: 18px;
+          height: 21px;
+          background: url("../images/icons/games/4_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-5 {
+          width: 18px;
+          height: 21px;
+          background: url("../images/icons/games/5_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-6 {
+          width: 20px;
+          height: 21px;
+          background: url("../images/icons/games/6_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-7 {
+          width: 27px;
+          height: 21px;
+          background: url("../images/icons/games/7_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-8 {
+          width: 25px;
+          height: 21px;
+          background: url("../images/icons/games/8_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-9 {
+          width: 21px;
+          height: 21px;
+          background: url("../images/icons/games/9_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-10 {
+          width: 24px;
+          height: 21px;
+          background: url("../images/icons/games/10_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-11 {
+          width: 18px;
+          height: 21px;
+          background: url("../images/icons/games/11_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-12 {
+          width: 27px;
+          height: 21px;
+          background: url("../images/icons/games/12_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-13 {
+          width: 27px;
+          height: 21px;
+          background: url("../images/icons/games/13_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-14 {
+          width: 21px;
+          height: 21px;
+          background: url("../images/icons/games/14_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-15 {
+          width: 27px;
+          height: 21px;
+          background: url("../images/icons/games/15_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-16 {
+          width: 25px;
+          height: 21px;
+          background: url("../images/icons/games/16_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-17 {
+          width: 17px;
+          height: 21px;
+          background: url("../images/icons/games/17_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-18 {
+          width: 20px;
+          height: 21px;
+          background: url("../images/icons/games/18_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-19 {
+          width: 27px;
+          height: 21px;
+          background: url("../images/icons/games/19_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-20 {
+          width: 21px;
+          height: 21px;
+          background: url("../images/icons/games/20_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-21 {
+          width: 20px;
+          height: 21px;
+          background: url("../images/icons/games/21_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-22 {
+          width: 24px;
+          height: 21px;
+          background: url("../images/icons/games/22_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-23 {
+          width: 25px;
+          height: 21px;
+          background: url("../images/icons/games/23_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-24 {
+          width: 21px;
+          height: 21px;
+          background: url("../images/icons/games/24_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-25 {
+          width: 24px;
+          height: 21px;
+          background: url("../images/icons/games/25_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-26 {
+          width: 20px;
+          height: 21px;
+          background: url("../images/icons/games/26_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-27 {
+          width: 22px;
+          height: 21px;
+          background: url("../images/icons/games/27_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-28 {
+          width: 19px;
+          height: 21px;
+          background: url("../images/icons/games/28_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-29 {
+          width: 24px;
+          height: 21px;
+          background: url("../images/icons/games/29_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-30 {
+          width: 24px;
+          height: 21px;
+          background: url("../images/icons/games/30_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-31 {
+          width: 24px;
+          height: 21px;
+          background: url("../images/icons/games/31_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-32 {
+          width: 24px;
+          height: 21px;
+          background: url("../images/icons/games/32_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-33 {
+          width: 24px;
+          height: 21px;
+          background: url("../images/icons/games/33_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-34 {
+          width: 24px;
+          height: 21px;
+          background: url("../images/icons/games/34_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-35 {
+          width: 24px;
+          height: 21px;
+          background: url("../images/icons/games/35_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-36 {
+          width: 24px;
+          height: 21px;
+          background: url("../images/icons/games/36_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-37 {
+          width: 24px;
+          height: 21px;
+          background: url("../images/icons/games/37_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-38 {
+          width: 24px;
+          height: 21px;
+          background: url("../images/icons/games/38_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon.icon-39 {
+          width: 24px;
+          height: 21px;
+          background: url("../images/icons/games/39_active.svg") no-repeat; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-media .icon[class*="icon-"] {
+          background-size: 100% 100%;
+          background-position: center center; }
+      #page-home .home-block .bottom-block .list-block ul li .item-content .item-inner {
+        background-repeat: no-repeat;
+        background-position: 96% 50%;
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2060%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpath%20d%3D'm60%2061.5-38.25%2038.25-9.75-9.75%2029.25-28.5-29.25-28.5%209.75-9.75z'%20fill%3D'%23c7c7cc'%2F%3E%3C%2Fsvg%3E");
+        background-size: 10px 20px;
+        padding: 3px 30px 3px 0; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-inner:after {
+          height: 0px; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-inner .item-title {
+          font-family: SFUITextRegular;
+          color: #131313; }
+        #page-home .home-block .bottom-block .list-block ul li .item-content .item-inner .item-after {
+          margin: 0px; }
+          #page-home .home-block .bottom-block .list-block ul li .item-content .item-inner .item-after .item-media .icon {
+            margin: 0 auto; }
+            #page-home .home-block .bottom-block .list-block ul li .item-content .item-inner .item-after .item-media .icon.icon-notification {
+              width: 18px;
+              height: 18px;
+              background: url("../images/icons/notifications_on.svg") no-repeat;
+              background-size: 100% 100%;
+              background-position: center center; }
+      #page-home .home-block .bottom-block .list-block ul li:last-child a:after {
+        height: 0px; }

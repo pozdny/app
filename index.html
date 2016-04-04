@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Summer Games 2016</title>
+    <!--build:css css/my-app.min.css -->
+    <link rel="stylesheet" href="css/lib/framework7.ios.min.css">
+    <link rel="stylesheet" href="css/lib/framework7.ios.colors.min.css">
+    <link rel="stylesheet" href="css/flex-style.css">
+    <link rel="stylesheet" href="css/welcomescreen.css">
+    <link rel="stylesheet" href="css/my-app.css">
+    <!-- endbuild -->
+    <!--build:js js/words.min.js -->
+    <script type="text/javascript" src="js/words.js"></script>
+    <!-- endbuild -->
+</head>
+<body>
+<!-- Status bar overlay for fullscreen mode-->
+<div class="statusbar-overlay"></div>
+
+<!-- Views-->
+<div class="views tabs tabbar-labels-fixed">
+    <!-- Your main view, should have "view-main" class-->
+    <div id="view-main" class="view view-main tab active">
+        <div class="navbar">
+            <div data-page="index" class="navbar-inner">
+                <div class="left"></div>
+                <div class="center sliding"><script>document.write(_w.global.pages_title[LN].index.title);</script></div>
+                <div class="right sliding">
+                    <a href="#settings" class="link icon-only">
+                        <i class="icon icon-settings"></i>
+                    </a>
+                </div>
+            </div>
+            <div data-page="settings" class="navbar-inner cached">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                    </a>
+                </div>
+                <div class="center sliding"><script>document.write(_w.global.pages_title[LN].settings);</script></div>
+                <div class="right"></div>
+            </div>
+            <div data-page="game-notification" class="navbar-inner cached">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                    </a>
+                </div>
+                <div class="center sliding"><script>document.write(_w.global.pages_title[LN].notification);</script></div>
+                <div class="right"></div>
+            </div>
+        </div>
+        <div class="pages navbar-fixed toolbar-fixed">
+            <div data-page="index" class="page">
+                <div class="page-content" id="page-home"></div>
+            </div>
+            <div data-page="settings" class="page cached">
+                <div class="page-content" id="page-settings"></div>
+            </div>
+            <div data-page="game-notification" class="page cached">
+                <div class="page-content" id="page-game-notification"></div>
+            </div>
+        </div>
+    </div>
+    <div id="view-calendar" class="view view-calendar tab ">
+        <!-- Navbars-->
+        <div class="navbar">
+            <div data-page="achievements" class="navbar-inner">
+                <div class="left"></div>
+                <div class="center sliding"></div>
+                <div class="right"></div>
+            </div>
+        </div>
+        <div class="pages navbar-fixed toolbar-fixed">
+            <div data-page="achievements" class="page">
+                <!-- Scrollable page content-->
+                <div class="page-content"></div>
+            </div>
+        </div>
+    </div>
+    <div id="view-info" class="view view-info tab">
+        <!-- Navbars-->
+        <div class="navbar">
+            <div data-page="info" class="navbar-inner">
+                <div class="left"></div>
+                <div class="center sliding">
+                    <script>document.write(_w.global.pages_title[LN].info);</script>
+                </div>
+                <div class="right"></div>
+            </div>
+            <div data-page="info-one" class="navbar-inner cached">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                    </a>
+                </div>
+                <div class="center sliding"><script>document.write(_w.global.pages_title[LN].info);</script></div>
+                <div class="right"></div>
+            </div>
+        </div>
+        <div class="pages navbar-fixed toolbar-fixed">
+            <div data-page="info" class="page">
+                <div class="page-content" id="page-info">
+
+                </div>
+            </div>
+            <div data-page="info-one" class="page cached">
+                <div class="page-content" id="info-item"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bottom Toolbar-->
+    <div class="toolbar tabbar tabbar-labels">
+        <div class="toolbar-inner">
+            <a href="#view-main" class="link tab-link active">
+                <i class="icon icon-home" ></i>
+                <span class="tabbar-label"><script>document.write(_w.global.pages_title[LN].index.toolbar);</script></span>
+            </a>
+            <a href="#view-calendar" class="link tab-link">
+                <i class="icon icon-calendar"></i>
+                <span class="tabbar-label"><script>document.write(_w.global.pages_title[LN].calendar);</script></span>
+            </a>
+            <a href="#view-info" class="link tab-link">
+                <i class="icon icon-info"></i>
+                <span class="tabbar-label"><script>document.write(_w.global.pages_title[LN].info);</script></span>
+            </a>
+        </div>
+    </div>
+    <!-- /Bottom Toolbar-->
+</div>
+
+<!--build:js js/my-app.min.js -->
+<script src="js/lib/framework7.min.js"></script>
+<script src="js/welcomescreen.js"></script>
+<script src="js/tmp/webactivity.js"></script>
+<script src="js/library.js"></script>
+<script src="js/IndexPageController.js"></script>
+<script src="js/InfoPageController.js"></script>
+<script src="js/my-app.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/info.js"></script>
+<script src="js/home.js"></script>
+<script src="js/slider_swiper.js"></script>
+<script src="js/init.js"></script>
+<!-- endbuild -->
+</body>
+</html>
