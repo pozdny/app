@@ -13,16 +13,27 @@ Framework7.prototype.plugins.home = function (app, globalPluginParams) {
         Home_loc;
     Home_loc = function (options) {
         this.data = { };
-        var ObjGame = function(name, icon, notification){
+        var ObjGame = function(name, icon, id, notification){
             this.name = name;
             this.icon = icon;
-            this.notification = notification;
+            this.id = id;
+            if(this.notification === undefined){
+                this.notification = false;
+            }
+            else{
+                this.notification = notification;
+            }
+
         };
         var self = this,
             defaultTemplate,
+            defaultTemplateNotification,
             template,
+            templateNotification,
             container,
             parentContainer,
+            parentContainerNotification,
+            containerNotification,
             storage,
             storageGames,
             storageDatesGame,
@@ -42,7 +53,7 @@ Framework7.prototype.plugins.home = function (app, globalPluginParams) {
         function getArrGames(arr){
             var array = [];
             $$.each(arr, function(i, val){
-                array.push(new ObjGame(storageGames[val.id].name, storageGames[val.id].icon))
+                array.push(new ObjGame(storageGames[val.id].name, storageGames[val.id].icon, val.id, val.notification) )
             });
             sortArrayAlfabet(array);
             return array;
@@ -62,12 +73,18 @@ Framework7.prototype.plugins.home = function (app, globalPluginParams) {
             getStorageDatesGame();
             return getArr();
         }
+        self.getGameNotificationData = function(){
+            parentContainerNotification = $$('#page-game-notification');
+
+            containerNotification = $$(templateNotification({options: options, date:["1", "2"]}));
+            parentContainerNotification.append(containerNotification);
+        };
         self.init = function(){
             getStorage();
             getStorageGames();
             var context;
             parentContainer = $$('#page-home');
-            context = getDatesGame();  console.log(context);
+            context = getDatesGame();
             container = $$(template({options: options, date:context}));
             parentContainer.append(container);
         };
@@ -110,17 +127,19 @@ Framework7.prototype.plugins.home = function (app, globalPluginParams) {
                             '<ul>' +
                                 '{{#each games}}' +
                                 '<li>' +
-                                    '<a href="#game-notification" class="item-content">' +
+                                    '<a href="#game-notification?id={{../date}}_{{id}}" class="item-content">' +
                                         '<div class="item-media">' +
                                             '<i class="icon icon-{{icon}}"></i>' +
                                         '</div>' +
                                         '<div class="item-inner">' +
                                             '<div class="item-title">{{name}}</div>' +
+                                            '{{#if notification}}' +
                                             '<div class="item-after">' +
                                                 '<div class="item-media">' +
                                                     '<i class="icon icon-notification"></i>' +
                                                 '</div>' +
                                             '</div>' +
+                                            '{{/if}}' +
                                         '</div>' +
                                     '</a>' +
                                 '</li>' +
@@ -131,7 +150,40 @@ Framework7.prototype.plugins.home = function (app, globalPluginParams) {
                     '</div>' +
                 '</div>';
         }
+        function defineDefaultTemplateNotification() {
+            defaultTemplateNotification = '<div class="list-block">' +
+                    '<ul>' +
+                        '<li class="item-content">' +
+                        '<div class="item-inner">' +
+                            '<div class="item-title">' +
 
+                            '</div>' +
+                        '</div>' +
+                        '</li>' +
+                    '</ul>' +
+                '</div>' +
+                '<div class="list-block">' +
+                '<ul>' +
+                '<li class="item-content">' +
+                '<div class="item-inner">' +
+                '<div class="item-title">asdfsdaf' +
+                '</div>' +
+                '</div>' +
+                '</li>' +
+                '</ul>' +
+                '</div>' +
+                '<div class="list-block">' +
+                '<ul>' +
+                '<li class="item-content">' +
+                '<div class="item-inner">' +
+                '<div class="item-title">asdfsdaf' +
+
+                '</div>' +
+                '</div>' +
+                '</li>' +
+                '</ul>' +
+                '</div>';
+        }
         /* Sets the options that were required
          *
          * @private
@@ -162,6 +214,11 @@ Framework7.prototype.plugins.home = function (app, globalPluginParams) {
             } else {
                 template = t7.compile(options.template);
             }
+            if (!app._compiledTemplates.game_notification) {
+                app._compiledTemplates.game_notification = t7.compile(defaultTemplateNotification);
+
+            }
+            templateNotification = app._compiledTemplates.game_notification;
 
         }
 
@@ -169,6 +226,7 @@ Framework7.prototype.plugins.home = function (app, globalPluginParams) {
         (function () {
             applyOptions();
             defineDefaultTemplate();
+            defineDefaultTemplateNotification();
             compileTemplate();
             self.init();
         }());

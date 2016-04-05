@@ -79,6 +79,15 @@ myApp.onPageBeforeAnimation('info-one', function (page) {
     }
     getInfoOne(page.query.id);
 });
+myApp.onPageBeforeAnimation('game-notification', function (page) {
+    if(page.query.id){
+        n.home.getGameNotificationData(page.query.id);
+    }
+    else{
+        console.log('error');
+    }
+
+});
 myApp.init();
 
 myapp.init = (function () {

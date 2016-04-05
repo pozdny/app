@@ -823,3 +823,21 @@ body {
 
 
 }
+/*
+   ==================
+   [GAME-NOTIFICATION]
+   ==================
+*/
+#page-game-notification{
+   .list-block{
+     margin: 20px 0px;
+     &:first-child{
+       margin-top:0px;
+       ul{
+         &:before{
+           height:0px;
+         }
+       }
+     }
+   }
+}

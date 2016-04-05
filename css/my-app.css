@@ -726,3 +726,15 @@ body {
               background-position: center center; }
       #page-home .home-block .bottom-block .list-block ul li:last-child a:after {
         height: 0px; }
+
+/*
+   ==================
+   [GAME-NOTIFICATION]
+   ==================
+*/
+#page-game-notification .list-block {
+  margin: 20px 0px; }
+  #page-game-notification .list-block:first-child {
+    margin-top: 0px; }
+    #page-game-notification .list-block:first-child ul:before {
+      height: 0px; }
