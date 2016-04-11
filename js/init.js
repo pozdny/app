@@ -39,9 +39,13 @@ var n = {
     info:null,
     swiper:null,
     swiper_pages: null,
+    swiperCalendar:null,
+    swiper_pages_calendar: null,
     achievements:null,
     dateIfChangeDate:0,
+    calendar:null,
     sounds:{},
+    pickerInline: null,
     key_storage:{
         categories:"games_obj",
         language:"games_language"
@@ -66,10 +70,17 @@ myApp.onPageInit('index', function (page) {
         createArrayStorage();
     }
     else{
+        console.log('init');
         n.home = myApp.home({});
-        n.settings = myApp.settings({});
+        n.settings = myApp.settings();
         n.info = myApp.info({});
+        //n.calendar = myApp.calendar({});
     }
+});
+
+
+myApp.onPageReinit('index', function (page) {
+    n.home.init();
 });
 myApp.onPageBeforeAnimation('info-one', function (page) {
     $$('#info-item').scrollTo(0, 0);
@@ -86,7 +97,18 @@ myApp.onPageBeforeAnimation('game-notification', function (page) {
     else{
         console.log('error');
     }
-
+});
+$$('#view-calendar').on('show', function (page) {
+    n.settings.init();
+    if(!n.swiper_pages_calendar){
+        n.swiper_pages_calendar = new myapp.pages.CalendarPageController(myApp, $$);
+    }
+});
+$$('#view-main').on('show', function (page) { console.log(n.settings);
+    n.settings.init();
+});
+$$('#view-info').on('show', function (page) {
+    n.settings.init();
 });
 myApp.init();
 
@@ -142,6 +164,9 @@ myapp.init = (function () {
             pointerEvent(that, 'none');
             playSound(n.sounds.tap);
             pointerEvent(that, 'auto', 300);
+        });
+        $$(document.body).on('click','.toolbar .link', function(e){
+           closeSettings();
         });
         $$('#page-add-training').on('click', '#form-exercises ul li', function(e){
             //e.preventDefault();

@@ -98,7 +98,9 @@ Framework7.prototype.plugins.settings = function (app, globalPluginParams) {
         }
         self.init = function(){
             var context;
-            parentContainer = $$('#page-settings');
+            var activeView = myApp.getCurrentView(3);
+            parentContainer = $$(activeView.container).find('.page-settings');
+            clearParentContainer(parentContainer);
             context = getSettings();
             container = $$(template({options: options, li:context}));
             parentContainer.append(container);
@@ -112,7 +114,8 @@ Framework7.prototype.plugins.settings = function (app, globalPluginParams) {
          * @private
          */
         function defineDefaultTemplate() {
-                defaultTemplate = '<div class="list-block">' +
+                defaultTemplate = '<div class="content-block-title">' + _w.global.pages_title[LN].index.title + '</div>' +
+                    '<div class="list-block">' +
                     '<ul>' +
                     '{{#each li}}' +
                         '<li class="li-{{title}}">' +

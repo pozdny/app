@@ -7,7 +7,7 @@
 var myapp = myapp || {};
 myapp.pages = myapp.pages || {};
 
-myapp.pages.InfoPageController = function (myapp, $$) {
+myapp.pages.CalendarPageController = function (myapp, $$) {
     'use strict';
 
     // Init method
@@ -22,12 +22,15 @@ myapp.pages.InfoPageController = function (myapp, $$) {
                     console.log("info screen closed");
                 }
             },
-            info_slides = function(){
-                var info_arr = _w.attractions[LN];
+            calendar_slides = function(){
+                var storage;
+                if(storageGet(n.key_storage.categories)){
+                    storage = storageGet(n.key_storage.categories);
+                }
+                var info_arr = storage.attractions[LN];
                 return info_arr;
             },
-            info = myapp.sliderSwiper(info_slides, options);
+            calendar = myapp.sliderSwiperCalendar(calendar_slides, options);
 
     }());
-
 };

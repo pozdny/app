@@ -17,8 +17,8 @@ function createArrayStorage(){
 
       },
       success: function (result) {
-        var shadule = JSON.parse(result);
-
+        var res = JSON.parse(result);
+        var shadule = res;
         // получаем данные по играм
         $$.ajax({
           url: 'content/games.json',
@@ -33,17 +33,18 @@ function createArrayStorage(){
             var onlyDay = getDay(today.getTime());
             var storage,
                 cat = {},
-                category_arr = [];
-            $$.each(res, function(i, val){
+                category_arr = [],
+                language_arr = ["en", "ru"];
+            $$.each(language_arr, function(i, val){
               category_arr = [];
-              $$.each(val, function(z, val1){
+              $$.each(res.games, function(z, val1){
                 category_arr.push({
-                  name:val1.name,
+                  name:_w.games[val][z].name,
                   icon:val1.icon,
+                  date:val1.date
                 });
               });
-
-              cat[i] = category_arr;
+              cat[val] = category_arr;
             });
 
             storage = {
@@ -54,58 +55,26 @@ function createArrayStorage(){
               },
               "games":cat,
               "data":{
-                "datesGame":shadule,
-                "notificationsGame": []
+                "datesGame":shadule
               }
             };
-            storageSet(n.key_storage.categories, storage);
-
-            n.home = myApp.home({});
-            n.setting = myApp.settings({});
-
-
-            // получаем данные по достопримечательностям
-            $$.ajax({
-              url: 'content/attractions.json',
-              error: function () {
-
-              },
-              success: function (result) {
-                var res = JSON.parse(result);
-                //получаем текущую дату
-                var attractions = {},
-                    category_arr = [];
-                $$.each(res, function(i, val){
-                  category_arr = [];
-                  $$.each(val, function(z, val1){
-                    category_arr.push({
-                      name:val1.name,
-                      content: val1.content,
-                      icon:val1.icon
-                    });
-                  });
-                  attractions[i] = category_arr;
-                });
-                storage.attractions = attractions;
-                storageSet(n.key_storage.categories, storage);
-                n.info = myApp.info({});
-
-                // получаем данные по расписанию
-                $$.ajax({
-                  url: 'content/shadule.json',
-                  error: function () {
-
-                  },
-                  success: function (result) {
-                    var res = JSON.parse(result);
-                    storage.data.datesGame = res;
-                    storageSet(n.key_storage.categories, storage);
-                  }
-
+            $$.each(storage.data.datesGame.shadule, function(i, val){  console.log(val);
+              for(var key in val){
+                $$.each(val[key], function(j, val1){
+                  val1.notification = {
+                    "on":false,
+                    "date": 0
+                  };
                 });
               }
-
             });
+
+            storageSet(n.key_storage.categories, storage);
+            n.home = myApp.home({});
+            n.setting = myApp.settings({});
+            n.calendar = myApp.calendar({});
+            n.info = myApp.info({});
+
 
           }
         });
@@ -116,8 +85,30 @@ function createArrayStorage(){
   }
 }
 
+function closeSettings(){
+  var activeView = myApp.getCurrentView(3);
+  switch(activeView.selector){
+    case ".view-main":
+      if(activeView.url === '#settings'){
+        backPageForSettings('index', activeView);
+      }
+      break;
+    case ".view-calendar":
+      if(activeView.url === '#settings'){
+        backPageForSettings('calendar', activeView);
+      }
+      break;
+    case ".view-info":
+      if(activeView.url === '#settings'){
+        backPageForSettings('info', activeView);
+      }
+      break;
+    default: '';
 
-function getInfoOne(id){  console.log(id);
+  }
+}
+
+function getInfoOne(id){
   n.swiper.slideTo(Number(id) + 1, 0);
 }
 function playSound(sound){

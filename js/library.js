@@ -72,9 +72,12 @@ function sortArrayAsc2(arr){
     });
 }
 // создание нотификации на определенную дату
-function createNotificationDate(date, id, text){
+function createNotificationDate(date, id, text){  console.log(date, id, text);
     n.JSAPI.cancelNotif(id);
-    n.JSAPI.createUnitNotif(0,date.getTime(),id,_w.notification[LN].title,text,text,1000,"");
+    n.JSAPI.createUnitNotif(0,date,id,_w.notification[LN].title,text,text,1000,"");
+}
+function deleteNotificationDate(id){
+    n.JSAPI.cancelNotif(id);
 }
 // создание нотификации по умолчанию
 function createNotification(){
@@ -97,6 +100,13 @@ function backPage(pageName) {
         force: true
     });
 }
+function backPageForSettings(pageName, view) {
+    view.router.back({
+        pageName: pageName,
+        force: true,
+        animatePages:false
+    });
+}
 function loadPage(pageName, param) {
     var param_query;
     if(param){
@@ -116,6 +126,9 @@ function scrollToTop(obj){
 }
 function reloadPage(view) {
     view.router.refreshPage();
+}
+function clearParentContainer(pContainer){
+    pContainer.html('');
 }
 // free version
 function addPaddingBunner(){

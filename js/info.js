@@ -25,7 +25,7 @@ Framework7.prototype.plugins.info = function (app, globalPluginParams) {
         }
         function getInfo(){
             getStorage();
-            var attractions = storage.attractions[LN],
+            var attractions = _w.attractions[LN],
                 ceil = 2,
                 obj = {
                     rows: []
