@@ -71,7 +71,7 @@ function createArrayStorage(){
 
             storageSet(n.key_storage.categories, storage);
             n.home = myApp.home({});
-            n.setting = myApp.settings({});
+            n.settings = myApp.settings({});
             n.calendar = myApp.calendar({});
             n.info = myApp.info({});
 

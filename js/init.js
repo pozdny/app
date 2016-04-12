@@ -98,7 +98,7 @@ myApp.onPageBeforeAnimation('game-notification', function (page) {
         console.log('error');
     }
 });
-$$('#view-calendar').on('show', function (page) {
+$$('#view-calendar').on('show', function (page) { console.log('show', n.settings);
     n.settings.init();
     if(!n.swiper_pages_calendar){
         n.swiper_pages_calendar = new myapp.pages.CalendarPageController(myApp, $$);

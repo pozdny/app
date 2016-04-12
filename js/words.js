@@ -196,124 +196,125 @@ var _w = {
     "games":{
         "en":[
         {
-            "name": "Opening ceremony"
+            "name": "Opening ceremony",  //0
         },
         {
-            "name": "Closing ceremony"
+            "name": "Closing ceremony"  //1
         },
         {
-            "name": "Archery"
+            "name": "Archery"     //2
         },
         {
-            "name": "Athletics"
+            "name": "Athletics"   //3
         },
         {
-            "name": "Badminton"
+
+            "name": "Badminton"  //4
         },
         {
-            "name": "Basketball"
+            "name": "Basketball"  //5
         },
         {
-            "name": "Boxing"
+            "name": "Boxing"     //6
         },
         {
-            "name": "Canoeing slalom"
+            "name": "Canoeing slalom"  //7
         },
         {
-            "name": "Canoeing sprint"
+            "name": "Canoeing sprint"  //8
         },
         {
-            "name": "Road cycling"
+            "name": "Road cycling"  //9
         },
         {
-            "name": "Track cycling"
+            "name": "Track cycling"  //10
         },
         {
-            "name": "BMX"
+            "name": "BMX cycling"   //11
         },
         {
-            "name": "Mountain biking"
+            "name": "Mountain biking" //12
         },
         {
-            "name": "Diving"
+            "name": "Diving" //13
         },
         {
-            "name": "Equestrian"
+            "name": "Equestrian"  //14
         },
         {
-            "name": "Fencing"
+            "name": "Fencing" //15
         },
         {
-            "name": "Field hockey"
+            "name": "Field hockey"  //16
         },
         {
-            "name": "Football"
+            "name": "Football"  //17
         },
         {
-            "name": "Golf"
+            "name": "Golf"  //18
         },
         {
-            "name": "Artistic gymnastics"
+            "name": "Artistic gymnastics" //19
         },
         {
-            "name": "Rhythmic gymnastics"
+            "name": "Rhythmic gymnastics"  //20
         },
         {
-            "name": "Trampolining"
+            "name": "Trampolining" //21
         },
         {
-            "name": "Handball"
+            "name": "Handball" //22
         },
         {
-            "name": "Judo"
+            "name": "Judo"  //23
         },
         {
-            "name": "Modern pentathlon"
+            "name": "Modern pentathlon"  //24
         },
         {
-            "name": "Rowing"
+            "name": "Rowing"  //25
         },
         {
-            "name": "Rugby sevens"
+            "name": "Rugby sevens"  //26
         },
         {
-            "name": "Sailing"
+            "name": "Sailing"  //27
         },
         {
-            "name": "Shooting"
+            "name": "Shooting"  //28
         },
         {
-            "name": "Swimming"
+            "name": "Swimming" //29
         },
         {
-            "name": "Synchronized swimming"
+            "name": "Synchronized swimming" //30
         },
         {
-            "name": "Table tennis"
+            "name": "Table tennis" //31
         },
         {
-            "name": "Taekwondo"
+            "name": "Taekwondo" //32
         },
         {
-            "name": "Tennis"
+            "name": "Tennis"  //33
         },
         {
-            "name": "Triathlon"
+            "name": "Triathlon" //34
         },
         {
-            "name": "Beach volleyball"
+            "name": "Beach volleyball" //35
         },
         {
-            "name": "Indoor volleyball"
+            "name": "Indoor volleyball" //36
         },
         {
-            "name": "Water polo"
+            "name": "Water polo" //37
         },
         {
-            "name": "Weightlifting"
+            "name": "Weightlifting" //38
         },
         {
-            "name": "Wrestling"
+            "name": "Wrestling"  //39
         }
         ],
         "ru":[
@@ -351,7 +352,7 @@ var _w = {
             "name": "Трековые гонки"
         },
         {
-            "name": "BMX"
+            "name": "BMX гонки"
         },
         {
             "name": "Маунтинбайк"

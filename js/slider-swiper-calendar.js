@@ -48,6 +48,28 @@ Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginP
             }
 
         };
+        var ObjCol = function(obj, date, arr_date){   console.log(obj, date, arr_date);
+            this.date = date;
+            this.status = false;
+            this.checked = false;
+            if(arr_date.indexOf(date) !=-1){
+                console.log('есть', date);
+                this.status = true;
+            }
+
+        };
+        var ObjRow = function(obj){   console.log(obj);
+            this.date = obj.date;
+            this.name = obj.name;
+            var arrCols = [];
+            $$.each(storageDatesGame, function(i, val){
+                for(var key in val){
+                    arrCols.push(new ObjCol(val, Number(key), obj.date));
+                }
+            });
+            this.cols = arrCols;
+        };
+
         // Private properties
         var self = this,
             defaultTemplate,
@@ -59,6 +81,8 @@ Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginP
             swiper,
             swiperContainer,
             parentContainer,
+            arrGames,
+            arrRows,
             defaults = {
                 closeButton: true,        // enabled/disable close button
                 closeButtonText : 'Skip', // close button text
@@ -79,10 +103,26 @@ Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginP
             storageDatesGame = storage.data.datesGame.shadule;
         }
          function getGames(){
-             var arrGames = [];
-             console.log(storageGames);
-
+             arrGames = [];
+             arrGames.push(storageGames[0]);
+             arrGames.push(storageGames[1]);
+             storageGames.splice(0,2);
+             sortArrayAlfabet(storageGames);
+             $$.each(storageGames, function(i, val){
+                arrGames.push(val);
+             });
+             return arrGames;
          }
+        function getRows(){
+             arrRows = [];
+             $$.each(arrGames, function(i, val){
+                 arrRows.push(new ObjRow(val));
+             });
+             return arrRows;
+        }
+        function getSlide(){
+
+        }
         /**
          * Initializes the swiper
          *
@@ -118,15 +158,37 @@ Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginP
         function defineDefaultTemplate() {
             defaultTemplate = '<div class="swiperSliderCalendar">' +
                     '<div class="swiper-container-v">' +
-                        '<div class="left-column">' +
-                            '<div class="top-block"></div>' +
-                            '<div class="bottom-block">asdfa</div>' +
-                        '</div>' +
-                        '<div class="swiper-container-calendar">' +
-                            '<div class="top-column">55</div>' +
-                            '<div class="swiper-wrapper">' +
-                                '<div class="swiper-slide" id="0">1</div>' +
-                                '<div class="swiper-slide" id="1">2</div>' +
+                        '<div class="swiper-inner">' +
+                            '<div class="left-column">' +
+                                '<div class="top-block"></div>' +
+                                '<div class="bottom-block list-block">' +
+                                    '<ul class="">' +
+                                        '{{#each context.games}}' +
+                                        '<li>' +
+                                            '<div class="item-media">' +
+                                            '<i class="icon icon-{{icon}}"></i>' +
+                                            '</div>' +
+                                        '</li>' +
+                                        '{{/each}}' +
+                                    '</ul>' +
+                                '</div>' +
+                            '</div>' +
+                            '<div class="swiper-container-calendar">' +
+                                '<div class="top-column">55</div>' +
+                                '<div class="swiper-wrapper">' +
+                                    '<div class="swiper-slide" id="0">' +
+                                       '<div class="list-block">' +
+                                          '<ul>' +
+                                            '{{#each rows}}' +
+                                            '<li>' +
+
+                                            '</li>' +
+                                            '{{/each}}' +
+                                          '</ul>' +
+                                       '</div>' +
+                                    '</div>' +
+                                    '<div class="swiper-slide" id="1">2</div>' +
+                                '</div>' +
                             '</div>' +
                         '</div>' +
                     '</div>' +
@@ -178,7 +240,13 @@ Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginP
             getStorageGames();
             getStorageDatesGame();
             var games = getGames();
-            container = $$(template({options: options, games: games, slides: slides}));
+            var rows = getRows();console.log(rows);
+            var slides = getSlide(rows);
+            var context = {
+                games: games,
+                rows:rows
+            };
+            container = $$(template({options: options, context: context}));
             swiperContainer = container.find('.swiper-container-calendar');
             parentContainer = $$('#page-calendar');
             setColors();
