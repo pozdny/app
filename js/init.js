@@ -37,6 +37,7 @@ var n = {
     home:null,
     settings: null,
     info:null,
+    filter:null,
     swiper:null,
     swiper_pages: null,
     swiperCalendar:null,
@@ -44,6 +45,7 @@ var n = {
     achievements:null,
     dateIfChangeDate:0,
     calendar:null,
+    searchbar:null,
     sounds:{},
     pickerInline: null,
     key_storage:{
@@ -64,7 +66,7 @@ if(LN !== "en" && LN !== "ru"){
     n.language = "en";
 }
 myApp.onPageInit('index', function (page) {
-    storageClear();
+    //storageClear();
     if(!storageGet(n.key_storage.categories)){
         // заносим категории по умолчанию
         createArrayStorage();
@@ -74,13 +76,24 @@ myApp.onPageInit('index', function (page) {
         n.home = myApp.home({});
         n.settings = myApp.settings();
         n.info = myApp.info({});
-        //n.calendar = myApp.calendar({});
+        n.filter = myApp.filter({});
+
     }
 });
-
+myApp.onPageInit('calendar', function (page) {
+    console.log('calendar');
+    var mySearchbar = myApp.searchbar('.searchbar', {
+        searchList: '.list-block-search',
+        searchIn: '.item-title'
+    });
+});
 
 myApp.onPageReinit('index', function (page) {
     n.home.init();
+});
+myApp.onPageReinit('calendar', function (page) {
+    console.log('calendar reinit');
+    n.swiper_pages_calendar = myApp.calendar({});
 });
 myApp.onPageBeforeAnimation('info-one', function (page) {
     $$('#info-item').scrollTo(0, 0);
@@ -98,10 +111,10 @@ myApp.onPageBeforeAnimation('game-notification', function (page) {
         console.log('error');
     }
 });
-$$('#view-calendar').on('show', function (page) { console.log('show', n.settings);
+$$('#view-calendar').on('show', function (page) {
     n.settings.init();
     if(!n.swiper_pages_calendar){
-        n.swiper_pages_calendar = new myapp.pages.CalendarPageController(myApp, $$);
+        n.swiper_pages_calendar = myApp.calendar({});
     }
 });
 $$('#view-main').on('show', function (page) { console.log(n.settings);

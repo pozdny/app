@@ -70,6 +70,11 @@ var _w = {
         en:{
             name:"Name",
             training_name: "Training",
+            filter: "Filter",
+            search: "Search",
+            cancel: "Cancel",
+            version: "version 1.0",
+            nothing_found: "Nothing found",
             date: "Date",
             days:{
                 mn:"days",
@@ -92,6 +97,11 @@ var _w = {
         ru:{
             name:"Название тренировки",
             training_name: "Тренировка",
+            filter: "Фильтр",
+            search: "Поиск",
+            cancel: "Отмена",
+            version: "версия 1.0",
+            nothing_found: "Ничего не найдено",
             date: "Дата",
             days:{
                 mn:"дней",
@@ -208,7 +218,6 @@ var _w = {
             "name": "Athletics"   //3
         },
         {
-
             "name": "Badminton"  //4
         },
         {

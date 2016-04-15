@@ -39,6 +39,7 @@ function createArrayStorage(){
               category_arr = [];
               $$.each(res.games, function(z, val1){
                 category_arr.push({
+                  id: val1.id,
                   name:_w.games[val][z].name,
                   icon:val1.icon,
                   date:val1.date
@@ -55,10 +56,11 @@ function createArrayStorage(){
               },
               "games":cat,
               "data":{
-                "datesGame":shadule
+                "datesGame":shadule,
+                "checkedGames": []
               }
             };
-            $$.each(storage.data.datesGame.shadule, function(i, val){  console.log(val);
+            $$.each(storage.data.datesGame.shadule, function(i, val){
               for(var key in val){
                 $$.each(val[key], function(j, val1){
                   val1.notification = {
@@ -69,13 +71,17 @@ function createArrayStorage(){
               }
             });
 
+
             storageSet(n.key_storage.categories, storage);
             n.home = myApp.home({});
             n.settings = myApp.settings({});
             n.calendar = myApp.calendar({});
             n.info = myApp.info({});
-
-
+            n.filter = myApp.filter({});
+            n.searchbar = myApp.searchbar('.searchbar', {
+              searchList: '.list-block-search',
+              searchIn: '.item-title'
+            });
           }
         });
       }

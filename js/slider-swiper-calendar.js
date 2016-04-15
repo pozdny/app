@@ -14,7 +14,7 @@
  * @author www.timo-ernst.net
  * @license MIT
  */
-Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginParams) {     console.log('ok');
+Framework7.prototype.plugins.calendar = function (app, globalPluginParams) {     console.log('ok');
     'use strict';
     // Variables in module scope
     var $$ = Dom7,
@@ -34,7 +34,7 @@ Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginP
      * @class
      * @memberof module:Framework7/prototype/plugins/sliderSwiper
      */
-    SliderSwiperCalendar = function (slides, options) {
+    SliderSwiperCalendar = function (options) {
         var ObjGame = function(name, icon, id, date, notification){
             this.name = name;
             this.icon = icon;
@@ -48,17 +48,19 @@ Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginP
             }
 
         };
-        var ObjCol = function(obj, date, arr_date){   console.log(obj, date, arr_date);
+        var ObjCol = function(obj, date, arr_date){
             this.date = date;
             this.status = false;
             this.checked = false;
             if(arr_date.indexOf(date) !=-1){
-                console.log('есть', date);
                 this.status = true;
             }
 
         };
-        var ObjRow = function(obj){   console.log(obj);
+        var ObjRow = function(obj){
+            if(obj.checked){
+                this.checked = true;
+            }
             this.date = obj.date;
             this.name = obj.name;
             var arrCols = [];
@@ -70,19 +72,54 @@ Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginP
             this.cols = arrCols;
         };
 
+        var ObjSlide = function(rows, id){
+            this.rows = rows;
+            this.id = id;
+            this.last = false;
+            if(id + 1 === lengthSlide){
+                this.last = true;
+            }
+        };
+        var ObjSlideDate = function(rows, id){
+            this.id = id;
+            this.cols = [];
+            var date;
+            for(var i in rows){
+                for(var j in rows[i]){
+                    date = new Date("August " + Number(j) + ", 2016 0:00").getTime();
+                    this.cols.push({
+                        date: Number(j),
+                        dayWeek: new Date(date).getDayWeek()
+                    })
+                }
+            }
+
+        };
         // Private properties
         var self = this,
             defaultTemplate,
+            defaultTemplateTopBlock,
             template,
+            templateTopBlock,
             container,
+            containerTopBlock,
             storage,
             storageGames,
+            storageCheckedGames,
             storageDatesGame,
             swiper,
+            swiperDate,
             swiperContainer,
             parentContainer,
+            parentContainerTopBlock,
             arrGames,
             arrRows,
+            ceil = 7,
+            lengthGame,
+            lengthSlide,
+            fLengthSlide,
+            lengthShadule,
+            activeIndex,
             defaults = {
                 closeButton: true,        // enabled/disable close button
                 closeButtonText : 'Skip', // close button text
@@ -91,6 +128,7 @@ Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginP
                 loop: false,              // swiper loop
                 open: true              // open
             };
+
         function getStorage(){
             if(storageGet(n.key_storage.categories)){
                 storage = storageGet(n.key_storage.categories);
@@ -102,6 +140,9 @@ Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginP
         function getStorageDatesGame(){
             storageDatesGame = storage.data.datesGame.shadule;
         }
+        function getStorageCheckedGames(){
+            storageCheckedGames = storage.data.checkedGames;
+        }
          function getGames(){
              arrGames = [];
              arrGames.push(storageGames[0]);
@@ -111,8 +152,43 @@ Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginP
              $$.each(storageGames, function(i, val){
                 arrGames.push(val);
              });
+             getStorageCheckedGames();
+             $$.each(storageCheckedGames, function(i, val){
+                 $$.each(arrGames, function(j, val1){
+                     if(Number(val) === val1.id){
+                         val1.checked = true;
+                     }
+                 })
+             });
+
              return arrGames;
          }
+        function getSlidesDate(){
+            var slideDate = [];
+            var rows2 = [];
+            var arr = [];
+            var colLength;
+            var rows = copyItem(storageDatesGame);
+            for(var i=0; i < lengthSlide; i++){
+            rows2 = copyItem(rows);
+            if(rows.length%ceil !== 0 && rows.length > ceil){
+                colLength = ceil;
+
+            }
+            else{
+                colLength = rows.length;
+            }
+            arr = [];
+            for(var j=0; j < colLength; j++){   //console.log(val);
+                arr.push(rows[j]);
+            }
+            rows2 = arr;
+            rows.splice(0, colLength);
+            slideDate.push(new ObjSlideDate(rows2, i));
+
+            }
+            return slideDate;
+        }
         function getRows(){
              arrRows = [];
              $$.each(arrGames, function(i, val){
@@ -120,8 +196,53 @@ Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginP
              });
              return arrRows;
         }
-        function getSlide(){
+        function getSlide(rows){
+            var slide = [];
+            var rows2 = [];
+            var arr = [];
+            var colLength,
+                zLength;
+                lengthGame = rows.length;
+                lengthShadule = storageDatesGame.length;
+                lengthSlide = Math.ceil(lengthShadule/ceil);
+                fLengthSlide = 0;
+            for(var i=0; i < lengthSlide; i++){
+                rows2 = copyItem(rows);
+                $$.each(rows, function(z, val) {   //console.log(val);
+                    if(rows[z].cols.length%ceil !== 0 && rows[z].cols.length > ceil){
+                        colLength = ceil;
+                        zLength = ceil;
+                    }
+                    else{
+                        colLength = rows[z].cols.length;
+                        zLength = rows[z].cols.length;
+                    }
+                    arr = [];
+                    for(var j=0; j < colLength; j++){
+                        arr.push(rows[z].cols[j]);
+                    }
 
+                    rows2[z].cols = arr;
+                    rows[z].cols.splice(0, zLength);
+
+                });
+
+                slide.push(new ObjSlide(rows2, i));
+
+            }
+            return slide;
+        }
+        function nextSlideAction(){
+            swiperDate.slideNext(function(){ }, 600);
+        }
+        function prevSlideAction(){
+            swiperDate.slidePrev(function(){ }, 500);
+        }
+        function initNextPrevButtons(){
+            var nextButton = $$(".pagination .link.next");
+            var prevButton = $$(".pagination .link.prev");
+            nextButton.on('click', nextSlideAction);
+            prevButton.on('click', prevSlideAction);
         }
         /**
          * Initializes the swiper
@@ -129,13 +250,24 @@ Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginP
          * @private
          */
         function initSwiper() {
-            n.swiperSlider = swiper = new Swiper('.swiper-container-calendar', {
+            n.swiperCalendar = swiper = new Swiper('.swiper-container-calendar', {
                 direction: 'horizontal',
                 loop: options.loop,
                 pagination: options.pagination ? parentContainer.find('.top-column') : undefined
             });
         }
+        function initSwiperDate() {
+            n.swiperCalendarDate = swiperDate = new Swiper('.swiper-container-data-calendar', {
+                direction: 'horizontal',
+                loop: options.loop,
+                pagination: options.pagination ? parentContainer.find('.top-column') : undefined
+            });
 
+        }
+        function synchronizeSwipers() {
+            swiper.params.control = swiperDate;
+            swiperDate.params.control = swiper;
+        }
         /**
          * Sets colors from options
          *
@@ -159,44 +291,78 @@ Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginP
             defaultTemplate = '<div class="swiperSliderCalendar">' +
                     '<div class="swiper-container-v">' +
                         '<div class="swiper-inner">' +
-                            '<div class="left-column">' +
-                                '<div class="top-block"></div>' +
-                                '<div class="bottom-block list-block">' +
-                                    '<ul class="">' +
-                                        '{{#each context.games}}' +
-                                        '<li>' +
-                                            '<div class="item-media">' +
-                                            '<i class="icon icon-{{icon}}"></i>' +
-                                            '</div>' +
-                                        '</li>' +
-                                        '{{/each}}' +
-                                    '</ul>' +
-                                '</div>' +
-                            '</div>' +
-                            '<div class="swiper-container-calendar">' +
-                                '<div class="top-column">55</div>' +
-                                '<div class="swiper-wrapper">' +
-                                    '<div class="swiper-slide" id="0">' +
-                                       '<div class="list-block">' +
-                                          '<ul>' +
-                                            '{{#each rows}}' +
+                            '<div class="calendar-block">' +
+                                '<div class="left-column">' +
+                                    '<div class="bottom-block list-block">' +
+                                        '<ul class="">' +
+                                            '{{#each games}}' +
                                             '<li>' +
-
+                                                '<div class="item-media">' +
+                                                '<i class="icon icon-{{icon}} {{#if checked}}active{{/if}}"></i>' +
+                                                '</div>' +
                                             '</li>' +
                                             '{{/each}}' +
-                                          '</ul>' +
-                                       '</div>' +
+                                        '</ul>' +
                                     '</div>' +
-                                    '<div class="swiper-slide" id="1">2</div>' +
                                 '</div>' +
-                            '</div>' +
-                        '</div>' +
-                    '</div>' +
+                                '<div class="swiper-container-calendar">' +
+                                    '<div class="swiper-wrapper">' +
+                                        '{{#each slides}}' +
+                                        '<div class="swiper-slide {{#if last}}last{{/if}}" id="{{id}}">' +
+                                           '<div class="list-block">' +
+                                              '<ul>' +
+                                                '{{#each rows}}' +
+                                                '<li class="rows {{#if checked}}checked{{/if}}">' +
+                                                    '{{#each cols}}' +
+                                                        '<div {{#if status}}class="status"{{/if}}></div>' +
+                                                    '{{/each}}' +
+                                                '</li>' +
+                                                '{{/each}}' +
+                                              '</ul>' +
+                                           '</div>' +
+                                        '</div>' +
+                                        '{{/each}}' +
+                                    '</div>' +
+                                '</div>' +
 
+                            '</div>' +
+
+                        '</div>' +
                 '</div>';
 
         }
+        function defineDefaultTemplateTopBlock() {
+            defaultTemplateTopBlock = '<div class="top-block">' +
+            '<div class="left-block"></div>' +
+                '<div class="data-block">' +
+                    '<div class="title">August</div>' +
+                    '<div class="swiper-container-data">' +
+                        '<div class="pagination">' +
+                            '<div class="nav">' +
+                                '<a href="#" class="link prev"><div class="prev"></div></a>' +
+                                '<a href="#" class="link next"><div class="next"></div></a>' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="swiper-container-data-calendar">' +
+                            '<div class="swiper-wrapper">' +
+                            '{{#each slidesDate}}' +
+                            '<div class="swiper-slide" id="{{id}}">' +
+                            '{{#each cols}}' +
+                                '<div class="col-date">' +
+                                    '<div class="num">{{date}}</div>' +
+                                    '<div class="week">{{dayWeek}}</div>' +
+                                '</div>' +
+                            '{{/each}}' +
+                            '</div>' +
+                            '{{/each}}' +
+                        '</div>' +
 
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '</div>';
+
+        }
         /**
          * Sets the options that were required
          *
@@ -227,6 +393,11 @@ Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginP
             } else {
                 template = t7.compile(options.template);
             }
+            if (!app._compiledTemplates.top_block) {
+                app._compiledTemplates.top_block = t7.compile(defaultTemplateTopBlock);
+
+            }
+            templateTopBlock = app._compiledTemplates.top_block;
         }
 
         /**
@@ -240,18 +411,32 @@ Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginP
             getStorageGames();
             getStorageDatesGame();
             var games = getGames();
-            var rows = getRows();console.log(rows);
+            var rows = getRows();
             var slides = getSlide(rows);
+            var slidesDate = getSlidesDate();
             var context = {
                 games: games,
-                rows:rows
+                slides:slides
             };
-            container = $$(template({options: options, context: context}));
+            var contextTopBlock = {
+                slidesDate: slidesDate
+            };
+
+            containerTopBlock = $$(templateTopBlock({options: options, slidesDate:contextTopBlock.slidesDate}));
+            container = $$(template({options: options, games:context.games, slides: context.slides}));
             swiperContainer = container.find('.swiper-container-calendar');
+            parentContainerTopBlock = $$('#top-block-subnavbar-calendar');
             parentContainer = $$('#page-calendar');
+            clearParentContainer(parentContainer);
+            clearParentContainer(parentContainerTopBlock);
             setColors();
+            parentContainerTopBlock.append(containerTopBlock);
             parentContainer.append(container);
             initSwiper();
+            initSwiperDate();
+            synchronizeSwipers();
+            initNextPrevButtons();
+
             container[0].f7Swiper = self;
             if (typeof options.onOpened === 'function') { options.onOpened(); }
         };
@@ -307,9 +492,9 @@ Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginP
          */
         (function () {
             defineDefaultTemplate();
+            defineDefaultTemplateTopBlock();
             compileTemplate();
             applyOptions();
-            console.log(options);
             // Open on init
             if (options.open) {
                 self.open();
@@ -321,7 +506,7 @@ Framework7.prototype.plugins.sliderSwiperCalendar = function (app, globalPluginP
         return self;
     };
 
-    app.sliderSwiperCalendar = function (slides, options) {
+    app.calendar = function (slides, options) {
         return new SliderSwiperCalendar(slides, options);
     };
 

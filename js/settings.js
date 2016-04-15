@@ -114,7 +114,7 @@ Framework7.prototype.plugins.settings = function (app, globalPluginParams) {
          * @private
          */
         function defineDefaultTemplate() {
-                defaultTemplate = '<div class="content-block-title">' + _w.global.pages_title[LN].index.title + '</div>' +
+                defaultTemplate = '<div class="content-block-title">' + _w.global.pages_title[LN].index.title + ' <span>' + _w.dif_filds[LN].version + '</span></div>' +
                     '<div class="list-block">' +
                     '<ul>' +
                     '{{#each li}}' +

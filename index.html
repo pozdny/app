@@ -84,6 +84,9 @@
                         <i class="icon icon-settings"></i>
                     </a>
                 </div>
+                <div class="subnavbar" id="top-block-subnavbar-calendar">
+                    ccc
+                </div>
             </div>
             <div data-page="settings" class="navbar-inner cached">
                 <div class="left">
@@ -105,9 +108,9 @@
             </div>
         </div>
         <div class="pages navbar-fixed toolbar-fixed">
-            <div data-page="calendar" class="page">
+            <div data-page="calendar" class="page with-subnavbar">
                 <!-- Scrollable page content-->
-                <div class="page-content" id="page-calendar">
+                <div class="page-content hide-bars-on-scroll" id="page-calendar">
 
                 </div>
             </div>
@@ -115,7 +118,39 @@
                 <div class="page-content page-settings"></div>
             </div>
             <div data-page="calendar-settings" class="page cached">
-                <div class="page-content">calendar settings</div>
+                <div class="page-content" id="page-filter">
+                    <!-- Search Bar -->
+                    <form class="searchbar searchbar-init">
+                        <div class="searchbar-input">
+                            <input type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>
+                        </div><a href="#" class="searchbar-cancel">Cancel</a>
+                    </form>
+
+                    <!-- Search Bar overlay -->
+                    <div class="searchbar-overlay"></div>
+
+                    <div class="content-block-title">Filter</div>
+                    <!-- This block will be displayed if nothing found -->
+                    <div class="content-block searchbar-not-found">
+                        <div class="content-block-inner">Nothing found</div>
+                    </div>
+                    <!-- This block will be displayed if anything found, and this list block is used a searbar target -->
+                    <div class="list-block list-block-search searchbar-found">
+                        <ul>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Acura </div>
+                                </div>
+                            </li>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Audi</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
@@ -203,7 +238,7 @@
 <script src="js/settings.js"></script>
 <script src="js/info.js"></script>
 <script src="js/home.js"></script>
-<script src="js/CalendarPageController.js"></script>
+<script src="js/filter.js"></script>
 <script src="js/slider-swiper-calendar.js"></script>
 <script src="js/slider_swiper.js"></script>
 <script src="js/init.js"></script>

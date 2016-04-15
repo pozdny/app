@@ -121,6 +121,9 @@ function loadPage(pageName, param) {
 
     });
 }
+function copyItem(obj){
+    return JSON.parse(JSON.stringify(obj));
+}
 function scrollToTop(obj){
     $$(obj).scrollTo(0, 0);
 }
@@ -192,6 +195,15 @@ Date.prototype.getShortDateMounth2 = function () {
 
     };
     return leadingZero(month[LN][this.getMonth()]) + ' ' + this.getDate() + ', ' + day[LN][this.getDay()];
+};
+// получить название дня недели
+Date.prototype.getDayWeek = function () {
+    var day = {
+        en:['Sun', 'Mon', 'Tues','Wed','Thu', 'Fri','Sat'],
+        ru:['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
+
+    };
+    return day[LN][this.getDay()];
 };
 // получить час минуты секунды
 Date.prototype.getHoursAndMinutes = function () {

@@ -2,14 +2,37 @@ $blue-color: #0198FF;
 $black-color: #222222;
 $grey-color: #797979;
 $grey-color2: #6A6A6A;
+$grey-color3: #F7F7F7;
 $after-color: #c8c7cc;
+$after-color-light: #e7e6eb;
 $green-color: #04D065;
+$status-cols-color:#C2C1C1;
+$width-after-full: 100%;
+$width-after-short:97%;
+$left-column-width:50px;
+
 /*
    ===================
    [MINXIN]
    ===================
 */
-@mixin after() {
+@mixin after($width) {
+  content: '';
+  position: absolute;
+  left: auto;
+  bottom: 0;
+  right: 0;
+  top: auto;
+  height: 1px;
+  width: $width;
+  background-color: $after-color;
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+  transform: scaleY(.5);
+}
+@mixin after-light() {
   content: '';
   position: absolute;
   left: auto;
@@ -18,12 +41,60 @@ $green-color: #04D065;
   top: auto;
   height: 1px;
   width: 100%;
-  background-color: #c8c7cc;
+  background-color: $after-color-light;
   display: block;
   z-index: 15;
   -webkit-transform-origin: 50% 100%;
   transform-origin: 50% 100%;
   transform: scaleY(.5);
+}
+@mixin before(){
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: auto;
+  right: auto;
+  height: 1px;
+  width: 100%;
+  background-color: $after-color;
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  transform: scaleY(.5);
+}
+@mixin after-right(){
+  content: '';
+  position: absolute;
+  left: auto;
+  top: 0;
+  right: 0;
+  bottom: auto;
+  height: 100%;
+  width: 1px;
+  background-color: $after-color;
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 50% 100% ;
+  transform-origin: 50% 100% ;
+  transform: scaleX(.5);
+}
+@mixin after-right-light(){
+  content: '';
+  position: absolute;
+  left: auto;
+  top: 0;
+  right: 0;
+  bottom: auto;
+  height: 100%;
+  width: 1px;
+  background-color: $after-color-light;
+  display: block;
+  z-index: 15;
+  -webkit-transform-origin: 50% 100% ;
+  transform-origin: 50% 100% ;
+  transform: scaleX(.5);
 }
 /*
 	==================
@@ -292,11 +363,16 @@ body {
 */
 .page-settings{
   font-family:SFUITextRegular;
+  .content-block-title{
+    span{
+      text-transform: none;
+    }
+  }
   .list-block{
     margin:0px;
     ul{
       &:before{
-        content:none;
+
       }
       .item-media{
         .icon{
@@ -554,20 +630,7 @@ body {
     .bottom-block{
       position: relative;
       &:before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: auto;
-        right: auto;
-        height: 1px;
-        width: 100%;
-        background-color: #c8c7cc;
-        display: block;
-        z-index: 15;
-        -webkit-transform-origin: 50% 0;
-        transform-origin: 50% 0;
-        transform: scaleY(.5);
+        @include before();
       }
       .content-block-title:first-child{
 
@@ -586,20 +649,7 @@ body {
           li{
             .item-content{
               &:after{
-                content: '';
-                position: absolute;
-                left: auto;
-                bottom: 0;
-                right: 0;
-                top: auto;
-                height: 1px;
-                width: 97%;
-                background-color: #c8c7cc;
-                display: block;
-                z-index: 15;
-                -webkit-transform-origin: 50% 100%;
-                transform-origin: 50% 100%;
-                transform: scaleY(.5);
+                @include after($width-after-short);
               }
               .item-inner{
                 background-repeat: no-repeat;
@@ -658,220 +708,7 @@ body {
 
 
 }
-.list-block{
-  ul li .item-content, .item-content{
-    .item-media{
-      min-width:27px;
-      .icon{
-          &.icon-0{
-            width:24px;
-            height:21px;
-            background:url('../images/icons/games/0_active.svg') no-repeat;
-          }
-          &.icon-1{
-            width:18px;
-            height:21px;
-            background:url('../images/icons/games/1_active.svg') no-repeat;
-          }
-          &.icon-2{
-            width:22px;
-            height:19px;
-            background:url('../images/icons/games/2_active.svg') no-repeat;
-          }
-          &.icon-3{
-            width:27px;
-            height:21px;
-            background:url('../images/icons/games/3_active.svg') no-repeat;
-          }
-          &.icon-4{
-            width:18px;
-            height:21px;
-            background:url('../images/icons/games/4_active.svg') no-repeat;
-          }
-          &.icon-5{
-            width:18px;
-            height:21px;
-            background:url('../images/icons/games/5_active.svg') no-repeat;
-          }
-          &.icon-6{
-            width:20px;
-            height:21px;
-            background:url('../images/icons/games/6_active.svg') no-repeat;
-          }
-          &.icon-7{
-            width:27px;
-            height:21px;
-            background:url('../images/icons/games/7_active.svg') no-repeat;
-          }
-          &.icon-8{
-            width:25px;
-            height:21px;
-            background:url('../images/icons/games/8_active.svg') no-repeat;
-          }
-          &.icon-9{
-            width:21px;
-            height:21px;
-            background:url('../images/icons/games/9_active.svg') no-repeat;
-          }
 
-          &.icon-10{
-            width:24px;
-            height:21px;
-            background:url('../images/icons/games/10_active.svg') no-repeat;
-          }
-          &.icon-11{
-            width:18px;
-            height:21px;
-            background:url('../images/icons/games/11_active.svg') no-repeat;
-          }
-          &.icon-12{
-            width:27px;
-            height:21px;
-            background:url('../images/icons/games/12_active.svg') no-repeat;
-          }
-          &.icon-13{
-            width:27px;
-            height:21px;
-            background:url('../images/icons/games/13_active.svg') no-repeat;
-          }
-          &.icon-14{
-            width:21px;
-            height:21px;
-            background:url('../images/icons/games/14_active.svg') no-repeat;
-          }
-          &.icon-15{
-            width:27px;
-            height:21px;
-            background:url('../images/icons/games/15_active.svg') no-repeat;
-          }
-          &.icon-16{
-            width:25px;
-            height:21px;
-            background:url('../images/icons/games/16_active.svg') no-repeat;
-          }
-          &.icon-17{
-            width:17px;
-            height:21px;
-            background:url('../images/icons/games/17_active.svg') no-repeat;
-          }
-          &.icon-18{
-            width:20px;
-            height:21px;
-            background:url('../images/icons/games/18_active.svg') no-repeat;
-          }
-          &.icon-19{
-            width:27px;
-            height:21px;
-            background:url('../images/icons/games/19_active.svg') no-repeat;
-          }
-          &.icon-20{
-            width:21px;
-            height:21px;
-            background:url('../images/icons/games/20_active.svg') no-repeat;
-          }
-          &.icon-21{
-            width:20px;
-            height:21px;
-            background:url('../images/icons/games/21_active.svg') no-repeat;
-          }
-          &.icon-22{
-            width:24px;
-            height:21px;
-            background:url('../images/icons/games/22_active.svg') no-repeat;
-          }
-          &.icon-23{
-            width:25px;
-            height:21px;
-            background:url('../images/icons/games/23_active.svg') no-repeat;
-          }
-          &.icon-24{
-            width:21px;
-            height:21px;
-            background:url('../images/icons/games/24_active.svg') no-repeat;
-          }
-          &.icon-25{
-            width:24px;
-            height:21px;
-            background:url('../images/icons/games/25_active.svg') no-repeat;
-          }
-          &.icon-26{
-            width:20px;
-            height:21px;
-            background:url('../images/icons/games/26_active.svg') no-repeat;
-          }
-          &.icon-27{
-            width:22px;
-            height:21px;
-            background:url('../images/icons/games/27_active.svg') no-repeat;
-          }
-          &.icon-28{
-            width:19px;
-            height:21px;
-            background:url('../images/icons/games/28_active.svg') no-repeat;
-          }
-          &.icon-29{
-            width:24px;
-            height:21px;
-            background:url('../images/icons/games/29_active.svg') no-repeat;
-          }
-          &.icon-30{
-            width:24px;
-            height:21px;
-            background:url('../images/icons/games/30_active.svg') no-repeat;
-          }
-          &.icon-31{
-            width:24px;
-            height:21px;
-            background:url('../images/icons/games/31_active.svg') no-repeat;
-          }
-          &.icon-32{
-            width:24px;
-            height:21px;
-            background:url('../images/icons/games/32_active.svg') no-repeat;
-          }
-          &.icon-33{
-            width:24px;
-            height:21px;
-            background:url('../images/icons/games/33_active.svg') no-repeat;
-          }
-          &.icon-34{
-            width:24px;
-            height:21px;
-            background:url('../images/icons/games/34_active.svg') no-repeat;
-          }
-          &.icon-35{
-            width:24px;
-            height:21px;
-            background:url('../images/icons/games/35_active.svg') no-repeat;
-          }
-          &.icon-36{
-            width:24px;
-            height:21px;
-            background:url('../images/icons/games/36_active.svg') no-repeat;
-          }
-          &.icon-37{
-            width:24px;
-            height:21px;
-            background:url('../images/icons/games/37_active.svg') no-repeat;
-          }
-          &.icon-38{
-            width:24px;
-            height:21px;
-            background:url('../images/icons/games/38_active.svg') no-repeat;
-          }
-          &.icon-39{
-            width:24px;
-            height:21px;
-            background:url('../images/icons/games/39_active.svg') no-repeat;
-          }
-          &[class*="icon-"]{
-            background-size:100% 100%;
-            background-position:center center;
-          }
-        }
-    }
-  }
-}
 /*
    ==================
    [GAME-NOTIFICATION]
@@ -907,20 +744,7 @@ body {
          }
        }
        &:after{
-         content: '';
-         position: absolute;
-         left: auto;
-         bottom: 0;
-         right: 0;
-         top: auto;
-         height: 1px;
-         width: 100%;
-         background-color: #c8c7cc;
-         display: block;
-         z-index: 15;
-         -webkit-transform-origin: 50% 100%;
-         transform-origin: 50% 100%;
-         transform: scaleY(.5);
+         @include after($width-after-full);
        }
      }
 
@@ -963,16 +787,135 @@ body {
    [CALENDAR]
    ==================
 */
+.navbar-fixed .with-subnavbar .page-content{
+  padding-top: 114px;
+}
+.subnavbar{
+  &#top-block-subnavbar-calendar{
+    display:flex;
+    flex-direction:row;
+    height:70px;
+    padding:0px;
+    &:before{
+      @include before();
+    }
+    &:after{
+      background:$after-color;
+    }
+    .top-block{
+      height:100%;
+      width:100%;
+      background:$grey-color3;
+      &:after{
+        /*@include after($width-after-full);*/
+      }
+      display:flex;
+      flex-direction: row;
+      .left-block{
+        width:$left-column-width;
+        min-width: $left-column-width;
+        position:relative;
+
+        &:after{
+          @include after-right();
+        }
+      }
+      .data-block{
+        display:flex;
+        flex-direction: column;
+        flex:1;
+        justify-content:center;
+        position:relative;
+        font-family: SFUITextRegular;
+        font-size:0.9em;
+        .title{
+          max-height: 25px;
+          display: flex;
+          flex:1;
+          align-items:center;
+          justify-content: center;
+        }
+        .swiper-container-data{
+          display: flex;
+          flex-direction:column;
+          flex:1;
+          position:relative;
+          .swiper-container-data-calendar{
+            display:flex;
+            flex-direction:row;
+            height:100%;
+            width: 100%;
+            overflow:hidden;
+            padding: 0 0 0 0px;
+            box-sizing: border-box;
+            position:absolute;
+            .swiper-slide {
+              display: flex;
+              flex-direction: row;
+              .col-date{
+                display: flex;
+                flex-direction: column;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                justify-content: start;
+                width:15%;
+                .num{
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  flex:1;
+                }
+                .week{
+                  flex:1;
+                  font-size:0.8em;
+                }
+              }
+            }
+          }
+          .pagination{
+            position:absolute;
+            width:100%;
+            height:10px;
+            z-index:600;
+            top:25%;
+            .nav{
+              div{
+                width:10px;
+                height:20px;
+                background: url("../images/icons/arrows.svg") no-repeat;
+                opacity: 0.5;
+                position: absolute;
+                background-size:cover
+              }
+              .prev{
+                background-position: 0 0;
+                left: 2px;
+                position: absolute;
+              }
+              .next{
+                background-position: -15px 0;
+                right: 2px;
+                position: absolute;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 #page-calendar{
   .swiperSliderCalendar{
     display:flex;
     flex-direction:row;
+    position:relative;
+    width:100%;
+    height:100%;
     .swiper-container-v{
       position: absolute;
       width:100%;
-      top:44px;
-      bottom:50px;
-
       .swiper-inner{
         position:relative;
         display:flex;
@@ -982,350 +925,739 @@ body {
         background: yellow;
         padding-bottom:50px;
 
-        .left-column{
+        .calendar-block{
           display:flex;
-          flex-direction:column;
-          flex: 1;
-          background:#fff;
-          z-index:2;
-
-          /*border:1px solid #000;*/
-          position:relative;
-          &:after{
-            content: '';
-            position: absolute;
-            left: auto;
-            top: 0;
-            right: 0;
-            bottom: auto;
-            height: 100%;
-            width: 1px;
-            background-color: #c8c7cc;
-            display: block;
-            z-index: 15;
-
-            -webkit-transform-origin: 50% 100% ;
-            transform-origin: 50% 100% ;
-            transform: scaleX(.5);
-          }
-          .top-block{
-            flex:1 1 80px;
-            max-height: 80px;
-            min-height:80px;
-            background: #F7F7F7;
+          flex-direction:row;
+          width:100%;
+          height:100%;
+          background: red;
+          .left-column{
+            display:flex;
+            flex-direction:column;
+            min-width:$left-column-width;
+            background:#fff;
+            z-index:2;
+            /*border:1px solid #000;*/
             position:relative;
             &:after{
-              content: '';
-              position: absolute;
-              left: auto;
-              bottom: 0;
-              right: 0;
-              top: auto;
-              height: 1px;
-              width: 100%;
-              background-color: #c8c7cc;
-              display: block;
-              z-index: 15;
-              -webkit-transform-origin: 50% 100%;
-              transform-origin: 50% 100%;
-              transform: scaleY(.5);
+              @include after-right();
             }
-          }
-          .bottom-block{
-            flex:1;
-            width:100%;
-            &.list-block{
-              margin-top:0px;
-              ul{
-                &:before{
-                  height:0px;
-                }
-                li{
-                  &:after{
-                    @include after();
-                  }
-                  min-height:36px;
-                  max-height:36px;
-                  display:flex;
-                  padding-left:15px;
-                  .item-media{
-                    min-width:27px;
-                    .icon{
-                      &.icon-0{
-                        width:24px;
-                        height:21px;
-                        background:url('../images/icons/games/0.svg') no-repeat;
-                      }
-                      &.icon-1{
-                        width:18px;
-                        height:21px;
-                        background:url('../images/icons/games/1.svg') no-repeat;
-
-                      }
-                      &.icon-2{
-                        width:22px;
-                        height:19px;
-                        background:url('../images/icons/games/2.svg') no-repeat;
-                      }
-                      &.icon-3{
-                        width:27px;
-                        height:21px;
-                        background:url('../images/icons/games/3.svg') no-repeat;
-                      }
-                      &.icon-4{
-                        width:18px;
-                        height:21px;
-                        background:url('../images/icons/games/4.svg') no-repeat;
-                      }
-                      &.icon-5{
-                        width:18px;
-                        height:21px;
-                        background:url('../images/icons/games/5.svg') no-repeat;
-                      }
-                      &.icon-6{
-                        width:20px;
-                        height:21px;
-                        background:url('../images/icons/games/6.svg') no-repeat;
-                      }
-                      &.icon-7{
-                        width:27px;
-                        height:21px;
-                        background:url('../images/icons/games/7.svg') no-repeat;
-                      }
-                      &.icon-8{
-                        width:25px;
-                        height:21px;
-                        background:url('../images/icons/games/8.svg') no-repeat;
-                      }
-                      &.icon-9{
-                        width:21px;
-                        height:21px;
-                        background:url('../images/icons/games/9.svg') no-repeat;
-                      }
-
-                      &.icon-10{
-                        width:24px;
-                        height:21px;
-                        background:url('../images/icons/games/10.svg') no-repeat;
-                      }
-                      &.icon-11{
-                        width:18px;
-                        height:21px;
-                        background:url('../images/icons/games/11.svg') no-repeat;
-                      }
-                      &.icon-12{
-                        width:27px;
-                        height:21px;
-                        background:url('../images/icons/games/12.svg') no-repeat;
-                      }
-                      &.icon-13{
-                        width:27px;
-                        height:21px;
-                        background:url('../images/icons/games/13.svg') no-repeat;
-                      }
-                      &.icon-14{
-                        width:21px;
-                        height:21px;
-                        background:url('../images/icons/games/14.svg') no-repeat;
-                      }
-                      &.icon-15{
-                        width:27px;
-                        height:21px;
-                        background:url('../images/icons/games/15.svg') no-repeat;
-                      }
-                      &.icon-16{
-                        width:25px;
-                        height:21px;
-                        background:url('../images/icons/games/16.svg') no-repeat;
-                      }
-                      &.icon-17{
-                        width:17px;
-                        height:21px;
-                        background:url('../images/icons/games/17.svg') no-repeat;
-                      }
-                      &.icon-18{
-                        width:20px;
-                        height:21px;
-                        background:url('../images/icons/games/18.svg') no-repeat;
-                      }
-                      &.icon-19{
-                        width:27px;
-                        height:21px;
-                        background:url('../images/icons/games/19.svg') no-repeat;
-                      }
-                      &.icon-20{
-                        width:21px;
-                        height:21px;
-                        background:url('../images/icons/games/20.svg') no-repeat;
-                      }
-                      &.icon-21{
-                        width:20px;
-                        height:21px;
-                        background:url('../images/icons/games/21.svg') no-repeat;
-                      }
-                      &.icon-22{
-                        width:24px;
-                        height:21px;
-                        background:url('../images/icons/games/22.svg') no-repeat;
-                      }
-                      &.icon-23{
-                        width:25px;
-                        height:21px;
-                        background:url('../images/icons/games/23.svg') no-repeat;
-                      }
-                      &.icon-24{
-                        width:21px;
-                        height:21px;
-                        background:url('../images/icons/games/24.svg') no-repeat;
-                      }
-                      &.icon-25{
-                        width:24px;
-                        height:21px;
-                        background:url('../images/icons/games/25.svg') no-repeat;
-                      }
-                      &.icon-26{
-                        width:20px;
-                        height:21px;
-                        background:url('../images/icons/games/26.svg') no-repeat;
-                      }
-                      &.icon-27{
-                        width:22px;
-                        height:21px;
-                        background:url('../images/icons/games/27.svg') no-repeat;
-                      }
-                      &.icon-28{
-                        width:19px;
-                        height:21px;
-                        background:url('../images/icons/games/28.svg') no-repeat;
-                      }
-                      &.icon-29{
-                        width:24px;
-                        height:21px;
-                        background:url('../images/icons/games/29.svg') no-repeat;
-                      }
-                      &.icon-30{
-                        width:24px;
-                        height:21px;
-                        background:url('../images/icons/games/30.svg') no-repeat;
-                      }
-                      &.icon-31{
-                        width:24px;
-                        height:21px;
-                        background:url('../images/icons/games/31.svg') no-repeat;
-                      }
-                      &.icon-32{
-                        width:24px;
-                        height:21px;
-                        background:url('../images/icons/games/32.svg') no-repeat;
-                      }
-                      &.icon-33{
-                        width:24px;
-                        height:21px;
-                        background:url('../images/icons/games/33.svg') no-repeat;
-                      }
-                      &.icon-34{
-                        width:24px;
-                        height:21px;
-                        background:url('../images/icons/games/34.svg') no-repeat;
-                      }
-                      &.icon-35{
-                        width:24px;
-                        height:21px;
-                        background:url('../images/icons/games/35.svg') no-repeat;
-                      }
-                      &.icon-36{
-                        width:24px;
-                        height:21px;
-                        background:url('../images/icons/games/36.svg') no-repeat;
-                      }
-                      &.icon-37{
-                        width:24px;
-                        height:21px;
-                        background:url('../images/icons/games/37.svg') no-repeat;
-                      }
-                      &.icon-38{
-                        width:24px;
-                        height:21px;
-                        background:url('../images/icons/games/38.svg') no-repeat;
-                      }
-                      &.icon-39{
-                        width:24px;
-                        height:21px;
-                        background:url('../images/icons/games/39.svg') no-repeat;
-                      }
-                      &[class*="icon-"]{
-                        background-size:100% 100%;
-                        background-position:center center;
-                      }
-                    }
-                  }
-                }
-              }
-
-
-            }
-          }
-        }
-        .swiper-container-calendar{
-          display:flex;
-          flex-direction:column;
-          flex: 6 ;
-          width:100px;
-          background:#fff;
-          .top-column{
-            background:#F7F7F7;
-            width:100%;
-            height:80px;
-            position:relative;
-            &:after{
-              content: '';
-              position: absolute;
-              left: auto;
-              bottom: 0;
-              right: 0;
-              top: auto;
-              height: 1px;
-              width: 100%;
-              background-color: #c8c7cc;
-              display: block;
-              z-index: 15;
-              -webkit-transform-origin: 50% 100%;
-              transform-origin: 50% 100%;
-              transform: scaleY(.5);
-            }
-          }
-          .swiper-wrapper{
-            .swiper-slide{
-              display:flex;
-              flex-direction: column;
-              .list-block{
+            .bottom-block{
+              flex:1;
+              width:100%;
+              z-index:1;
+              &.list-block{
                 margin-top:0px;
+                margin-bottom:0px;
                 ul{
                   &:before{
                     height:0px;
                   }
+                  li{
+                    &:after{
+                      @include after($width-after-full);
+                    }
+                    &:last-child{
+                      &:after{
+                        height:0px;
+                      }
+                    }
+                    min-height:36px;
+                    max-height:36px;
+                    display:flex;
+                    padding-left:15px;
+                    .item-media{
+                      min-width:27px;
+                      .icon{
+                        &.icon-0{
+                          width:24px;
+                          height:21px;
+                          background:url('../images/icons/games/0.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/0_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-1{
+                          width:18px;
+                          height:21px;
+                          background:url('../images/icons/games/1.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/1_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-2{
+                          width:22px;
+                          height:19px;
+                          background:url('../images/icons/games/2.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/2_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-3{
+                          width:27px;
+                          height:21px;
+                          background:url('../images/icons/games/3.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/3_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-4{
+                          width:18px;
+                          height:21px;
+                          background:url('../images/icons/games/4.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/4_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-5{
+                          width:18px;
+                          height:21px;
+                          background:url('../images/icons/games/5.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/5_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-6{
+                          width:20px;
+                          height:21px;
+                          background:url('../images/icons/games/6.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/6_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-7{
+                          width:27px;
+                          height:21px;
+                          background:url('../images/icons/games/7.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/7_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-8{
+                          width:25px;
+                          height:21px;
+                          background:url('../images/icons/games/8.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/8_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-9{
+                          width:21px;
+                          height:21px;
+                          background:url('../images/icons/games/9.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/9_active.svg') no-repeat;
+                          }
+                        }
+
+                        &.icon-10{
+                          width:24px;
+                          height:21px;
+                          background:url('../images/icons/games/10.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/10_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-11{
+                          width:18px;
+                          height:21px;
+                          background:url('../images/icons/games/11.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/11_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-12{
+                          width:27px;
+                          height:21px;
+                          background:url('../images/icons/games/12.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/12_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-13{
+                          width:27px;
+                          height:21px;
+                          background:url('../images/icons/games/13.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/13_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-14{
+                          width:21px;
+                          height:21px;
+                          background:url('../images/icons/games/14.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/14_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-15{
+                          width:27px;
+                          height:21px;
+                          background:url('../images/icons/games/15.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/15_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-16{
+                          width:25px;
+                          height:21px;
+                          background:url('../images/icons/games/16.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/16_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-17{
+                          width:17px;
+                          height:21px;
+                          background:url('../images/icons/games/17.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/17_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-18{
+                          width:20px;
+                          height:21px;
+                          background:url('../images/icons/games/18.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/18_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-19{
+                          width:27px;
+                          height:21px;
+                          background:url('../images/icons/games/19.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/19_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-20{
+                          width:21px;
+                          height:21px;
+                          background:url('../images/icons/games/20.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/20_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-21{
+                          width:20px;
+                          height:21px;
+                          background:url('../images/icons/games/21.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/21_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-22{
+                          width:24px;
+                          height:21px;
+                          background:url('../images/icons/games/22.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/22_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-23{
+                          width:25px;
+                          height:21px;
+                          background:url('../images/icons/games/23.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/23_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-24{
+                          width:21px;
+                          height:21px;
+                          background:url('../images/icons/games/24.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/24_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-25{
+                          width:24px;
+                          height:21px;
+                          background:url('../images/icons/games/25.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/25_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-26{
+                          width:20px;
+                          height:21px;
+                          background:url('../images/icons/games/26.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/26_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-27{
+                          width:22px;
+                          height:21px;
+                          background:url('../images/icons/games/27.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/27_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-28{
+                          width:19px;
+                          height:21px;
+                          background:url('../images/icons/games/28.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/28_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-29{
+                          width:24px;
+                          height:21px;
+                          background:url('../images/icons/games/29.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/29_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-30{
+                          width:24px;
+                          height:21px;
+                          background:url('../images/icons/games/30.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/30_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-31{
+                          width:24px;
+                          height:21px;
+                          background:url('../images/icons/games/31.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/31_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-32{
+                          width:24px;
+                          height:21px;
+                          background:url('../images/icons/games/32.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/32_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-33{
+                          width:24px;
+                          height:21px;
+                          background:url('../images/icons/games/33.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/33_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-34{
+                          width:24px;
+                          height:21px;
+                          background:url('../images/icons/games/34.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/34_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-35{
+                          width:24px;
+                          height:21px;
+                          background:url('../images/icons/games/35.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/35_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-36{
+                          width:24px;
+                          height:21px;
+                          background:url('../images/icons/games/36.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/36_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-37{
+                          width:24px;
+                          height:21px;
+                          background:url('../images/icons/games/37.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/37_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-38{
+                          width:24px;
+                          height:21px;
+                          background:url('../images/icons/games/38.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/38_active.svg') no-repeat;
+                          }
+                        }
+                        &.icon-39{
+                          width:24px;
+                          height:21px;
+                          background:url('../images/icons/games/39.svg') no-repeat;
+                          &.active{
+                            background:url('../images/icons/games/39_active.svg') no-repeat;
+                          }
+                        }
+                        &[class*="icon-"], &[class*="icon-"].active{
+                          background-size:100% 100%;
+                          background-position:center center;
+                        }
+                      }
+                    }
+                  }
                   &:after{
                     height:0px;
-                  }
-                  li{
-                    height:36px;
-                    &:after{
-                      @include after();
-                    }
                   }
                 }
               }
             }
+          }
+          .swiper-container-calendar{
+            display:flex;
+            flex-direction:column;
+            flex: 6 ;
+            width:100%;
+            background:#fff;
+            .top-column{
+              background:#F7F7F7;
+              width:100%;
+              height:80px;
+              position:relative;
+              &:after{
+                @include after($width-after-full);
+              }
+            }
+            .swiper-wrapper{
+              .swiper-slide{
+                display:flex;
+                flex-direction: column;
+                &.last{
+                  .list-block{
+                    ul{
+                      li{
+                        &.rows{
+                          div{
 
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                .list-block{
+                  margin-top:0px;
+                  margin-bottom:0px;
+                  ul{
+                    &:before{
+                      height:0px;
+                    }
+                    &:after{
+                      height:0px;
+                    }
+                    li{
+                      &.rows{
+                        $height:36px;
+                        height:$height;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content:start;
+                        align-items:start;
+                        flex-wrap:nowrap;
+
+                        &:after{
+                          @include after-light();
+                        }
+                        &:last-child{
+                          &:after{
+                            height:0px;
+                          }
+                        }
+                        div{
+                          display:flex;
+                          flex-direction:column;
+                          width:15%;
+                          justify-content:center;
+                          align-items:start;
+                          height:$height;
+                          text-align: center;
+                          position:relative;
+                          &.status{
+                            background:$status-cols-color;
+                          }
+                          &:after{
+                            @include after-right-light();
+                          }
+                        }
+                        &.checked{
+                          div{
+                            &.status{
+                              background:$blue-color;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+
+            }
+          }
+        }
+        
+      }
+    }
+  }
+}
+/*
+	==================
+	[FILTER]
+	==================
+*/
+#page-filter{
+  .list-block{
+    margin-top:0px;
+    li{
+      label{
+        &.label-checkbox{
+
+          input[type=checkbox]:checked + .item-media + .item-inner + .item-media i.icon-form-checkbox {
+            background: rgba(0, 0, 0, 0) url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D\'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\'%20x%3D\'0px\'%20y%3D\'0px\'%20viewBox%3D\'0%200%2012%209\'%20xml%3Aspace%3D\'preserve\'%3E%3Cpolygon%20fill%3D\'%23ffffff\'%20points%3D\'12%2C0.7%2011.3%2C0%203.9%2C7.4%200.7%2C4.2%200%2C4.9%203.9%2C8.8%203.9%2C8.8%203.9%2C8.8%20\'%2F%3E%3C%2Fsvg%3E") no-repeat scroll center center / 12px 9px;
+            border: none;
+            background-color: #0198FF;
+          }
+
+        }
+        &.item-content{
+          .item-inner{
+            &:after{
+              height:0px;
+            }
+          }
+          &:after{
+            @include after($width-after-short);
           }
         }
       }
+      &:last-child{
+        label{
+          &:after{
+            height:0px;
+          }
+        }
 
-
-
+      }
     }
 
 
 
+
+  }
+}
+
+.list-block{
+  ul li .item-content, .item-content{
+    .item-media{
+      min-width:27px;
+      .icon{
+        &.icon-0{
+          width:24px;
+          height:21px;
+          background:url('../images/icons/games/0_active.svg') no-repeat;
+        }
+        &.icon-1{
+          width:18px;
+          height:21px;
+          background:url('../images/icons/games/1_active.svg') no-repeat;
+        }
+        &.icon-2{
+          width:22px;
+          height:19px;
+          background:url('../images/icons/games/2_active.svg') no-repeat;
+        }
+        &.icon-3{
+          width:27px;
+          height:21px;
+          background:url('../images/icons/games/3_active.svg') no-repeat;
+        }
+        &.icon-4{
+          width:18px;
+          height:21px;
+          background:url('../images/icons/games/4_active.svg') no-repeat;
+        }
+        &.icon-5{
+          width:18px;
+          height:21px;
+          background:url('../images/icons/games/5_active.svg') no-repeat;
+        }
+        &.icon-6{
+          width:20px;
+          height:21px;
+          background:url('../images/icons/games/6_active.svg') no-repeat;
+        }
+        &.icon-7{
+          width:27px;
+          height:21px;
+          background:url('../images/icons/games/7_active.svg') no-repeat;
+        }
+        &.icon-8{
+          width:25px;
+          height:21px;
+          background:url('../images/icons/games/8_active.svg') no-repeat;
+        }
+        &.icon-9{
+          width:21px;
+          height:21px;
+          background:url('../images/icons/games/9_active.svg') no-repeat;
+        }
+
+        &.icon-10{
+          width:24px;
+          height:21px;
+          background:url('../images/icons/games/10_active.svg') no-repeat;
+        }
+        &.icon-11{
+          width:18px;
+          height:21px;
+          background:url('../images/icons/games/11_active.svg') no-repeat;
+        }
+        &.icon-12{
+          width:27px;
+          height:21px;
+          background:url('../images/icons/games/12_active.svg') no-repeat;
+        }
+        &.icon-13{
+          width:27px;
+          height:21px;
+          background:url('../images/icons/games/13_active.svg') no-repeat;
+        }
+        &.icon-14{
+          width:21px;
+          height:21px;
+          background:url('../images/icons/games/14_active.svg') no-repeat;
+        }
+        &.icon-15{
+          width:27px;
+          height:21px;
+          background:url('../images/icons/games/15_active.svg') no-repeat;
+        }
+        &.icon-16{
+          width:25px;
+          height:21px;
+          background:url('../images/icons/games/16_active.svg') no-repeat;
+        }
+        &.icon-17{
+          width:17px;
+          height:21px;
+          background:url('../images/icons/games/17_active.svg') no-repeat;
+        }
+        &.icon-18{
+          width:20px;
+          height:21px;
+          background:url('../images/icons/games/18_active.svg') no-repeat;
+        }
+        &.icon-19{
+          width:27px;
+          height:21px;
+          background:url('../images/icons/games/19_active.svg') no-repeat;
+        }
+        &.icon-20{
+          width:21px;
+          height:21px;
+          background:url('../images/icons/games/20_active.svg') no-repeat;
+        }
+        &.icon-21{
+          width:20px;
+          height:21px;
+          background:url('../images/icons/games/21_active.svg') no-repeat;
+        }
+        &.icon-22{
+          width:24px;
+          height:21px;
+          background:url('../images/icons/games/22_active.svg') no-repeat;
+        }
+        &.icon-23{
+          width:25px;
+          height:21px;
+          background:url('../images/icons/games/23_active.svg') no-repeat;
+        }
+        &.icon-24{
+          width:21px;
+          height:21px;
+          background:url('../images/icons/games/24_active.svg') no-repeat;
+        }
+        &.icon-25{
+          width:24px;
+          height:21px;
+          background:url('../images/icons/games/25_active.svg') no-repeat;
+        }
+        &.icon-26{
+          width:20px;
+          height:21px;
+          background:url('../images/icons/games/26_active.svg') no-repeat;
+        }
+        &.icon-27{
+          width:22px;
+          height:21px;
+          background:url('../images/icons/games/27_active.svg') no-repeat;
+        }
+        &.icon-28{
+          width:19px;
+          height:21px;
+          background:url('../images/icons/games/28_active.svg') no-repeat;
+        }
+        &.icon-29{
+          width:24px;
+          height:21px;
+          background:url('../images/icons/games/29_active.svg') no-repeat;
+        }
+        &.icon-30{
+          width:24px;
+          height:21px;
+          background:url('../images/icons/games/30_active.svg') no-repeat;
+        }
+        &.icon-31{
+          width:24px;
+          height:21px;
+          background:url('../images/icons/games/31_active.svg') no-repeat;
+        }
+        &.icon-32{
+          width:24px;
+          height:21px;
+          background:url('../images/icons/games/32_active.svg') no-repeat;
+        }
+        &.icon-33{
+          width:24px;
+          height:21px;
+          background:url('../images/icons/games/33_active.svg') no-repeat;
+        }
+        &.icon-34{
+          width:24px;
+          height:21px;
+          background:url('../images/icons/games/34_active.svg') no-repeat;
+        }
+        &.icon-35{
+          width:24px;
+          height:21px;
+          background:url('../images/icons/games/35_active.svg') no-repeat;
+        }
+        &.icon-36{
+          width:24px;
+          height:21px;
+          background:url('../images/icons/games/36_active.svg') no-repeat;
+        }
+        &.icon-37{
+          width:24px;
+          height:21px;
+          background:url('../images/icons/games/37_active.svg') no-repeat;
+        }
+        &.icon-38{
+          width:24px;
+          height:21px;
+          background:url('../images/icons/games/38_active.svg') no-repeat;
+        }
+        &.icon-39{
+          width:24px;
+          height:21px;
+          background:url('../images/icons/games/39_active.svg') no-repeat;
+        }
+        &[class*="icon-"]{
+          background-size:100% 100%;
+          background-position:center center;
+        }
+      }
+    }
   }
 }

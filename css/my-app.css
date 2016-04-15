@@ -229,10 +229,10 @@ body {
 */
 .page-settings {
   font-family: SFUITextRegular; }
+  .page-settings .content-block-title span {
+    text-transform: none; }
   .page-settings .list-block {
     margin: 0px; }
-    .page-settings .list-block ul:before {
-      content: none; }
     .page-settings .list-block ul .item-media .icon.icon-sounds {
       width: 27px;
       height: 27px;
@@ -585,6 +585,820 @@ body {
       #page-home .home-block .bottom-block .list-block ul li:last-child a:after {
         height: 0px; }
 
+/*
+   ==================
+   [GAME-NOTIFICATION]
+   ==================
+*/
+#page-game-notification .list-block {
+  font-family: SFUITextRegular;
+  margin: 20px 0px; }
+  #page-game-notification .list-block:first-child {
+    margin-top: 0px; }
+    #page-game-notification .list-block:first-child ul:before {
+      height: 0px; }
+  #page-game-notification .list-block .item-content {
+    background: #fff;
+    position: relative; }
+    #page-game-notification .list-block .item-content .item-inner:after {
+      height: 0px; }
+    #page-game-notification .list-block .item-content .item-inner .item-title.label {
+      width: 50%; }
+    #page-game-notification .list-block .item-content .item-inner .item-input {
+      text-align: right; }
+    #page-game-notification .list-block .item-content:after {
+      content: '';
+      position: absolute;
+      left: auto;
+      bottom: 0;
+      right: 0;
+      top: auto;
+      height: 1px;
+      width: 100%;
+      background-color: #c8c7cc;
+      display: block;
+      z-index: 15;
+      -webkit-transform-origin: 50% 100%;
+      transform-origin: 50% 100%;
+      -webkit-transform: scaleY(0.5);
+              transform: scaleY(0.5); }
+
+#page-game-notification .list-block#picker-date-block .item-content {
+  background: #fff;
+  position: relative; }
+  #page-game-notification .list-block#picker-date-block .item-content .item-inner .item-title {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1; }
+  #page-game-notification .list-block#picker-date-block .item-content .item-inner .item-input {
+    -webkit-box-flex: 4;
+    -webkit-flex: 4;
+        -ms-flex: 4;
+            flex: 4; }
+    #page-game-notification .list-block#picker-date-block .item-content .item-inner .item-input input {
+      font-size: 0.9em;
+      text-align: right;
+      color: #04D065; }
+    #page-game-notification .list-block#picker-date-block .item-content .item-inner .item-input input::-webkit-input-placeholder {
+      color: #000; }
+    #page-game-notification .list-block#picker-date-block .item-content .item-inner .item-input input:-moz-placeholder {
+      color: #000; }
+
+#page-game-notification #picker-date-container {
+  background: #fff; }
+
+/*
+   ==================
+   [CALENDAR]
+   ==================
+*/
+.navbar-fixed .with-subnavbar .page-content {
+  padding-top: 114px; }
+
+.subnavbar#top-block-subnavbar-calendar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 70px;
+  padding: 0px; }
+  .subnavbar#top-block-subnavbar-calendar:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: auto;
+    right: auto;
+    height: 1px;
+    width: 100%;
+    background-color: #c8c7cc;
+    display: block;
+    z-index: 15;
+    -webkit-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+    -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5); }
+  .subnavbar#top-block-subnavbar-calendar:after {
+    background: #c8c7cc; }
+  .subnavbar#top-block-subnavbar-calendar .top-block {
+    height: 100%;
+    width: 100%;
+    background: #F7F7F7;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row; }
+    .subnavbar#top-block-subnavbar-calendar .top-block:after {
+      /*@include after($width-after-full);*/ }
+    .subnavbar#top-block-subnavbar-calendar .top-block .left-block {
+      width: 50px;
+      min-width: 50px;
+      position: relative; }
+      .subnavbar#top-block-subnavbar-calendar .top-block .left-block:after {
+        content: '';
+        position: absolute;
+        left: auto;
+        top: 0;
+        right: 0;
+        bottom: auto;
+        height: 100%;
+        width: 1px;
+        background-color: #c8c7cc;
+        display: block;
+        z-index: 15;
+        -webkit-transform-origin: 50% 100%;
+        transform-origin: 50% 100%;
+        -webkit-transform: scaleX(0.5);
+                transform: scaleX(0.5); }
+    .subnavbar#top-block-subnavbar-calendar .top-block .data-block {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      position: relative;
+      font-family: SFUITextRegular;
+      font-size: 0.9em; }
+      .subnavbar#top-block-subnavbar-calendar .top-block .data-block .title {
+        max-height: 25px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+            -ms-flex-pack: center;
+                justify-content: center; }
+      .subnavbar#top-block-subnavbar-calendar .top-block .data-block .swiper-container-data {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+            -ms-flex: 1;
+                flex: 1;
+        position: relative; }
+        .subnavbar#top-block-subnavbar-calendar .top-block .data-block .swiper-container-data .swiper-container-data-calendar {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+          -webkit-flex-direction: row;
+              -ms-flex-direction: row;
+                  flex-direction: row;
+          height: 100%;
+          width: 100%;
+          overflow: hidden;
+          padding: 0 0 0 0px;
+          box-sizing: border-box;
+          position: absolute; }
+          .subnavbar#top-block-subnavbar-calendar .top-block .data-block .swiper-container-data .swiper-container-data-calendar .swiper-slide {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: row;
+                -ms-flex-direction: row;
+                    flex-direction: row; }
+            .subnavbar#top-block-subnavbar-calendar .top-block .data-block .swiper-container-data .swiper-container-data-calendar .swiper-slide .col-date {
+              display: -webkit-box;
+              display: -webkit-flex;
+              display: -ms-flexbox;
+              display: flex;
+              -webkit-box-orient: vertical;
+              -webkit-box-direction: normal;
+              -webkit-flex-direction: column;
+                  -ms-flex-direction: column;
+                      flex-direction: column;
+              display: flex;
+              -webkit-box-pack: center;
+              -webkit-justify-content: center;
+                  -ms-flex-pack: center;
+                      justify-content: center;
+              -webkit-box-align: center;
+              -webkit-align-items: center;
+                  -ms-flex-align: center;
+                      align-items: center;
+              -webkit-box-pack: start;
+              -webkit-justify-content: start;
+                  -ms-flex-pack: start;
+                      justify-content: start;
+              width: 15%; }
+              .subnavbar#top-block-subnavbar-calendar .top-block .data-block .swiper-container-data .swiper-container-data-calendar .swiper-slide .col-date .num {
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-pack: center;
+                -webkit-justify-content: center;
+                    -ms-flex-pack: center;
+                        justify-content: center;
+                -webkit-box-align: center;
+                -webkit-align-items: center;
+                    -ms-flex-align: center;
+                        align-items: center;
+                -webkit-box-flex: 1;
+                -webkit-flex: 1;
+                    -ms-flex: 1;
+                        flex: 1; }
+              .subnavbar#top-block-subnavbar-calendar .top-block .data-block .swiper-container-data .swiper-container-data-calendar .swiper-slide .col-date .week {
+                -webkit-box-flex: 1;
+                -webkit-flex: 1;
+                    -ms-flex: 1;
+                        flex: 1;
+                font-size: 0.8em; }
+        .subnavbar#top-block-subnavbar-calendar .top-block .data-block .swiper-container-data .pagination {
+          position: absolute;
+          width: 100%;
+          height: 10px;
+          z-index: 600;
+          top: 25%; }
+          .subnavbar#top-block-subnavbar-calendar .top-block .data-block .swiper-container-data .pagination .nav div {
+            width: 10px;
+            height: 20px;
+            background: url("../images/icons/arrows.svg") no-repeat;
+            opacity: 0.5;
+            position: absolute;
+            background-size: cover; }
+          .subnavbar#top-block-subnavbar-calendar .top-block .data-block .swiper-container-data .pagination .nav .prev {
+            background-position: 0 0;
+            left: 2px;
+            position: absolute; }
+          .subnavbar#top-block-subnavbar-calendar .top-block .data-block .swiper-container-data .pagination .nav .next {
+            background-position: -15px 0;
+            right: 2px;
+            position: absolute; }
+
+#page-calendar .swiperSliderCalendar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: 100%; }
+  #page-calendar .swiperSliderCalendar .swiper-container-v {
+    position: absolute;
+    width: 100%; }
+    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner {
+      position: relative;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: row;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      width: 100%;
+      height: auto;
+      background: yellow;
+      padding-bottom: 50px; }
+      #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        width: 100%;
+        height: 100%;
+        background: red; }
+        #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -webkit-flex-direction: column;
+              -ms-flex-direction: column;
+                  flex-direction: column;
+          min-width: 50px;
+          background: #fff;
+          z-index: 2;
+          /*border:1px solid #000;*/
+          position: relative; }
+          #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column:after {
+            content: '';
+            position: absolute;
+            left: auto;
+            top: 0;
+            right: 0;
+            bottom: auto;
+            height: 100%;
+            width: 1px;
+            background-color: #c8c7cc;
+            display: block;
+            z-index: 15;
+            -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+            -webkit-transform: scaleX(0.5);
+                    transform: scaleX(0.5); }
+          #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+                -ms-flex: 1;
+                    flex: 1;
+            width: 100%;
+            z-index: 1; }
+            #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block {
+              margin-top: 0px;
+              margin-bottom: 0px; }
+              #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul:before {
+                height: 0px; }
+              #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li {
+                min-height: 36px;
+                max-height: 36px;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                padding-left: 15px; }
+                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li:after {
+                  content: '';
+                  position: absolute;
+                  left: auto;
+                  bottom: 0;
+                  right: 0;
+                  top: auto;
+                  height: 1px;
+                  width: 100%;
+                  background-color: #c8c7cc;
+                  display: block;
+                  z-index: 15;
+                  -webkit-transform-origin: 50% 100%;
+                  transform-origin: 50% 100%;
+                  -webkit-transform: scaleY(0.5);
+                          transform: scaleY(0.5); }
+                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li:last-child:after {
+                  height: 0px; }
+                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media {
+                  min-width: 27px; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-0 {
+                    width: 24px;
+                    height: 21px;
+                    background: url("../images/icons/games/0.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-0.active {
+                      background: url("../images/icons/games/0_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-1 {
+                    width: 18px;
+                    height: 21px;
+                    background: url("../images/icons/games/1.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-1.active {
+                      background: url("../images/icons/games/1_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-2 {
+                    width: 22px;
+                    height: 19px;
+                    background: url("../images/icons/games/2.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-2.active {
+                      background: url("../images/icons/games/2_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-3 {
+                    width: 27px;
+                    height: 21px;
+                    background: url("../images/icons/games/3.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-3.active {
+                      background: url("../images/icons/games/3_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-4 {
+                    width: 18px;
+                    height: 21px;
+                    background: url("../images/icons/games/4.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-4.active {
+                      background: url("../images/icons/games/4_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-5 {
+                    width: 18px;
+                    height: 21px;
+                    background: url("../images/icons/games/5.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-5.active {
+                      background: url("../images/icons/games/5_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-6 {
+                    width: 20px;
+                    height: 21px;
+                    background: url("../images/icons/games/6.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-6.active {
+                      background: url("../images/icons/games/6_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-7 {
+                    width: 27px;
+                    height: 21px;
+                    background: url("../images/icons/games/7.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-7.active {
+                      background: url("../images/icons/games/7_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-8 {
+                    width: 25px;
+                    height: 21px;
+                    background: url("../images/icons/games/8.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-8.active {
+                      background: url("../images/icons/games/8_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-9 {
+                    width: 21px;
+                    height: 21px;
+                    background: url("../images/icons/games/9.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-9.active {
+                      background: url("../images/icons/games/9_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-10 {
+                    width: 24px;
+                    height: 21px;
+                    background: url("../images/icons/games/10.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-10.active {
+                      background: url("../images/icons/games/10_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-11 {
+                    width: 18px;
+                    height: 21px;
+                    background: url("../images/icons/games/11.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-11.active {
+                      background: url("../images/icons/games/11_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-12 {
+                    width: 27px;
+                    height: 21px;
+                    background: url("../images/icons/games/12.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-12.active {
+                      background: url("../images/icons/games/12_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-13 {
+                    width: 27px;
+                    height: 21px;
+                    background: url("../images/icons/games/13.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-13.active {
+                      background: url("../images/icons/games/13_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-14 {
+                    width: 21px;
+                    height: 21px;
+                    background: url("../images/icons/games/14.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-14.active {
+                      background: url("../images/icons/games/14_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-15 {
+                    width: 27px;
+                    height: 21px;
+                    background: url("../images/icons/games/15.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-15.active {
+                      background: url("../images/icons/games/15_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-16 {
+                    width: 25px;
+                    height: 21px;
+                    background: url("../images/icons/games/16.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-16.active {
+                      background: url("../images/icons/games/16_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-17 {
+                    width: 17px;
+                    height: 21px;
+                    background: url("../images/icons/games/17.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-17.active {
+                      background: url("../images/icons/games/17_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-18 {
+                    width: 20px;
+                    height: 21px;
+                    background: url("../images/icons/games/18.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-18.active {
+                      background: url("../images/icons/games/18_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-19 {
+                    width: 27px;
+                    height: 21px;
+                    background: url("../images/icons/games/19.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-19.active {
+                      background: url("../images/icons/games/19_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-20 {
+                    width: 21px;
+                    height: 21px;
+                    background: url("../images/icons/games/20.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-20.active {
+                      background: url("../images/icons/games/20_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-21 {
+                    width: 20px;
+                    height: 21px;
+                    background: url("../images/icons/games/21.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-21.active {
+                      background: url("../images/icons/games/21_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-22 {
+                    width: 24px;
+                    height: 21px;
+                    background: url("../images/icons/games/22.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-22.active {
+                      background: url("../images/icons/games/22_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-23 {
+                    width: 25px;
+                    height: 21px;
+                    background: url("../images/icons/games/23.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-23.active {
+                      background: url("../images/icons/games/23_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-24 {
+                    width: 21px;
+                    height: 21px;
+                    background: url("../images/icons/games/24.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-24.active {
+                      background: url("../images/icons/games/24_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-25 {
+                    width: 24px;
+                    height: 21px;
+                    background: url("../images/icons/games/25.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-25.active {
+                      background: url("../images/icons/games/25_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-26 {
+                    width: 20px;
+                    height: 21px;
+                    background: url("../images/icons/games/26.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-26.active {
+                      background: url("../images/icons/games/26_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-27 {
+                    width: 22px;
+                    height: 21px;
+                    background: url("../images/icons/games/27.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-27.active {
+                      background: url("../images/icons/games/27_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-28 {
+                    width: 19px;
+                    height: 21px;
+                    background: url("../images/icons/games/28.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-28.active {
+                      background: url("../images/icons/games/28_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-29 {
+                    width: 24px;
+                    height: 21px;
+                    background: url("../images/icons/games/29.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-29.active {
+                      background: url("../images/icons/games/29_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-30 {
+                    width: 24px;
+                    height: 21px;
+                    background: url("../images/icons/games/30.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-30.active {
+                      background: url("../images/icons/games/30_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-31 {
+                    width: 24px;
+                    height: 21px;
+                    background: url("../images/icons/games/31.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-31.active {
+                      background: url("../images/icons/games/31_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-32 {
+                    width: 24px;
+                    height: 21px;
+                    background: url("../images/icons/games/32.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-32.active {
+                      background: url("../images/icons/games/32_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-33 {
+                    width: 24px;
+                    height: 21px;
+                    background: url("../images/icons/games/33.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-33.active {
+                      background: url("../images/icons/games/33_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-34 {
+                    width: 24px;
+                    height: 21px;
+                    background: url("../images/icons/games/34.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-34.active {
+                      background: url("../images/icons/games/34_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-35 {
+                    width: 24px;
+                    height: 21px;
+                    background: url("../images/icons/games/35.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-35.active {
+                      background: url("../images/icons/games/35_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-36 {
+                    width: 24px;
+                    height: 21px;
+                    background: url("../images/icons/games/36.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-36.active {
+                      background: url("../images/icons/games/36_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-37 {
+                    width: 24px;
+                    height: 21px;
+                    background: url("../images/icons/games/37.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-37.active {
+                      background: url("../images/icons/games/37_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-38 {
+                    width: 24px;
+                    height: 21px;
+                    background: url("../images/icons/games/38.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-38.active {
+                      background: url("../images/icons/games/38_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-39 {
+                    width: 24px;
+                    height: 21px;
+                    background: url("../images/icons/games/39.svg") no-repeat; }
+                    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon.icon-39.active {
+                      background: url("../images/icons/games/39_active.svg") no-repeat; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon[class*="icon-"], #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul li .item-media .icon[class*="icon-"].active {
+                    background-size: 100% 100%;
+                    background-position: center center; }
+              #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .left-column .bottom-block.list-block ul:after {
+                height: 0px; }
+        #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .swiper-container-calendar {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -webkit-flex-direction: column;
+              -ms-flex-direction: column;
+                  flex-direction: column;
+          -webkit-box-flex: 6;
+          -webkit-flex: 6;
+              -ms-flex: 6;
+                  flex: 6;
+          width: 100%;
+          background: #fff; }
+          #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .swiper-container-calendar .top-column {
+            background: #F7F7F7;
+            width: 100%;
+            height: 80px;
+            position: relative; }
+            #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .swiper-container-calendar .top-column:after {
+              content: '';
+              position: absolute;
+              left: auto;
+              bottom: 0;
+              right: 0;
+              top: auto;
+              height: 1px;
+              width: 100%;
+              background-color: #c8c7cc;
+              display: block;
+              z-index: 15;
+              -webkit-transform-origin: 50% 100%;
+              transform-origin: 50% 100%;
+              -webkit-transform: scaleY(0.5);
+                      transform: scaleY(0.5); }
+          #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .swiper-container-calendar .swiper-wrapper .swiper-slide {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+                -ms-flex-direction: column;
+                    flex-direction: column; }
+            #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .swiper-container-calendar .swiper-wrapper .swiper-slide .list-block {
+              margin-top: 0px;
+              margin-bottom: 0px; }
+              #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .swiper-container-calendar .swiper-wrapper .swiper-slide .list-block ul:before {
+                height: 0px; }
+              #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .swiper-container-calendar .swiper-wrapper .swiper-slide .list-block ul:after {
+                height: 0px; }
+              #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .swiper-container-calendar .swiper-wrapper .swiper-slide .list-block ul li.rows {
+                height: 36px;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-orient: horizontal;
+                -webkit-box-direction: normal;
+                -webkit-flex-direction: row;
+                    -ms-flex-direction: row;
+                        flex-direction: row;
+                -webkit-box-pack: start;
+                -webkit-justify-content: start;
+                    -ms-flex-pack: start;
+                        justify-content: start;
+                -webkit-box-align: start;
+                -webkit-align-items: start;
+                    -ms-flex-align: start;
+                        align-items: start;
+                -webkit-flex-wrap: nowrap;
+                    -ms-flex-wrap: nowrap;
+                        flex-wrap: nowrap; }
+                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .swiper-container-calendar .swiper-wrapper .swiper-slide .list-block ul li.rows:after {
+                  content: '';
+                  position: absolute;
+                  left: auto;
+                  bottom: 0;
+                  right: 0;
+                  top: auto;
+                  height: 1px;
+                  width: 100%;
+                  background-color: #e7e6eb;
+                  display: block;
+                  z-index: 15;
+                  -webkit-transform-origin: 50% 100%;
+                  transform-origin: 50% 100%;
+                  -webkit-transform: scaleY(0.5);
+                          transform: scaleY(0.5); }
+                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .swiper-container-calendar .swiper-wrapper .swiper-slide .list-block ul li.rows:last-child:after {
+                  height: 0px; }
+                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .swiper-container-calendar .swiper-wrapper .swiper-slide .list-block ul li.rows div {
+                  display: -webkit-box;
+                  display: -webkit-flex;
+                  display: -ms-flexbox;
+                  display: flex;
+                  -webkit-box-orient: vertical;
+                  -webkit-box-direction: normal;
+                  -webkit-flex-direction: column;
+                      -ms-flex-direction: column;
+                          flex-direction: column;
+                  width: 15%;
+                  -webkit-box-pack: center;
+                  -webkit-justify-content: center;
+                      -ms-flex-pack: center;
+                          justify-content: center;
+                  -webkit-box-align: start;
+                  -webkit-align-items: start;
+                      -ms-flex-align: start;
+                          align-items: start;
+                  height: 36px;
+                  text-align: center;
+                  position: relative; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .swiper-container-calendar .swiper-wrapper .swiper-slide .list-block ul li.rows div.status {
+                    background: #C2C1C1; }
+                  #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .swiper-container-calendar .swiper-wrapper .swiper-slide .list-block ul li.rows div:after {
+                    content: '';
+                    position: absolute;
+                    left: auto;
+                    top: 0;
+                    right: 0;
+                    bottom: auto;
+                    height: 100%;
+                    width: 1px;
+                    background-color: #e7e6eb;
+                    display: block;
+                    z-index: 15;
+                    -webkit-transform-origin: 50% 100%;
+                    transform-origin: 50% 100%;
+                    -webkit-transform: scaleX(0.5);
+                            transform: scaleX(0.5); }
+                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .calendar-block .swiper-container-calendar .swiper-wrapper .swiper-slide .list-block ul li.rows.checked div.status {
+                  background: #0198FF; }
+
+/*
+	==================
+	[FILTER]
+	==================
+*/
+#page-filter .list-block {
+  margin-top: 0px; }
+  #page-filter .list-block li label.label-checkbox input[type=checkbox]:checked + .item-media + .item-inner + .item-media i.icon-form-checkbox {
+    background: transparent url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20x%3D'0px'%20y%3D'0px'%20viewBox%3D'0%200%2012%209'%20xml%3Aspace%3D'preserve'%3E%3Cpolygon%20fill%3D'%23ffffff'%20points%3D'12%2C0.7%2011.3%2C0%203.9%2C7.4%200.7%2C4.2%200%2C4.9%203.9%2C8.8%203.9%2C8.8%203.9%2C8.8%20'%2F%3E%3C%2Fsvg%3E") no-repeat scroll center center/12px 9px;
+    border: none;
+    background-color: #0198FF; }
+  #page-filter .list-block li label.item-content .item-inner:after {
+    height: 0px; }
+  #page-filter .list-block li label.item-content:after {
+    content: '';
+    position: absolute;
+    left: auto;
+    bottom: 0;
+    right: 0;
+    top: auto;
+    height: 1px;
+    width: 97%;
+    background-color: #c8c7cc;
+    display: block;
+    z-index: 15;
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    -webkit-transform: scaleY(0.5);
+            transform: scaleY(0.5); }
+  #page-filter .list-block li:last-child label:after {
+    height: 0px; }
+
 .list-block ul li .item-content .item-media, .list-block .item-content .item-media {
   min-width: 27px; }
   .list-block ul li .item-content .item-media .icon.icon-0, .list-block .item-content .item-media .icon.icon-0 {
@@ -750,431 +1564,3 @@ body {
   .list-block ul li .item-content .item-media .icon[class*="icon-"], .list-block .item-content .item-media .icon[class*="icon-"] {
     background-size: 100% 100%;
     background-position: center center; }
-
-/*
-   ==================
-   [GAME-NOTIFICATION]
-   ==================
-*/
-#page-game-notification .list-block {
-  font-family: SFUITextRegular;
-  margin: 20px 0px; }
-  #page-game-notification .list-block:first-child {
-    margin-top: 0px; }
-    #page-game-notification .list-block:first-child ul:before {
-      height: 0px; }
-  #page-game-notification .list-block .item-content {
-    background: #fff;
-    position: relative; }
-    #page-game-notification .list-block .item-content .item-inner:after {
-      height: 0px; }
-    #page-game-notification .list-block .item-content .item-inner .item-title.label {
-      width: 50%; }
-    #page-game-notification .list-block .item-content .item-inner .item-input {
-      text-align: right; }
-    #page-game-notification .list-block .item-content:after {
-      content: '';
-      position: absolute;
-      left: auto;
-      bottom: 0;
-      right: 0;
-      top: auto;
-      height: 1px;
-      width: 100%;
-      background-color: #c8c7cc;
-      display: block;
-      z-index: 15;
-      -webkit-transform-origin: 50% 100%;
-      transform-origin: 50% 100%;
-      -webkit-transform: scaleY(0.5);
-              transform: scaleY(0.5); }
-
-#page-game-notification .list-block#picker-date-block .item-content {
-  background: #fff;
-  position: relative; }
-  #page-game-notification .list-block#picker-date-block .item-content .item-inner .item-title {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-        -ms-flex: 1;
-            flex: 1; }
-  #page-game-notification .list-block#picker-date-block .item-content .item-inner .item-input {
-    -webkit-box-flex: 4;
-    -webkit-flex: 4;
-        -ms-flex: 4;
-            flex: 4; }
-    #page-game-notification .list-block#picker-date-block .item-content .item-inner .item-input input {
-      font-size: 0.9em;
-      text-align: right;
-      color: #04D065; }
-    #page-game-notification .list-block#picker-date-block .item-content .item-inner .item-input input::-webkit-input-placeholder {
-      color: #000; }
-    #page-game-notification .list-block#picker-date-block .item-content .item-inner .item-input input:-moz-placeholder {
-      color: #000; }
-
-#page-game-notification #picker-date-container {
-  background: #fff; }
-
-/*
-   ==================
-   [CALENDAR]
-   ==================
-*/
-#page-calendar .swiperSliderCalendar {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row; }
-  #page-calendar .swiperSliderCalendar .swiper-container-v {
-    position: absolute;
-    width: 100%;
-    top: 44px;
-    bottom: 50px; }
-    #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner {
-      position: relative;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: row;
-          -ms-flex-direction: row;
-              flex-direction: row;
-      width: 100%;
-      height: auto;
-      background: yellow;
-      padding-bottom: 50px; }
-      #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-                flex-direction: column;
-        -webkit-box-flex: 1;
-        -webkit-flex: 1;
-            -ms-flex: 1;
-                flex: 1;
-        background: #fff;
-        z-index: 2;
-        /*border:1px solid #000;*/
-        position: relative; }
-        #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column:after {
-          content: '';
-          position: absolute;
-          left: auto;
-          top: 0;
-          right: 0;
-          bottom: auto;
-          height: 100%;
-          width: 1px;
-          background-color: #c8c7cc;
-          display: block;
-          z-index: 15;
-          -webkit-transform-origin: 50% 100%;
-          transform-origin: 50% 100%;
-          -webkit-transform: scaleX(0.5);
-                  transform: scaleX(0.5); }
-        #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .top-block {
-          -webkit-box-flex: 1;
-          -webkit-flex: 1 1 80px;
-              -ms-flex: 1 1 80px;
-                  flex: 1 1 80px;
-          max-height: 80px;
-          min-height: 80px;
-          background: #F7F7F7;
-          position: relative; }
-          #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .top-block:after {
-            content: '';
-            position: absolute;
-            left: auto;
-            bottom: 0;
-            right: 0;
-            top: auto;
-            height: 1px;
-            width: 100%;
-            background-color: #c8c7cc;
-            display: block;
-            z-index: 15;
-            -webkit-transform-origin: 50% 100%;
-            transform-origin: 50% 100%;
-            -webkit-transform: scaleY(0.5);
-                    transform: scaleY(0.5); }
-        #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block {
-          -webkit-box-flex: 1;
-          -webkit-flex: 1;
-              -ms-flex: 1;
-                  flex: 1;
-          width: 100%; }
-          #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block {
-            margin-top: 0px; }
-            #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul:before {
-              height: 0px; }
-            #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li {
-              min-height: 36px;
-              max-height: 36px;
-              display: -webkit-box;
-              display: -webkit-flex;
-              display: -ms-flexbox;
-              display: flex;
-              padding-left: 15px; }
-              #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li:after {
-                content: '';
-                position: absolute;
-                left: auto;
-                bottom: 0;
-                right: 0;
-                top: auto;
-                height: 1px;
-                width: 100%;
-                background-color: #c8c7cc;
-                display: block;
-                z-index: 15;
-                -webkit-transform-origin: 50% 100%;
-                transform-origin: 50% 100%;
-                -webkit-transform: scaleY(0.5);
-                        transform: scaleY(0.5); }
-              #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media {
-                min-width: 27px; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-0 {
-                  width: 24px;
-                  height: 21px;
-                  background: url("../images/icons/games/0.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-1 {
-                  width: 18px;
-                  height: 21px;
-                  background: url("../images/icons/games/1.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-2 {
-                  width: 22px;
-                  height: 19px;
-                  background: url("../images/icons/games/2.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-3 {
-                  width: 27px;
-                  height: 21px;
-                  background: url("../images/icons/games/3.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-4 {
-                  width: 18px;
-                  height: 21px;
-                  background: url("../images/icons/games/4.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-5 {
-                  width: 18px;
-                  height: 21px;
-                  background: url("../images/icons/games/5.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-6 {
-                  width: 20px;
-                  height: 21px;
-                  background: url("../images/icons/games/6.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-7 {
-                  width: 27px;
-                  height: 21px;
-                  background: url("../images/icons/games/7.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-8 {
-                  width: 25px;
-                  height: 21px;
-                  background: url("../images/icons/games/8.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-9 {
-                  width: 21px;
-                  height: 21px;
-                  background: url("../images/icons/games/9.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-10 {
-                  width: 24px;
-                  height: 21px;
-                  background: url("../images/icons/games/10.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-11 {
-                  width: 18px;
-                  height: 21px;
-                  background: url("../images/icons/games/11.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-12 {
-                  width: 27px;
-                  height: 21px;
-                  background: url("../images/icons/games/12.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-13 {
-                  width: 27px;
-                  height: 21px;
-                  background: url("../images/icons/games/13.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-14 {
-                  width: 21px;
-                  height: 21px;
-                  background: url("../images/icons/games/14.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-15 {
-                  width: 27px;
-                  height: 21px;
-                  background: url("../images/icons/games/15.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-16 {
-                  width: 25px;
-                  height: 21px;
-                  background: url("../images/icons/games/16.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-17 {
-                  width: 17px;
-                  height: 21px;
-                  background: url("../images/icons/games/17.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-18 {
-                  width: 20px;
-                  height: 21px;
-                  background: url("../images/icons/games/18.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-19 {
-                  width: 27px;
-                  height: 21px;
-                  background: url("../images/icons/games/19.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-20 {
-                  width: 21px;
-                  height: 21px;
-                  background: url("../images/icons/games/20.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-21 {
-                  width: 20px;
-                  height: 21px;
-                  background: url("../images/icons/games/21.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-22 {
-                  width: 24px;
-                  height: 21px;
-                  background: url("../images/icons/games/22.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-23 {
-                  width: 25px;
-                  height: 21px;
-                  background: url("../images/icons/games/23.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-24 {
-                  width: 21px;
-                  height: 21px;
-                  background: url("../images/icons/games/24.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-25 {
-                  width: 24px;
-                  height: 21px;
-                  background: url("../images/icons/games/25.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-26 {
-                  width: 20px;
-                  height: 21px;
-                  background: url("../images/icons/games/26.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-27 {
-                  width: 22px;
-                  height: 21px;
-                  background: url("../images/icons/games/27.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-28 {
-                  width: 19px;
-                  height: 21px;
-                  background: url("../images/icons/games/28.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-29 {
-                  width: 24px;
-                  height: 21px;
-                  background: url("../images/icons/games/29.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-30 {
-                  width: 24px;
-                  height: 21px;
-                  background: url("../images/icons/games/30.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-31 {
-                  width: 24px;
-                  height: 21px;
-                  background: url("../images/icons/games/31.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-32 {
-                  width: 24px;
-                  height: 21px;
-                  background: url("../images/icons/games/32.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-33 {
-                  width: 24px;
-                  height: 21px;
-                  background: url("../images/icons/games/33.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-34 {
-                  width: 24px;
-                  height: 21px;
-                  background: url("../images/icons/games/34.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-35 {
-                  width: 24px;
-                  height: 21px;
-                  background: url("../images/icons/games/35.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-36 {
-                  width: 24px;
-                  height: 21px;
-                  background: url("../images/icons/games/36.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-37 {
-                  width: 24px;
-                  height: 21px;
-                  background: url("../images/icons/games/37.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-38 {
-                  width: 24px;
-                  height: 21px;
-                  background: url("../images/icons/games/38.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon.icon-39 {
-                  width: 24px;
-                  height: 21px;
-                  background: url("../images/icons/games/39.svg") no-repeat; }
-                #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .left-column .bottom-block.list-block ul li .item-media .icon[class*="icon-"] {
-                  background-size: 100% 100%;
-                  background-position: center center; }
-      #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .swiper-container-calendar {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -webkit-flex-direction: column;
-            -ms-flex-direction: column;
-                flex-direction: column;
-        -webkit-box-flex: 6;
-        -webkit-flex: 6;
-            -ms-flex: 6;
-                flex: 6;
-        width: 100px;
-        background: #fff; }
-        #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .swiper-container-calendar .top-column {
-          background: #F7F7F7;
-          width: 100%;
-          height: 80px;
-          position: relative; }
-          #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .swiper-container-calendar .top-column:after {
-            content: '';
-            position: absolute;
-            left: auto;
-            bottom: 0;
-            right: 0;
-            top: auto;
-            height: 1px;
-            width: 100%;
-            background-color: #c8c7cc;
-            display: block;
-            z-index: 15;
-            -webkit-transform-origin: 50% 100%;
-            transform-origin: 50% 100%;
-            -webkit-transform: scaleY(0.5);
-                    transform: scaleY(0.5); }
-        #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .swiper-container-calendar .swiper-wrapper .swiper-slide {
-          display: -webkit-box;
-          display: -webkit-flex;
-          display: -ms-flexbox;
-          display: flex;
-          -webkit-box-orient: vertical;
-          -webkit-box-direction: normal;
-          -webkit-flex-direction: column;
-              -ms-flex-direction: column;
-                  flex-direction: column; }
-          #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .swiper-container-calendar .swiper-wrapper .swiper-slide .list-block {
-            margin-top: 0px; }
-            #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .swiper-container-calendar .swiper-wrapper .swiper-slide .list-block ul:before {
-              height: 0px; }
-            #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .swiper-container-calendar .swiper-wrapper .swiper-slide .list-block ul:after {
-              height: 0px; }
-            #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .swiper-container-calendar .swiper-wrapper .swiper-slide .list-block ul li {
-              height: 36px; }
-              #page-calendar .swiperSliderCalendar .swiper-container-v .swiper-inner .swiper-container-calendar .swiper-wrapper .swiper-slide .list-block ul li:after {
-                content: '';
-                position: absolute;
-                left: auto;
-                bottom: 0;
-                right: 0;
-                top: auto;
-                height: 1px;
-                width: 100%;
-                background-color: #c8c7cc;
-                display: block;
-                z-index: 15;
-                -webkit-transform-origin: 50% 100%;
-                transform-origin: 50% 100%;
-                -webkit-transform: scaleY(0.5);
-                        transform: scaleY(0.5); }

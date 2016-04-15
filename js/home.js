@@ -1,9 +1,6 @@
 /**
  * Created by user on 31.03.16.
  */
-/**
- * Created by user on 29.01.16.
- */
 
 Framework7.prototype.plugins.home = function (app, globalPluginParams) {
     'use strict';
@@ -65,8 +62,8 @@ Framework7.prototype.plugins.home = function (app, globalPluginParams) {
         }
         function getArr(){
             var datesGame = [];
-            var date;   console.log(storageDatesGame);
-            $$.each(storageDatesGame, function(i, val){  console.log(val);
+            var date;
+            $$.each(storageDatesGame, function(i, val){
                 for (var key in val) {
                     date = new Date("August " + Number(key) + ", 2016 0:00").getTime();
                     datesGame.push({
@@ -78,7 +75,6 @@ Framework7.prototype.plugins.home = function (app, globalPluginParams) {
                 }
 
             });
-            console.log(datesGame);
             return datesGame;
         }
         function getDatesGame(){
