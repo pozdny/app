@@ -39,6 +39,8 @@ Framework7.prototype.plugins.home = function (app, globalPluginParams) {
             currentDate,
             notifDate,
             notifObj,
+            gameB,
+            preloader,
             defaults = { };
         function getStorage(){
             if(storageGet(n.key_storage.categories)){
@@ -81,7 +83,7 @@ Framework7.prototype.plugins.home = function (app, globalPluginParams) {
             getStorageDatesGame();
             return getArr();
         }
-        function getThisGame(date, id, str){    console.log(date, id, str);
+        function getThisGame(date, id, str){
             var length = storageDatesGame.length;
             var obj;
             for(var i = 0; i < length; i++){
@@ -148,19 +150,25 @@ Framework7.prototype.plugins.home = function (app, globalPluginParams) {
             that.off('click', ClickSaveAction);
             backPage("index");
         }
-
+        function ClickInputAction(){
+            var that = $$(this);
+            console.log('click');
+            that.off('click', ClickInputAction);
+            preloader.show();
+        }
         function initBarSaveBlock(){
             $$('#icon-save-link').on('click', ClickSaveAction);
         }
 
         self.getGameNotificationData = function(id){
+            preloader = $$('.preloader');
             parentContainerNotification = $$('#page-game-notification');
             clearParentContainer(parentContainerNotification);
-            var game = getDataGame(id);
-            containerNotification = $$(templateNotification({options: options, game:game, text_notif: _w.global.pages_title[LN].notification}));
+            gameB = getDataGame(id);
+            containerNotification = $$(templateNotification({options: options, game:gameB, text_notif: _w.global.pages_title[LN].notification}));
             parentContainerNotification.append(containerNotification);
             initBarSaveBlock();
-            getPicker(game);
+            getPicker();
 
         };
         self.init = function(){
@@ -172,26 +180,27 @@ Framework7.prototype.plugins.home = function (app, globalPluginParams) {
             context = getDatesGame();
             container = $$(template({options: options, date:context}));
             parentContainer.append(container);
+            n.timer = myApp.timer({});
         };
-        function setValuePicker(game){   console.log(game.notification.date);
+        function setValuePicker(){
             var today;
-            if(game.notification.date){
-
-                today = new Date(game.notification.date);
+            if(gameB.notification.date){
+                today = new Date(gameB.notification.date);
             }
             else{
-                today = new Date(game.date);
+                today = new Date(gameB.date);
             }
-
             var value =  [today.getDate(), today.getHours(), (today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes())];
+
             n.pickerInline.setValue(value);
         }
-        function getPicker(game){
+        function getPicker(){
             var today = new Date();
             n.pickerInline = myApp.picker({
                 input: '#picker-date',
                 container: '',
                 toolbar: true,
+                toolbarCloseText: _w.dif_filds[LN].done,
                 rotateEffect: true,
                 value: [today.getDate(), today.getHours(), (today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes())],
                 onChange: function (picker, values, displayValues) {
@@ -201,7 +210,7 @@ Framework7.prototype.plugins.home = function (app, globalPluginParams) {
                     }
                 },
                 formatValue: function (p, values, displayValues) {
-                    $$('#picker-date-full').val(7 + ' ' + values[0] + ', 2016 ' + values[1] + ':' + values[2]);
+                    $$('#picker-date-full').val('Aug ' + values[0] + ', 2016 ' + values[1] + ':' + values[2]);
                     return _w.dif_filds[LN].month + ' ' + values[0] + ', 2016 ' + values[1] + ':' + values[2];
                     //return displayValues[0] + ' ' + values[1] + ', ' + values[2] + ' ' + values[3] + ':' + values[4];
                 },
@@ -249,7 +258,7 @@ Framework7.prototype.plugins.home = function (app, globalPluginParams) {
                     }
                 ]
             });
-            setValuePicker(game);
+            setValuePicker();
         }
 
         /**
@@ -261,25 +270,8 @@ Framework7.prototype.plugins.home = function (app, globalPluginParams) {
             defaultTemplate = '<div class="home-block">' +
                     '<div class="top-block">' +
                         '<div class="icon"></div>' +
-                        '<div class="time">' +
-                            '<div class="days">' +
-                                '<div class="num">120</div>' +
-                                '<div class="title">days</div>' +
-                            '</div>' +
-                            '<div class="row-time">' +
-                                '<div class="hours">' +
-                                    '<div class="num">16</div>' +
-                                    '<div class="title">hours</div>' +
-                                '</div>' +
-                                '<div class="minutes">' +
-                                    '<div class="num">55</div>' +
-                                    '<div class="title">minutes</div>' +
-                                '</div>' +
-                                '<div class="seconds">' +
-                                    '<div class="num">12</div>' +
-                                    '<div class="title">seconds</div>' +
-                                '</div>' +
-                            '</div>' +
+                        '<div class="time" id="block-timer">' +
+
                         '</div>' +
                     '</div>' +
                     '<div class="bottom-block">' +

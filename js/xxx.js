@@ -1,22 +1,25 @@
+/**
+ * Created by user on 20.04.16.
+ */
 /*jslint browser: true*/
 /*global console, Framework7, angular, Dom7*/
 var myapp = myapp || {};
 var myApp = new Framework7(
-{
-    //pushState:true,
-    init:false,
-    //tapHold: true, //enable tap hold events
-    router: true,
-    reloadPages:true,
-    //animateNavBackIcon: true,
-    swipeBackPage: false,
-    // Enable templates auto precompilation
-    precompileTemplates: true,
-    // Enabled pages rendering using Template7
-    template7Pages: true,
-    // Specify Template7 data for pages
-    modalButtonCancel: _w.global.buttons.cancel[LN]
-});
+    {
+        //pushState:true,
+        init:false,
+        //tapHold: true, //enable tap hold events
+        router: true,
+        reloadPages:true,
+        //animateNavBackIcon: true,
+        swipeBackPage: false,
+        // Enable templates auto precompilation
+        precompileTemplates: true,
+        // Enabled pages rendering using Template7
+        template7Pages: true,
+        // Specify Template7 data for pages
+        modalButtonCancel: _w.global.buttons.cancel[LN]
+    });
 // Export selectors engine
 var $$ = Dom7,
     fw7ViewOptions = {
@@ -67,7 +70,6 @@ if(LN !== "en" && LN !== "ru"){
 }
 myApp.onPageInit('index', function (page) {
     //storageClear();
-
     if(!storageGet(n.key_storage.categories)){
         // заносим категории по умолчанию
         createArrayStorage();
@@ -75,17 +77,18 @@ myApp.onPageInit('index', function (page) {
     else{
         console.log('init');
         n.home = myApp.home({});
-        n.settings = myApp.settings();
-        n.info = myApp.info({});
-        n.filter = myApp.filter({});
-
+        //n.filter = myApp.filter({});
+        if(n.settings === null){
+            n.settings = myApp.settings();
+        }
+        else{
+            n.settings.init();
+        }
     }
+
 });
 myApp.onPageInit('calendar', function (page) {
-    n.searchbar = myApp.searchbar('.searchbar', {
-        searchList: '.list-block-search',
-        searchIn: '.item-title'
-    });
+
 });
 
 myApp.onPageReinit('calendar-settings', function (page) {
@@ -99,7 +102,6 @@ myApp.onPageReinit('calendar', function (page) {
 });
 myApp.onPageBeforeAnimation('info-one', function (page) {
     $$('#info-item').scrollTo(0, 0);
-
     if(!n.swiper_pages){
         n.swiper_pages = new myapp.pages.InfoPageController(myApp, $$);
     }
@@ -114,61 +116,84 @@ myApp.onPageBeforeAnimation('game-notification', function (page) {
     }
 });
 $$('#view-calendar').on('show', function (page) {
-    n.settings.init();
-    if(!n.swiper_pages_calendar){
-        n.swiper_pages_calendar = myApp.calendar({});
+    if(n.settings === null){
+        n.settings = myApp.settings();
     }
+    else{
+        n.settings.init();
+    }
+    if(n.calendar === null){
+        n.calendar = myApp.calendar({});
+    }
+    if(n.filter === null){
+        n.filter = myApp.filter({});
+    }
+    n.searchbar = myApp.searchbar('.searchbar', {
+        searchList: '.list-block-search',
+        searchIn: '.item-title'
+    });
+
 });
 $$('#view-main').on('show', function (page) {
-    n.settings.init();
+    if(n.settings === null){
+        n.settings = myApp.settings();
+    }
+    else{
+        n.settings.init();
+    }
 });
 $$('#view-info').on('show', function (page) {
-    n.settings.init();
+    if(n.settings === null){
+        n.settings = myApp.settings();
+    }
+    else{
+        n.settings.init();
+    }
+    if(n.info === null){
+        n.info = myApp.info({});
+    }
 });
 myApp.init();
 
 document.addEventListener("DOMContentLoaded", function(event) {
     // Init method
+    n.JSAPI = JSAPI;
+    n.JSAPI.keepScreenOn();
+    n.JSAPI.setStatusBarColor("black");
 
+    // установка языка
+    if(!localStorage.getItem(n.key_storage.language)) {
+        localStorage.setItem(n.key_storage.language, 'multi');
+    }
+    //создание нотификаций
+    /*if(localStorage.getItem(n.key_storage.categories)){
+     var storage = JSON.parse(localStorage.getItem(n.key_storage.categories));
+     if(storage.settings.notifications){
+     createNotification();
+     }
+     else{
 
-        n.JSAPI = JSAPI;
-        n.JSAPI.keepScreenOn();
-        n.JSAPI.setStatusBarColor("black");
-
-        // установка языка
-        if(!localStorage.getItem(n.key_storage.language)) {
-            localStorage.setItem(n.key_storage.language, 'multi');
-        }
-        //создание нотификаций
-        if(localStorage.getItem(n.key_storage.categories)){
-            var storage = JSON.parse(localStorage.getItem(n.key_storage.categories));
-            if(storage.settings.notifications){
-                createNotification();
-            }
-            else{
-
-            }
-        }
-        else{
-            createNotification();
-        }
-
-
-        if(n.free){
-            addPaddingBunner();
-        }
-        //setInterval(updateData, 1000);
-
-        console.log('end ready');
-
+     }
+     }
+     else{
+     createNotification();
+     }*/
+    if(n.free){
+        addPaddingBunner();
+    }
+    //setInterval(updateData, 1000);
+    console.log('end ready');
 
     // Initialize app
     var fw7App = myApp,
         $$ = Dom7,
         ipc = new myapp.pages.IndexPageController(fw7App, $$);
+
     // sounds
+
     n.sounds.tap = new Sound('sounds/tap.mp3');
     n.sounds.tap.volume(0.5);
+
 
     $$(document.body).on('click', '.navbar .link, .toolbar .link, .swipeout-content, .subnavbar .tab-link', function(e){
         //e.preventDefault();
@@ -197,7 +222,7 @@ myapp.init = (function () {
 
     });
     window.addEventListener("appMaximizeEvent", function(){
-         console.log('maximize');
+        console.log('maximize');
     });
     window.addEventListener("appMinimizeEvent", function(){
         console.log('minimize');

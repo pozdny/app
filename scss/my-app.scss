@@ -10,6 +10,8 @@ $status-cols-color:#C2C1C1;
 $width-after-full: 100%;
 $width-after-short:97%;
 $left-column-width:50px;
+$time-black-color:#313131;
+$time-grey-color:#929292;
 
 /*
    ===================
@@ -107,7 +109,7 @@ $left-column-width:50px;
   src: url(../fonts/SFUIDisplay-Thin.otf);
 }
 @font-face {
-  font-family: SFUIDisplayLight;
+  font-family: SFUITextLight;
   src: url(../fonts/SFUIText-Light.otf);
 }
 @font-face {
@@ -157,746 +159,1863 @@ body {
   pointer-events: none;
   -webkit-animation-fill-mode: forwards;
 }
-/*
-	==================
-	[DATE PICKER]
-	==================
-*/
-.picker-modal{
-  .toolbar{
-    .toolbar-inner{
-      .close-picker{
-        color:$green-color;
-      }
-    }
-  }
-
-  .picker-modal-inner{
-    background:#fff;
-    &.picker-items{
-      /*font-size:1.4em;*/
-    }
-  }
-}
-
-/*
-	==================
-	[LOAD PAGE]
-	==================
-*/
-#loadPage{
-  width:100%;
-  height: 100%;
-  padding: 160px 0 0;
-}
-.welcome-icon{
-  position:relative;
-  /* top:120px;*/
-  margin:0 auto;
-  i.icon{
-    width:150px;
-    height:150px;
-    &.icon-welcome{
-      background: url('../images/splash_icon.svg') no-repeat;
-      background-size:contain;
-    }
-  }
-}
-
-/*
-	==================
-	[LOAD PAGE ANIMATION]
-	==================
-*/
-.trueAnimation{
-  opacity: 1;
-  -webkit-transition: opacity 500ms linear;
-  transition: opacity 500ms linear;
-}
-.hideAnimation {
-  opacity: 0;
-  -webkit-transition: opacity 500ms linear;
-  transition: opacity 500ms linear;
-}
-.halfAnimation{
-  opacity: 0.4;
-  -webkit-transition: opacity 500ms linear;
-  transition: opacity 500ms linear;
-}
-
-/*
-	==================
-	[NAVBAR]
-	==================
-*/
-.navbar, .subnavbar, .toolbar {
+.statusbar-overlay {
   background: #F9F9F9;
 }
-.navbar{
-  .navbar-inner{
-    .back.link{
-      width:50px;
-      &.active-state{
+  /*
+      ==================
+      [DATE PICKER]
+      ==================
+  */
+  .picker-modal{
+    .toolbar{
+      .toolbar-inner{
+        .close-picker{
+          color:$blue-color;
+        }
+      }
+    }
+
+    .picker-modal-inner{
+      background:#fff;
+      &.picker-items{
+        /*font-size:1.4em;*/
+      }
+    }
+  }
+
+  /*
+      ==================
+      [LOAD PAGE]
+      ==================
+  */
+  #loadPage{
+    width:100%;
+    height: 100%;
+    padding: 160px 0 0;
+  }
+  .welcome-icon{
+    position:relative;
+    /* top:120px;*/
+    margin:0 auto;
+    i.icon{
+      width:150px;
+      height:150px;
+      &.icon-welcome{
+        background: url('../images/splash_icon.svg') no-repeat;
+        background-size:contain;
+      }
+    }
+  }
+
+  /*
+      ==================
+      [LOAD PAGE ANIMATION]
+      ==================
+  */
+  .trueAnimation{
+    opacity: 1;
+    -webkit-transition: opacity 500ms linear;
+    transition: opacity 500ms linear;
+  }
+  .hideAnimation {
+    opacity: 0;
+    -webkit-transition: opacity 500ms linear;
+    transition: opacity 500ms linear;
+  }
+  .halfAnimation{
+    opacity: 0.4;
+    -webkit-transition: opacity 500ms linear;
+    transition: opacity 500ms linear;
+  }
+
+  /*
+      ==================
+      [NAVBAR]
+      ==================
+  */
+  .navbar, .subnavbar, .toolbar {
+    background: #F9F9F9;
+  }
+  .navbar{
+    .navbar-inner{
+      .back.link{
+        width:50px;
+        &.active-state{
+          pointer-events: none;
+        }
+      }
+    }
+    .subnavbar{
+      /*&:after{
+        height:0px;
+      }*/
+    }
+  }
+  .navbar .navbar-inner .icon{
+    &.icon-back{
+      width:12px;
+      height:20px;
+      background:url('../images/icons/back.svg') no-repeat;
+      margin-left:15px;
+    }
+    &.icon-add{
+      width:21px;
+      height:21px;
+      background:url('../images/icons/add.png') no-repeat;
+    }
+    &.icon-settings{
+      width:21px;
+      height:21px;
+      background:url('../images/icons/settings.svg') no-repeat;
+    }
+    &.icon-save{
+      width:27px;
+      height:21px;
+      background:url('../images/icons/save.svg') no-repeat;
+    }
+    &.icon-diagram{
+      width:21px;
+      height:21px;
+      background:url('../images/icons/diagram.png') no-repeat;
+    }
+    &.icon-edit{
+      width:21px;
+      height:21px;
+      background:url('../images/icons/edit.png') no-repeat;
+    }
+    &.icon-calendar-nav{
+      width:21px;
+      height:21px;
+      background:url('../images/icons/calendar_nav.svg') no-repeat;
+    }
+    &[class*="icon-"]{
+      background-size:100% 100%;
+      background-position:center center;
+    }
+  }
+
+  /*
+      ==================
+      [TOOLBAR]
+      ==================
+  */
+  .toolbar{
+    font-family: SFUITextRegular;
+    .toolbar-inner{
+      .tabbar-label{
+        /*font-size:0.7em;*/
+      }
+      .icon{
+        width:30px;
+        height:30px;
+        background-position: center center;
+        /*margin-right:40px;*/
+        &.icon-home {
+          background: url('../images/icons/home.svg') no-repeat;
+          background-size: 100% auto;
+        }
+        &.icon-calendar{
+          background:url('../images/icons/calendar.svg') no-repeat;
+          background-size:25px 25px;
+        }
+        &.icon-info{
+          background:url('../images/icons/info.svg') no-repeat;
+          background-size:23px 25px;
+        }
+      }
+      a{
+        color:#AAAAAA;
+      }
+      a.active{
+        color:$green-color;
+      }
+      i.icon[class*="icon-"],
+      a.active i.icon[class*="icon-"]{
+        background-position:50% 50%;
         pointer-events: none;
       }
+      a.active .icon{
+        &.icon-home {
+          background: url('../images/icons/home_active.svg') no-repeat;
+          background-size: 100% auto;
+        }
+        &.icon-calendar{
+          background:url('../images/icons/calendar_active.svg') no-repeat;
+          background-size:25px 25px;
+        }
+        &.icon-info{
+          background:url('../images/icons/info_active.svg') no-repeat;
+          background-size:23px 25px;
+        }
+      }
     }
+  }
+
+
+  .content-block-title{
+    margin:10px 15px;
+  }
+  .label-switch{
+    input[type=checkbox]:checked+.checkbox{
+      background:#00A2FF;
+    }
+  }
+  /*
+      ==================
+      [SETTINGS]
+      ==================
+  */
+  .page-settings{
+    font-family:SFUITextRegular;
+    .content-block-title{
+      span{
+        text-transform: none;
+      }
+    }
+    .list-block{
+      margin:0px;
+      ul{
+        &:before{
+
+        }
+        .item-media{
+          .icon{
+            &.icon-sounds{
+              width:27px;
+              height:27px;
+              background:url('../images/icons/sounds_off.svg') no-repeat;
+              &.active{
+                width:27px;
+                height:27px;
+                background:url('../images/icons/sounds_on.svg') no-repeat;
+              }
+
+            }
+            &.icon-notifications{
+              width:27px;
+              height:27px;
+              background:url('../images/icons/notifications_off.svg') no-repeat;
+              &.active{
+                width:27px;
+                height:27px;
+                background:url('../images/icons/notifications_on.svg') no-repeat;
+              }
+
+            }
+            &[class*="icon-"], &[class*="icon-"].active{
+              background-size:100% 100%;
+              background-position:center center;
+            }
+          }
+        }
+        .item-inner{
+          .item-title{
+            &.label{
+              width:50%;
+            }
+          }
+        }
+        .item-input{
+          text-align: right;
+        }
+      }
+    }
+  }
+  /*
+      ==================
+      [INFO]
+      ==================
+  */
+  #page-info, #info-item{
+    .info-img {
+      &.img-1 {
+        background: url('../images/attractions/1.jpg') no-repeat;
+      }
+      &.img-2 {
+        background: url('../images/attractions/2.jpg') no-repeat;
+      }
+      &.img-3 {
+        background: url('../images/attractions/3.jpg') no-repeat;
+      }
+      &.img-4 {
+        background: url('../images/attractions/4.jpg') no-repeat;
+      }
+      &.img-5 {
+        background: url('../images/attractions/5.jpg') no-repeat;
+      }
+      &.img-6 {
+        background: url('../images/attractions/6.jpg') no-repeat;
+      }
+      &.img-7 {
+        background: url('../images/attractions/7.jpg') no-repeat;
+      }
+      &.img-8 {
+        background: url('../images/attractions/8.jpg') no-repeat;
+      }
+      &.img-9 {
+        background: url('../images/attractions/9.jpg') no-repeat;
+      }
+      &.img-10 {
+        background: url('../images/attractions/10.jpg') no-repeat;
+      }
+      &.img-11 {
+        background: url('../images/attractions/11.jpg') no-repeat;
+      }
+      &.img-12 {
+        background: url('../images/attractions/12.jpg') no-repeat;
+      }
+      &.img-13 {
+        background: url('../images/attractions/13.jpg') no-repeat;
+      }
+      &.img-14 {
+        background: url('../images/attractions/14.jpg') no-repeat;
+      }
+      &.img-15 {
+        background: url('../images/attractions/15.jpg') no-repeat;
+      }
+      &.img-16 {
+        background: url('../images/attractions/16.jpg') no-repeat;
+      }
+      &[class*="img-"] {
+        background-size: cover;
+        background-position: center center;
+      }
+    }
+  }
+  #page-info{
+    .info-block{
+      .row{
+        margin-bottom: 3px;
+        .info-img{
+          position:relative;
+          width:calc((100% - 3px*1)/ 2);
+          height: 180px;
+          .title{
+            font-family:SFUITextSemibold;
+            position:absolute;
+            bottom:0;
+            padding: 0 5px;
+            box-sizing: border-box;
+            width:100%;
+            height: 50px;
+            background:rgba(0,0,0,.7);
+            display:flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+            color:#fff;
+          }
+        }
+        a.link.active-state {
+          opacity: 0.3;
+          -webkit-transition-duration: 0ms;
+          transition-duration: 0ms;
+        }
+      }
+
+    }
+
+  }
+  #info-item{
+    .swiperSlider{
+      .swiper-container{
+        position: absolute;
+        width:100%;
+        top:44px;
+        bottom:50px;
+        .swiper-slide{
+          display:flex;
+          flex-direction: column;
+          .info-img{
+            width:100%;
+            height: 250px;
+            flex-shrink:0;
+          }
+          .item-name{
+            font-family: SFUITextSemibold;
+            color:#000;
+            font-weight:bold;
+            margin:0px;
+            padding: 5px 20px;
+            font-size: 1.2em;
+          }
+          .content-block{
+            font-family: SFUITextRegular;
+            color:#131314;
+            margin:0px 0px 20px 0;
+            font-size:1.1em;
+            padding: 0 20px 0 20px;
+            overflow:auto;
+            /*max-height:300px;*/
+            flex: 1;
+
+          }
+
+        }
+      }
+
+    }
+    .swiper-pagination{
+      bottom: 50px;
+      text-align: center;
+      width: 100%;
+      .swiper-pagination-bullet {
+        margin: 0 5px;
+        width: 7px;
+        height: 7px;
+        display: inline-block;
+        border-radius: 100%;
+        background: #000;
+        opacity: .2;
+        &.swiper-pagination-bullet-active{
+          background: $blue-color;
+          opacity: .8;
+        }
+      }
+    }
+
+  }
+
+  /*
+      ==================
+      [HOME]
+      ==================
+  */
+  #page-home{
+    .home-block{
+      font-family:SFUITextMedium;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      .top-block{
+        display: flex;
+        flex-direction: row;
+        padding:10px;
+        background: #fff;
+        .icon{
+          flex:2;
+          height:200px;
+          background: url('../images/icons/fire.svg') no-repeat;
+          background-size: 100% 100%;
+          background-position: center center;
+        }
+        .time#block-timer{
+          flex-grow:2;
+          display: flex;
+          flex-direction: column;
+          font-family:SFUITextLight;;
+          .num{
+            color:$time-black-color;
+          }
+          .title{
+            color:$time-grey-color;
+            font-size: 1.3em;
+          }
+          .days{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            flex:1 2 7.5em;
+            .num{
+              font-size: 4.7em;
+              flex:1 1 1em;
+              display: flex;
+              flex-direction:row;
+              align-items: center;
+            }
+            .title{
+              flex:1;
+              display:flex;
+              flex-direction:row;
+            }
+
+          }
+          .row-time{
+            display: flex;
+            flex-direction: row;
+            flex:12 3 8em;
+            div{
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            }
+            .num{
+              font-size: 3.7em;
+            }
+            .hours{
+              flex-grow:1;
+            }
+            .minutes{
+              flex-grow:1;
+            }
+            .seconds{
+              flex-grow:1;
+            }
+          }
+        }
+      }
+      .bottom-block{
+        position: relative;
+        &:before {
+          @include before();
+        }
+        .content-block-title:first-child{
+
+
+        }
+        .content-block-title{
+          color:#929292;
+          text-transform: none;
+          line-height:1.1;
+        }
+        .list-block{
+          margin-bottom: 10px;
+          a{
+            color:#929292;
+          }
+          ul{
+            li{
+              .item-content{
+                &:after{
+                  @include after($width-after-short);
+                }
+                .item-inner{
+                  background-repeat: no-repeat;
+                  background-position: 96% 50%;
+                  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2060%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpath%20d%3D'm60%2061.5-38.25%2038.25-9.75-9.75%2029.25-28.5-29.25-28.5%209.75-9.75z'%20fill%3D'%23c7c7cc'%2F%3E%3C%2Fsvg%3E");
+                  background-size: 10px 20px;
+                  padding:3px 30px 3px 0;
+                  &:after{
+                    height:0px;
+                  }
+                  .item-title{
+                    font-family:SFUITextRegular;
+                    color:#131313;
+                  }
+                  .item-after{
+                    margin:0px;
+                    .item-media{
+                      .icon{
+                        margin:0 auto;
+                        &.icon-notification{
+                          width:18px;
+                          height:18px;
+                          background:url('../images/icons/notifications_on.svg') no-repeat;
+                          background-size:100% 100%;
+                          background-position:center center;
+                        }
+                        &[class*="icon-"]{
+
+                        }
+                      }
+
+                    }
+
+                  }
+                }
+              }
+              &:last-child{
+                a{
+                  &:after{
+                    height:0px;
+                  }
+                }
+
+              }
+            }
+
+          }
+
+
+
+        }
+      }
+    }
+
+
+  }
+
+  /*
+     ==================
+     [GAME-NOTIFICATION]
+     ==================
+  */
+
+  #page-game-notification{
+
+    .list-block{
+      font-family: SFUITextRegular;
+      margin: 20px 0px;
+      &:first-child{
+        margin-top:0px;
+        ul{
+          &:before{
+            height:0px;
+          }
+        }
+      }
+      .item-content{
+        background:#fff;
+        position:relative;
+        .item-inner{
+          &:after{
+            height:0px;
+          }
+          .item-title{
+            &.label{
+              width:50%;
+            }
+
+          }
+          .item-input{
+            text-align: right;
+          }
+        }
+        &:after{
+          @include after($width-after-full);
+        }
+      }
+
+    }
+    .list-block{
+      &#picker-date-block{
+        .item-content{
+          background:#fff;
+          position:relative;
+          .item-inner{
+            .item-title{
+              flex:1;
+            }
+            .item-input{
+              flex:4;
+              input{
+                font-size:0.9em;
+                text-align: right;
+                color:$green-color;
+              }
+              input::-webkit-input-placeholder {
+                color:#000;
+              }
+              input:-moz-placeholder {
+                color:#000;
+              }
+            }
+          }
+        }
+
+      }
+    }
+    #picker-date-container{
+      background:#fff;
+    }
+
+  }
+  /*
+     ==================
+     [CALENDAR]
+     ==================
+  */
+  .navbar-fixed .with-subnavbar .page-content{
+    padding-top: 114px;
   }
   .subnavbar{
-    /*&:after{
-      height:0px;
-    }*/
-  }
-}
-.navbar .navbar-inner .icon{
-  &.icon-back{
-    width:12px;
-    height:20px;
-    background:url('../images/icons/back.svg') no-repeat;
-    margin-left:15px;
-  }
-  &.icon-add{
-    width:21px;
-    height:21px;
-    background:url('../images/icons/add.png') no-repeat;
-  }
-  &.icon-settings{
-    width:21px;
-    height:21px;
-    background:url('../images/icons/settings.svg') no-repeat;
-  }
-  &.icon-save{
-    width:27px;
-    height:21px;
-    background:url('../images/icons/save.svg') no-repeat;
-  }
-  &.icon-diagram{
-    width:21px;
-    height:21px;
-    background:url('../images/icons/diagram.png') no-repeat;
-  }
-  &.icon-edit{
-    width:21px;
-    height:21px;
-    background:url('../images/icons/edit.png') no-repeat;
-  }
-  &.icon-calendar-nav{
-    width:21px;
-    height:21px;
-    background:url('../images/icons/calendar_nav.svg') no-repeat;
-  }
-  &[class*="icon-"]{
-    background-size:100% 100%;
-    background-position:center center;
-  }
-}
-
-/*
-	==================
-	[TOOLBAR]
-	==================
-*/
-.toolbar{
-  font-family: SFUITextRegular;
-  .toolbar-inner{
-    .tabbar-label{
-      /*font-size:0.7em;*/
-    }
-    .icon{
-      width:30px;
-      height:30px;
-      background-position: center center;
-      /*margin-right:40px;*/
-      &.icon-home {
-        background: url('../images/icons/home.svg') no-repeat;
-        background-size: 100% auto;
-      }
-      &.icon-calendar{
-        background:url('../images/icons/calendar.svg') no-repeat;
-        background-size:25px 25px;
-      }
-      &.icon-info{
-        background:url('../images/icons/info.svg') no-repeat;
-        background-size:23px 25px;
-      }
-    }
-    a{
-      color:#AAAAAA;
-    }
-    a.active{
-      color:$green-color;
-    }
-    i.icon[class*="icon-"],
-    a.active i.icon[class*="icon-"]{
-      background-position:50% 50%;
-      pointer-events: none;
-    }
-    a.active .icon{
-      &.icon-home {
-        background: url('../images/icons/home_active.svg') no-repeat;
-        background-size: 100% auto;
-      }
-      &.icon-calendar{
-        background:url('../images/icons/calendar_active.svg') no-repeat;
-        background-size:25px 25px;
-      }
-      &.icon-info{
-        background:url('../images/icons/info_active.svg') no-repeat;
-        background-size:23px 25px;
-      }
-    }
-  }
-}
-
-
-.content-block-title{
-  margin:10px 15px;
-}
-.label-switch{
-  input[type=checkbox]:checked+.checkbox{
-    background:#00A2FF;
-  }
-}
-/*
-	==================
-	[SETTINGS]
-	==================
-*/
-.page-settings{
-  font-family:SFUITextRegular;
-  .content-block-title{
-    span{
-      text-transform: none;
-    }
-  }
-  .list-block{
-    margin:0px;
-    ul{
+    &#top-block-subnavbar-calendar{
+      display:flex;
+      flex-direction:row;
+      height:70px;
+      padding:0px;
       &:before{
-
+        @include before();
       }
+      &:after{
+        background:$after-color;
+      }
+      .top-block{
+        height:100%;
+        width:100%;
+        background:$grey-color3;
+        &:after{
+          /*@include after($width-after-full);*/
+        }
+        display:flex;
+        flex-direction: row;
+        .left-block{
+          width:$left-column-width;
+          min-width: $left-column-width;
+          position:relative;
+
+          &:after{
+            @include after-right();
+          }
+        }
+        .data-block{
+          display:flex;
+          flex-direction: column;
+          flex:1;
+          justify-content:center;
+          position:relative;
+          font-family: SFUITextRegular;
+          font-size:0.9em;
+          .title{
+            max-height: 25px;
+            display: flex;
+            flex:1;
+            align-items:center;
+            justify-content: center;
+          }
+          .swiper-container-data{
+            display: flex;
+            flex-direction:column;
+            flex:1;
+            position:relative;
+            .swiper-container-data-calendar{
+              display:flex;
+              flex-direction:row;
+              height:100%;
+              width: 100%;
+              overflow:hidden;
+              padding: 0 0 0 0px;
+              box-sizing: border-box;
+              position:absolute;
+              .swiper-slide {
+                display: flex;
+                flex-direction: row;
+                .col-date{
+                  display: flex;
+                  flex-direction: column;
+                  display:flex;
+                  justify-content: center;
+                  align-items: center;
+                  justify-content: start;
+                  width:14.5%;
+                  .num{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex:1;
+                  }
+                  .week{
+                    flex:1;
+                    font-size:0.8em;
+                  }
+                }
+              }
+            }
+            .pagination{
+              position:absolute;
+              width:100%;
+              height:10px;
+              z-index:600;
+              top:25%;
+              .nav{
+                div{
+                  width:12px;
+                  height:20px;
+                  background: url("../images/icons/arrows.svg") no-repeat;
+                  opacity: 0.5;
+                  position: absolute;
+                  background-size:cover
+                }
+                .prev{
+                  background-position: 0 0;
+                  left: 2px;
+                  position: absolute;
+                  &.first{
+                    -webkit-transition: all 4s; /* Safari */
+                    transition: all 8s;
+                    display:none;
+                    opacity: 0;
+                  }
+                  &.active{
+                    -webkit-transition: all 4s; /* Safari */
+                    transition: all 8s;
+                    display: block;
+                    opacity: 0.9;
+                  }
+
+                }
+                .next{
+                  background-position: -18px 0;
+                  right: 2px;
+                  position: absolute;
+                  &.last{
+                    -webkit-transition: all 4s; /* Safari */
+                    transition: all 8s;
+                    display:none;
+                    opacity: 0;
+                  }
+                  &.active{
+                    -webkit-transition: all 4s; /* Safari */
+                    transition: all 8s;
+                    display: block;
+                    opacity: 0.9;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #page-calendar{
+    display: flex;
+    flex-direction:row;
+    background: #fff;
+    /*margin-left:50px;*/
+    /*overflow: visible;*/
+
+    .swiperSliderCalendar{
+      height:100%;
+      width:100%;
+      position:static;
+
+      .left-column{
+        position:relative;
+        width: 10%;
+        max-width: 50px;
+        min-width: 50px;
+        left:0px;
+        float:left;
+        z-index:2;
+        margin-bottom:50px;
+        &:after{
+          @include after-right();
+        }
+        .bottom-block{
+          flex:1;
+          width:100%;
+          z-index:1;
+          &.list-block{
+            margin-top:0px;
+            margin-bottom:0px;
+            ul{
+              &:before{
+                height:0px;
+              }
+              li{
+                &:after{
+                  @include after($width-after-full);
+                }
+                &:last-child{
+                  &:after{
+                    height:0px;
+                  }
+                }
+                min-height:36px;
+                max-height:36px;
+                display:flex;
+                padding-left:15px;
+                .item-media{
+                  min-width:27px;
+                  .icon{
+                    &.icon-0{
+                      width:24px;
+                      height:21px;
+                      background:url('../images/icons/games/0.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/0_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-1{
+                      width:18px;
+                      height:21px;
+                      background:url('../images/icons/games/1.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/1_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-2{
+                      width:22px;
+                      height:19px;
+                      background:url('../images/icons/games/2.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/2_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-3{
+                      width:27px;
+                      height:21px;
+                      background:url('../images/icons/games/3.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/3_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-4{
+                      width:18px;
+                      height:21px;
+                      background:url('../images/icons/games/4.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/4_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-5{
+                      width:18px;
+                      height:21px;
+                      background:url('../images/icons/games/5.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/5_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-6{
+                      width:20px;
+                      height:21px;
+                      background:url('../images/icons/games/6.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/6_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-7{
+                      width:27px;
+                      height:21px;
+                      background:url('../images/icons/games/7.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/7_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-8{
+                      width:25px;
+                      height:21px;
+                      background:url('../images/icons/games/8.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/8_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-9{
+                      width:21px;
+                      height:21px;
+                      background:url('../images/icons/games/9.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/9_active.svg') no-repeat;
+                      }
+                    }
+
+                    &.icon-10{
+                      width:24px;
+                      height:21px;
+                      background:url('../images/icons/games/10.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/10_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-11{
+                      width:18px;
+                      height:21px;
+                      background:url('../images/icons/games/11.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/11_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-12{
+                      width:27px;
+                      height:21px;
+                      background:url('../images/icons/games/12.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/12_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-13{
+                      width:27px;
+                      height:21px;
+                      background:url('../images/icons/games/13.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/13_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-14{
+                      width:21px;
+                      height:21px;
+                      background:url('../images/icons/games/14.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/14_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-15{
+                      width:27px;
+                      height:21px;
+                      background:url('../images/icons/games/15.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/15_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-16{
+                      width:25px;
+                      height:21px;
+                      background:url('../images/icons/games/16.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/16_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-17{
+                      width:17px;
+                      height:21px;
+                      background:url('../images/icons/games/17.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/17_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-18{
+                      width:20px;
+                      height:21px;
+                      background:url('../images/icons/games/18.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/18_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-19{
+                      width:27px;
+                      height:21px;
+                      background:url('../images/icons/games/19.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/19_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-20{
+                      width:21px;
+                      height:21px;
+                      background:url('../images/icons/games/20.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/20_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-21{
+                      width:20px;
+                      height:21px;
+                      background:url('../images/icons/games/21.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/21_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-22{
+                      width:24px;
+                      height:21px;
+                      background:url('../images/icons/games/22.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/22_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-23{
+                      width:25px;
+                      height:21px;
+                      background:url('../images/icons/games/23.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/23_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-24{
+                      width:21px;
+                      height:21px;
+                      background:url('../images/icons/games/24.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/24_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-25{
+                      width:24px;
+                      height:21px;
+                      background:url('../images/icons/games/25.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/25_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-26{
+                      width:20px;
+                      height:21px;
+                      background:url('../images/icons/games/26.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/26_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-27{
+                      width:22px;
+                      height:21px;
+                      background:url('../images/icons/games/27.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/27_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-28{
+                      width:19px;
+                      height:21px;
+                      background:url('../images/icons/games/28.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/28_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-29{
+                      width:24px;
+                      height:21px;
+                      background:url('../images/icons/games/29.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/29_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-30{
+                      width:24px;
+                      height:21px;
+                      background:url('../images/icons/games/30.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/30_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-31{
+                      width:24px;
+                      height:21px;
+                      background:url('../images/icons/games/31.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/31_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-32{
+                      width:24px;
+                      height:21px;
+                      background:url('../images/icons/games/32.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/32_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-33{
+                      width:24px;
+                      height:21px;
+                      background:url('../images/icons/games/33.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/33_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-34{
+                      width:24px;
+                      height:21px;
+                      background:url('../images/icons/games/34.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/34_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-35{
+                      width:24px;
+                      height:21px;
+                      background:url('../images/icons/games/35.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/35_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-36{
+                      width:24px;
+                      height:21px;
+                      background:url('../images/icons/games/36.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/36_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-37{
+                      width:24px;
+                      height:21px;
+                      background:url('../images/icons/games/37.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/37_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-38{
+                      width:24px;
+                      height:21px;
+                      background:url('../images/icons/games/38.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/38_active.svg') no-repeat;
+                      }
+                    }
+                    &.icon-39{
+                      width:24px;
+                      height:21px;
+                      background:url('../images/icons/games/39.svg') no-repeat;
+                      &.active{
+                        background:url('../images/icons/games/39_active.svg') no-repeat;
+                      }
+                    }
+                    &[class*="icon-"], &[class*="icon-"].active{
+                      background-size:100% 100%;
+                      background-position:center center;
+                    }
+                  }
+                }
+              }
+              &:after{
+                height:0px;
+              }
+            }
+          }
+        }
+      }
+      .swiper-container-calendar{
+        /*position: absolute;*/
+        float:left;
+        width:364px;
+
+        overflow:hidden;
+        z-index:1;
+        background:#fff;
+        .swiper-wrapper{
+           position:relative;
+           width:100%;
+           margin-bottom:50px;
+        }
+        .swiper-slide{
+          display:flex;
+          flex-direction: column;
+          &.last{
+            .list-block{
+              ul{
+                li{
+                  &.rows{
+                    div{
+
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .list-block{
+            margin-top:0px;
+            margin-bottom:0px;
+            ul{
+              &:before{
+                height:0px;
+              }
+              &:after{
+                height:0px;
+              }
+              li{
+                &.rows{
+
+                  $height:36px;
+                  height:$height;
+                  display: flex;
+                  flex-direction: row;
+                  justify-content:start;
+                  align-items:start;
+                  flex-wrap:nowrap;
+
+                  &:after{
+                    @include after-light();
+                  }
+                  &:last-child{
+                    &:after{
+                      height:0px;
+                    }
+                  }
+                  div{
+                    display:flex;
+                    flex-direction:column;
+                    width:14.5%;
+                    justify-content:center;
+                    align-items:start;
+                    height:$height;
+                    text-align: center;
+                    position:relative;
+                    &.status{
+                      background:$status-cols-color;
+                    }
+                    &:after{
+                      @include after-right-light();
+                    }
+                  }
+                  &.checked{
+                    div{
+                      &.status{
+                        background:$blue-color;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+  /*
+      ==================
+      [FILTER]
+      ==================
+  */
+  #page-filter{
+    .list-block{
+      margin-top:0px;
+      li{
+        label{
+          &.label-checkbox{
+
+            input[type=checkbox]:checked + .item-media + .item-inner + .item-media i.icon-form-checkbox {
+              background: rgba(0, 0, 0, 0) url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D\'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\'%20x%3D\'0px\'%20y%3D\'0px\'%20viewBox%3D\'0%200%2012%209\'%20xml%3Aspace%3D\'preserve\'%3E%3Cpolygon%20fill%3D\'%23ffffff\'%20points%3D\'12%2C0.7%2011.3%2C0%203.9%2C7.4%200.7%2C4.2%200%2C4.9%203.9%2C8.8%203.9%2C8.8%203.9%2C8.8%20\'%2F%3E%3C%2Fsvg%3E") no-repeat scroll center center / 12px 9px;
+              border: none;
+              background-color: #0198FF;
+            }
+
+          }
+          &.item-content{
+            .item-inner{
+              &:after{
+                height:0px;
+              }
+            }
+            &:after{
+              @include after($width-after-short);
+            }
+          }
+        }
+        &:last-child{
+          label{
+            &:after{
+              height:0px;
+            }
+          }
+
+        }
+      }
+
+
+
+
+    }
+  }
+
+  .list-block{
+    ul li .item-content, .item-content{
       .item-media{
+        min-width:27px;
         .icon{
-          &.icon-sounds{
-            width:27px;
-            height:27px;
-            background:url('../images/icons/sounds_off.svg') no-repeat;
-            &.active{
-              width:27px;
-              height:27px;
-              background:url('../images/icons/sounds_on.svg') no-repeat;
-            }
-
+          &.icon-0{
+            width:24px;
+            height:21px;
+            background:url('../images/icons/games/0_active.svg') no-repeat;
           }
-          &.icon-notifications{
-            width:27px;
-            height:27px;
-            background:url('../images/icons/notifications_off.svg') no-repeat;
-            &.active{
-              width:27px;
-              height:27px;
-              background:url('../images/icons/notifications_on.svg') no-repeat;
-            }
-
+          &.icon-1{
+            width:18px;
+            height:21px;
+            background:url('../images/icons/games/1_active.svg') no-repeat;
           }
-          &[class*="icon-"], &[class*="icon-"].active{
+          &.icon-2{
+            width:22px;
+            height:19px;
+            background:url('../images/icons/games/2_active.svg') no-repeat;
+          }
+          &.icon-3{
+            width:27px;
+            height:21px;
+            background:url('../images/icons/games/3_active.svg') no-repeat;
+          }
+          &.icon-4{
+            width:18px;
+            height:21px;
+            background:url('../images/icons/games/4_active.svg') no-repeat;
+          }
+          &.icon-5{
+            width:18px;
+            height:21px;
+            background:url('../images/icons/games/5_active.svg') no-repeat;
+          }
+          &.icon-6{
+            width:20px;
+            height:21px;
+            background:url('../images/icons/games/6_active.svg') no-repeat;
+          }
+          &.icon-7{
+            width:27px;
+            height:21px;
+            background:url('../images/icons/games/7_active.svg') no-repeat;
+          }
+          &.icon-8{
+            width:25px;
+            height:21px;
+            background:url('../images/icons/games/8_active.svg') no-repeat;
+          }
+          &.icon-9{
+            width:21px;
+            height:21px;
+            background:url('../images/icons/games/9_active.svg') no-repeat;
+          }
+
+          &.icon-10{
+            width:24px;
+            height:21px;
+            background:url('../images/icons/games/10_active.svg') no-repeat;
+          }
+          &.icon-11{
+            width:18px;
+            height:21px;
+            background:url('../images/icons/games/11_active.svg') no-repeat;
+          }
+          &.icon-12{
+            width:27px;
+            height:21px;
+            background:url('../images/icons/games/12_active.svg') no-repeat;
+          }
+          &.icon-13{
+            width:27px;
+            height:21px;
+            background:url('../images/icons/games/13_active.svg') no-repeat;
+          }
+          &.icon-14{
+            width:21px;
+            height:21px;
+            background:url('../images/icons/games/14_active.svg') no-repeat;
+          }
+          &.icon-15{
+            width:27px;
+            height:21px;
+            background:url('../images/icons/games/15_active.svg') no-repeat;
+          }
+          &.icon-16{
+            width:25px;
+            height:21px;
+            background:url('../images/icons/games/16_active.svg') no-repeat;
+          }
+          &.icon-17{
+            width:17px;
+            height:21px;
+            background:url('../images/icons/games/17_active.svg') no-repeat;
+          }
+          &.icon-18{
+            width:20px;
+            height:21px;
+            background:url('../images/icons/games/18_active.svg') no-repeat;
+          }
+          &.icon-19{
+            width:27px;
+            height:21px;
+            background:url('../images/icons/games/19_active.svg') no-repeat;
+          }
+          &.icon-20{
+            width:21px;
+            height:21px;
+            background:url('../images/icons/games/20_active.svg') no-repeat;
+          }
+          &.icon-21{
+            width:20px;
+            height:21px;
+            background:url('../images/icons/games/21_active.svg') no-repeat;
+          }
+          &.icon-22{
+            width:24px;
+            height:21px;
+            background:url('../images/icons/games/22_active.svg') no-repeat;
+          }
+          &.icon-23{
+            width:25px;
+            height:21px;
+            background:url('../images/icons/games/23_active.svg') no-repeat;
+          }
+          &.icon-24{
+            width:21px;
+            height:21px;
+            background:url('../images/icons/games/24_active.svg') no-repeat;
+          }
+          &.icon-25{
+            width:24px;
+            height:21px;
+            background:url('../images/icons/games/25_active.svg') no-repeat;
+          }
+          &.icon-26{
+            width:20px;
+            height:21px;
+            background:url('../images/icons/games/26_active.svg') no-repeat;
+          }
+          &.icon-27{
+            width:22px;
+            height:21px;
+            background:url('../images/icons/games/27_active.svg') no-repeat;
+          }
+          &.icon-28{
+            width:19px;
+            height:21px;
+            background:url('../images/icons/games/28_active.svg') no-repeat;
+          }
+          &.icon-29{
+            width:24px;
+            height:21px;
+            background:url('../images/icons/games/29_active.svg') no-repeat;
+          }
+          &.icon-30{
+            width:24px;
+            height:21px;
+            background:url('../images/icons/games/30_active.svg') no-repeat;
+          }
+          &.icon-31{
+            width:24px;
+            height:21px;
+            background:url('../images/icons/games/31_active.svg') no-repeat;
+          }
+          &.icon-32{
+            width:24px;
+            height:21px;
+            background:url('../images/icons/games/32_active.svg') no-repeat;
+          }
+          &.icon-33{
+            width:24px;
+            height:21px;
+            background:url('../images/icons/games/33_active.svg') no-repeat;
+          }
+          &.icon-34{
+            width:24px;
+            height:21px;
+            background:url('../images/icons/games/34_active.svg') no-repeat;
+          }
+          &.icon-35{
+            width:24px;
+            height:21px;
+            background:url('../images/icons/games/35_active.svg') no-repeat;
+          }
+          &.icon-36{
+            width:24px;
+            height:21px;
+            background:url('../images/icons/games/36_active.svg') no-repeat;
+          }
+          &.icon-37{
+            width:24px;
+            height:21px;
+            background:url('../images/icons/games/37_active.svg') no-repeat;
+          }
+          &.icon-38{
+            width:24px;
+            height:21px;
+            background:url('../images/icons/games/38_active.svg') no-repeat;
+          }
+          &.icon-39{
+            width:24px;
+            height:21px;
+            background:url('../images/icons/games/39_active.svg') no-repeat;
+          }
+          &[class*="icon-"]{
             background-size:100% 100%;
             background-position:center center;
           }
         }
       }
-      .item-inner{
-        .item-title{
-          &.label{
-            width:50%;
-          }
-        }
-      }
-      .item-input{
-        text-align: right;
-      }
-    }
-  }
-}
-/*
-	==================
-	[INFO]
-	==================
-*/
-#page-info, #info-item{
-  .info-img {
-    &.img-1 {
-      background: url('../images/attractions/1.jpg') no-repeat;
-    }
-    &.img-2 {
-      background: url('../images/attractions/2.jpg') no-repeat;
-    }
-    &.img-3 {
-      background: url('../images/attractions/3.jpg') no-repeat;
-    }
-    &.img-4 {
-      background: url('../images/attractions/4.jpg') no-repeat;
-    }
-    &.img-5 {
-      background: url('../images/attractions/5.jpg') no-repeat;
-    }
-    &.img-6 {
-      background: url('../images/attractions/6.jpg') no-repeat;
-    }
-    &.img-7 {
-      background: url('../images/attractions/7.jpg') no-repeat;
-    }
-    &.img-8 {
-      background: url('../images/attractions/8.jpg') no-repeat;
-    }
-    &.img-9 {
-      background: url('../images/attractions/9.jpg') no-repeat;
-    }
-    &.img-10 {
-      background: url('../images/attractions/10.jpg') no-repeat;
-    }
-    &.img-11 {
-      background: url('../images/attractions/11.jpg') no-repeat;
-    }
-    &.img-12 {
-      background: url('../images/attractions/12.jpg') no-repeat;
-    }
-    &.img-13 {
-      background: url('../images/attractions/13.jpg') no-repeat;
-    }
-    &.img-14 {
-      background: url('../images/attractions/14.jpg') no-repeat;
-    }
-    &.img-15 {
-      background: url('../images/attractions/15.jpg') no-repeat;
-    }
-    &.img-16 {
-      background: url('../images/attractions/16.jpg') no-repeat;
-    }
-    &[class*="img-"] {
-      background-size: cover;
-      background-position: center center;
-    }
-  }
-}
-#page-info{
-  .info-block{
-    .row{
-      margin-bottom: 3px;
-      .info-img{
-        position:relative;
-        width:calc((100% - 3px*1)/ 2);
-        height: 180px;
-        .title{
-          font-family:SFUITextSemibold;
-          position:absolute;
-          bottom:0;
-          padding: 0 5px;
-          box-sizing: border-box;
-          width:100%;
-          height: 50px;
-          background:rgba(0,0,0,.7);
-          display:flex;
-          flex-direction: column;
-          align-items: start;
-          justify-content: center;
-          color:#fff;
-        }
-      }
-      a.link.active-state {
-        opacity: 0.3;
-        -webkit-transition-duration: 0ms;
-        transition-duration: 0ms;
-      }
-    }
-
-  }
-
-}
-#info-item{
-  .swiperSlider{
-    .swiper-container{
-      position: absolute;
-      width:100%;
-      top:44px;
-      bottom:50px;
-      .swiper-slide{
-        display:flex;
-        flex-direction: column;
-        .info-img{
-          width:100%;
-          height: 250px;
-          flex-shrink:0;
-        }
-        .item-name{
-          font-family: SFUITextSemibold;
-          color:#000;
-          font-weight:bold;
-          margin:0px;
-          padding: 5px 20px;
-          font-size: 1.2em;
-        }
-        .content-block{
-          font-family: SFUITextRegular;
-          color:#131314;
-          margin:0px 0px 20px 0;
-          font-size:1.1em;
-          padding: 0 20px 0 20px;
-          overflow:auto;
-          /*max-height:300px;*/
-          flex: 1;
-
-        }
-
-      }
-    }
-
-  }
-  .swiper-pagination{
-    bottom: 50px;
-    text-align: center;
-    width: 100%;
-    .swiper-pagination-bullet {
-      margin: 0 5px;
-      width: 7px;
-      height: 7px;
-      display: inline-block;
-      border-radius: 100%;
-      background: #000;
-      opacity: .2;
-      &.swiper-pagination-bullet-active{
-        background: $blue-color;
-        opacity: .8;
-      }
     }
   }
 
-}
+  /*
+      ==================
+      [GRID]
+      ==================
+  /* ipad */
+  @media (min-height: 787px) and (min-width: 700px){
+    .welcome-icon{
+      margin:0 auto;
+      i.icon{
+        width:300px;
+        height:300px;
 
-/*
-	==================
-	[HOME]
-	==================
-*/
-#page-home{
-  .home-block{
-    font-family:SFUITextMedium;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    .top-block{
-      display: flex;
-      flex-direction: row;
-      padding:10px;
-      background: #fff;
-      .icon{
-        flex-grow:1;
-        height:200px;
-        background: url('../images/icons/fire.svg') no-repeat;
-        background-size: 100% 100%;
-        background-position: center center;
       }
-      .time{
-        flex-grow:2;
-        display: flex;
-        flex-direction: column;
-        font-family:SFUITextLight;;
-        background: yellow;
-        .days{
-          background:blue;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-        .row-time{
-          display: flex;
-          flex-direction: row;
-          div{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          }
-          .hours{
-            flex-grow:1;
-          }
-          .minutes{
-            flex-grow:1;
-          }
-          .seconds{
-            flex-grow:1;
-          }
+    }
+    .welcomescreen-text {
+      bottom: 155px;
+
+    }
+    .welcomescreen-title {
+      font-size:1.8em;
+      top: 155px;
+
+    }
+    .welcomescreen-container {
+      font-size: 25px;
+    }
+    .modal {
+      &.achievements-modal {
+        margin-left:-375px;
+      }
+    }
+    #tab2{
+      #canvas-holder{
+        #chart-training{
+          width:400px;
+          height:400px;
         }
       }
     }
-    .bottom-block{
-      position: relative;
-      &:before {
-        @include before();
-      }
-      .content-block-title:first-child{
-
-
-      }
-      .content-block-title{
-        color:#929292;
-        text-transform: none;
-      }
-      .list-block{
-        margin-bottom: 10px;
-        a{
-          color:#929292;
-        }
-        ul{
-          li{
-            .item-content{
-              &:after{
-                @include after($width-after-short);
+    #page-home {
+      .home-block {
+        .bottom-block{
+          .list-block{
+            ul {
+              li {
+                .item-content {
+                  &:after{
+                    width:98%;
+                  }
+                  .item-inner {
+                    background-position: 98% 50%;
+                  }
+                }
               }
-              .item-inner{
-                background-repeat: no-repeat;
-                background-position: 96% 50%;
-                background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox%3D'0%200%2060%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%3E%3Cpath%20d%3D'm60%2061.5-38.25%2038.25-9.75-9.75%2029.25-28.5-29.25-28.5%209.75-9.75z'%20fill%3D'%23c7c7cc'%2F%3E%3C%2Fsvg%3E");
-                background-size: 10px 20px;
-                padding:3px 30px 3px 0;
-                &:after{
-                  height:0px;
+            }
+          }
+        }
+      }
+
+    }
+    .popover.popover-picker-columns{
+      width:50%;
+    }
+    #page-info{
+      .info-block{
+        .row{
+          .info-img{
+            height:300px;
+            .title{
+              font-size:1.3em;
+            }
+          }
+        }
+      }
+    }
+    #info-item{
+      .swiperSlider{
+        .swiper-container{
+          .swiper-slide{
+            .info-img{
+              height:550px;
+            }
+
+          }
+        }
+      }
+      .swiper-pagination{
+        bottom:56px;
+      }
+    }
+    .subnavbar#top-block-subnavbar-calendar{
+      .top-block{
+        .data-block{
+          .swiper-container-data{
+            .pagination{
+              .nav{
+                div{
+                  width:20px;
+                  height:24px;
                 }
-                .item-title{
-                  font-family:SFUITextRegular;
-                  color:#131313;
+                .prev{
+                  left: 5px;
                 }
-                .item-after{
+                .next{
+                  right: 5px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    #page-calendar{
+      .swiperSliderCalendar{
+        .swiper-container-calendar{
+          width:718px;
+          .swiper-wrapper{
+            margin-bottom:56px;
+          }
+          .swiper-slide{
+            .list-block{
+              ul{
 
-
-                  margin:0px;
-                  .item-media{
-                    .icon{
-                      margin:0 auto;
-                      &.icon-notification{
-                        width:18px;
-                        height:18px;
-                        background:url('../images/icons/notifications_on.svg') no-repeat;
-                        background-size:100% 100%;
-                        background-position:center center;
-                      }
-                      &[class*="icon-"]{
-
-                      }
+                li{
+                  &.rows{
+                    div{
+                      /*width:14.5%;*/
                     }
 
                   }
-
                 }
               }
             }
-            &:last-child{
-              a{
-                &:after{
-                  height:0px;
+          }
+        }
+
+      }
+    }
+  }
+  @media (min-width: 768px){
+    .tabbar .toolbar-inner {
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      -webkit-justify-content: space-around;
+      justify-content: space-around;
+    }
+    .tabbar a.tab-link{
+      min-width:180px;
+    }
+
+  }
+  /* iphone6+ */
+  @media (min-height: 684px) and (max-width: 627px){
+    .welcome-icon{
+      margin:0 auto;
+      i.icon{
+        width:200px;
+        height:200px;
+      }
+    }
+    .welcomescreen-text {
+      bottom: 125px;
+
+    }
+    .welcomescreen-title {
+      top: 125px;
+
+    }
+    .welcomescreen-container {
+      font-size: 20px;
+    }
+    .modal {
+      &.achievements-modal {
+        margin-left:-202px;
+      }
+    }
+    #page-calendar{
+      .left-column{
+
+        .bottom-block{   }
+      }
+      .swiperSliderCalendar{
+        .swiper-container-calendar{
+          .swiper-slide{
+            .list-block{
+              ul{
+                li{
+                  &.rows{
+
+                    div{
+
+                    }
+
+                  }
                 }
               }
-
             }
           }
-
         }
-
-
 
       }
     }
-  }
-
-
-}
-
-/*
-   ==================
-   [GAME-NOTIFICATION]
-   ==================
-*/
-#page-game-notification{
-  .list-block{
-     font-family: SFUITextRegular;
-     margin: 20px 0px;
-     &:first-child{
-       margin-top:0px;
-       ul{
-         &:before{
-           height:0px;
-         }
-       }
-     }
-     .item-content{
-       background:#fff;
-       position:relative;
-       .item-inner{
-         &:after{
-           height:0px;
-         }
-         .item-title{
-           &.label{
-             width:50%;
-           }
-
-         }
-         .item-input{
-           text-align: right;
-         }
-       }
-       &:after{
-         @include after($width-after-full);
-       }
-     }
 
   }
-  .list-block{
-    &#picker-date-block{
-      .item-content{
-         background:#fff;
-         position:relative;
-         .item-inner{
-          .item-title{
-             flex:1;
-           }
-          .item-input{
-             flex:4;
-             input{
-               font-size:0.9em;
-               text-align: right;
-               color:$green-color;
-             }
-             input::-webkit-input-placeholder {
-               color:#000;
-             }
-             input:-moz-placeholder {
-               color:#000;
-             }
+
+  /* iphone6 */
+  @media (max-width: 399px) and (min-width: 360px){
+    .welcome-icon{
+      margin:0 auto;
+      i.icon{
+        width:200px;
+        height:200px;
+      }
+    }
+    .welcomescreen-text {
+      bottom: 105px;
+    }
+    .welcomescreen-title {
+      top: 135px;
+    }
+    .welcomescreen-container {
+      font-size: 20px;
+    }
+    #page-calendar{
+      .swiperSliderCalendar{
+        .swiper-container-calendar{
+          width:325px;
+          .swiper-slide{
+            .list-block{
+              ul{
+
+                li{
+                  &.rows{
+                    div{
+                      /*width:14.5%;*/
+                    }
+
+                  }
+                }
+              }
+            }
           }
-         }
-      }
+        }
 
+      }
     }
   }
-  #picker-date-container{
-    background:#fff;
-  }
-
-}
-/*
-   ==================
-   [CALENDAR]
-   ==================
-*/
-.navbar-fixed .with-subnavbar .page-content{
-  padding-top: 114px;
-}
-.subnavbar{
-  &#top-block-subnavbar-calendar{
-    display:flex;
-    flex-direction:row;
-    height:70px;
-    padding:0px;
-    &:before{
-      @include before();
+  /* iphone4, iphone5 */
+  @media (max-width: 350px){
+    .welcomescreen-text {
+      bottom: 95px;
     }
-    &:after{
-      background:$after-color;
+    .welcomescreen-title {
+      top: 95px;
     }
-    .top-block{
-      height:100%;
-      width:100%;
-      background:$grey-color3;
-      &:after{
-        /*@include after($width-after-full);*/
-      }
-      display:flex;
-      flex-direction: row;
-      .left-block{
-        width:$left-column-width;
-        min-width: $left-column-width;
-        position:relative;
-
-        &:after{
-          @include after-right();
+    .welcomescreen-container {
+      font-size: 17px;
+    }
+    .subnavbar#top-block-subnavbar-calendar{
+      .top-block{
+        .data-block{
+          .swiper-container-data{
+            .pagination{
+              .nav{
+                .prev{
+                  left: 0px;
+                }
+                .next{
+                  right: 0px;
+                }
+              }
+            }
+          }
         }
       }
-      .data-block{
-        display:flex;
-        flex-direction: column;
-        flex:1;
-        justify-content:center;
-        position:relative;
-        font-family: SFUITextRegular;
-        font-size:0.9em;
-        .title{
-          max-height: 25px;
-          display: flex;
-          flex:1;
-          align-items:center;
-          justify-content: center;
-        }
-        .swiper-container-data{
-          display: flex;
-          flex-direction:column;
-          flex:1;
-          position:relative;
-          .swiper-container-data-calendar{
-            display:flex;
-            flex-direction:row;
-            height:100%;
-            width: 100%;
-            overflow:hidden;
-            padding: 0 0 0 0px;
-            box-sizing: border-box;
-            position:absolute;
-            .swiper-slide {
+    }
+    #page-home{
+      .home-block{
+        .top-block{
+          .icon{
+            flex:1 1 1em;
+            height:160px;
+          }
+          .time#block-timer{
+            flex:2 1 2em;
+            .title{
+              font-size: 1.3em;
+            }
+            .days{
+              .num{
+                font-size: 4.1em;
+
+              }
+
+
+            }
+            .row-time{
               display: flex;
               flex-direction: row;
-              .col-date{
+              flex:12 3 6em;
+              div{
                 display: flex;
                 flex-direction: column;
-                display:flex;
-                justify-content: center;
                 align-items: center;
-                justify-content: start;
-                width:15%;
-                .num{
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
-                  flex:1;
-                }
-                .week{
-                  flex:1;
-                  font-size:0.8em;
-                }
               }
-            }
-          }
-          .pagination{
-            position:absolute;
-            width:100%;
-            height:10px;
-            z-index:600;
-            top:25%;
-            .nav{
-              div{
-                width:10px;
-                height:20px;
-                background: url("../images/icons/arrows.svg") no-repeat;
-                opacity: 0.5;
-                position: absolute;
-                background-size:cover
+              .title{
+                font-size: 1.0em;
               }
-              .prev{
-                background-position: 0 0;
-                left: 2px;
-                position: absolute;
+              .num{
+                font-size: 3.2em;
               }
-              .next{
-                background-position: -15px 0;
-                right: 2px;
-                position: absolute;
+              .hours{
+                flex:1;
+              }
+              .minutes{
+                flex:1;
+              }
+              .seconds{
+                flex:1;
               }
             }
           }
@@ -904,760 +2023,111 @@ body {
       }
     }
   }
-}
 
-#page-calendar{
-  .swiperSliderCalendar{
-    display:flex;
-    flex-direction:row;
-    position:relative;
-    width:100%;
-    height:100%;
-    .swiper-container-v{
-      position: absolute;
-      width:100%;
-      .swiper-inner{
-        position:relative;
-        display:flex;
-        flex-direction:row;
-        width:100%;
-        height:auto;
-        background: yellow;
-        padding-bottom:50px;
+  /* iphone 5 */
+  @media (min-height: 568px) and (max-width: 350px){
+    .modal {
+      &.achievements-modal {
+        margin-left:-156px;
+      }
+    }
+    #tab2{
+      .chart-title{
+        padding: 10px 0 5px;
+      }
+      .chart-bottom{
+        margin-top:10px;
+        .percent{
+          font-size:4.0em;
+        }
+      }
 
-        .calendar-block{
-          display:flex;
-          flex-direction:row;
-          width:100%;
-          height:100%;
-          background: red;
-          .left-column{
-            display:flex;
-            flex-direction:column;
-            min-width:$left-column-width;
-            background:#fff;
-            z-index:2;
-            /*border:1px solid #000;*/
-            position:relative;
-            &:after{
-              @include after-right();
-            }
-            .bottom-block{
-              flex:1;
-              width:100%;
-              z-index:1;
-              &.list-block{
-                margin-top:0px;
-                margin-bottom:0px;
-                ul{
-                  &:before{
-                    height:0px;
-                  }
-                  li{
-                    &:after{
-                      @include after($width-after-full);
-                    }
-                    &:last-child{
-                      &:after{
-                        height:0px;
-                      }
-                    }
-                    min-height:36px;
-                    max-height:36px;
-                    display:flex;
-                    padding-left:15px;
-                    .item-media{
-                      min-width:27px;
-                      .icon{
-                        &.icon-0{
-                          width:24px;
-                          height:21px;
-                          background:url('../images/icons/games/0.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/0_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-1{
-                          width:18px;
-                          height:21px;
-                          background:url('../images/icons/games/1.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/1_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-2{
-                          width:22px;
-                          height:19px;
-                          background:url('../images/icons/games/2.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/2_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-3{
-                          width:27px;
-                          height:21px;
-                          background:url('../images/icons/games/3.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/3_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-4{
-                          width:18px;
-                          height:21px;
-                          background:url('../images/icons/games/4.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/4_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-5{
-                          width:18px;
-                          height:21px;
-                          background:url('../images/icons/games/5.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/5_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-6{
-                          width:20px;
-                          height:21px;
-                          background:url('../images/icons/games/6.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/6_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-7{
-                          width:27px;
-                          height:21px;
-                          background:url('../images/icons/games/7.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/7_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-8{
-                          width:25px;
-                          height:21px;
-                          background:url('../images/icons/games/8.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/8_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-9{
-                          width:21px;
-                          height:21px;
-                          background:url('../images/icons/games/9.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/9_active.svg') no-repeat;
-                          }
-                        }
+      #canvas-holder{
+        #chart-training{
+          width:250px;
+          height:250px;
+        }
+      }
+    }
+    #page-calendar{
+      .left-column{
 
-                        &.icon-10{
-                          width:24px;
-                          height:21px;
-                          background:url('../images/icons/games/10.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/10_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-11{
-                          width:18px;
-                          height:21px;
-                          background:url('../images/icons/games/11.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/11_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-12{
-                          width:27px;
-                          height:21px;
-                          background:url('../images/icons/games/12.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/12_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-13{
-                          width:27px;
-                          height:21px;
-                          background:url('../images/icons/games/13.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/13_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-14{
-                          width:21px;
-                          height:21px;
-                          background:url('../images/icons/games/14.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/14_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-15{
-                          width:27px;
-                          height:21px;
-                          background:url('../images/icons/games/15.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/15_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-16{
-                          width:25px;
-                          height:21px;
-                          background:url('../images/icons/games/16.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/16_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-17{
-                          width:17px;
-                          height:21px;
-                          background:url('../images/icons/games/17.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/17_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-18{
-                          width:20px;
-                          height:21px;
-                          background:url('../images/icons/games/18.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/18_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-19{
-                          width:27px;
-                          height:21px;
-                          background:url('../images/icons/games/19.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/19_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-20{
-                          width:21px;
-                          height:21px;
-                          background:url('../images/icons/games/20.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/20_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-21{
-                          width:20px;
-                          height:21px;
-                          background:url('../images/icons/games/21.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/21_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-22{
-                          width:24px;
-                          height:21px;
-                          background:url('../images/icons/games/22.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/22_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-23{
-                          width:25px;
-                          height:21px;
-                          background:url('../images/icons/games/23.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/23_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-24{
-                          width:21px;
-                          height:21px;
-                          background:url('../images/icons/games/24.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/24_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-25{
-                          width:24px;
-                          height:21px;
-                          background:url('../images/icons/games/25.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/25_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-26{
-                          width:20px;
-                          height:21px;
-                          background:url('../images/icons/games/26.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/26_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-27{
-                          width:22px;
-                          height:21px;
-                          background:url('../images/icons/games/27.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/27_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-28{
-                          width:19px;
-                          height:21px;
-                          background:url('../images/icons/games/28.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/28_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-29{
-                          width:24px;
-                          height:21px;
-                          background:url('../images/icons/games/29.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/29_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-30{
-                          width:24px;
-                          height:21px;
-                          background:url('../images/icons/games/30.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/30_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-31{
-                          width:24px;
-                          height:21px;
-                          background:url('../images/icons/games/31.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/31_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-32{
-                          width:24px;
-                          height:21px;
-                          background:url('../images/icons/games/32.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/32_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-33{
-                          width:24px;
-                          height:21px;
-                          background:url('../images/icons/games/33.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/33_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-34{
-                          width:24px;
-                          height:21px;
-                          background:url('../images/icons/games/34.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/34_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-35{
-                          width:24px;
-                          height:21px;
-                          background:url('../images/icons/games/35.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/35_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-36{
-                          width:24px;
-                          height:21px;
-                          background:url('../images/icons/games/36.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/36_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-37{
-                          width:24px;
-                          height:21px;
-                          background:url('../images/icons/games/37.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/37_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-38{
-                          width:24px;
-                          height:21px;
-                          background:url('../images/icons/games/38.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/38_active.svg') no-repeat;
-                          }
-                        }
-                        &.icon-39{
-                          width:24px;
-                          height:21px;
-                          background:url('../images/icons/games/39.svg') no-repeat;
-                          &.active{
-                            background:url('../images/icons/games/39_active.svg') no-repeat;
-                          }
-                        }
-                        &[class*="icon-"], &[class*="icon-"].active{
-                          background-size:100% 100%;
-                          background-position:center center;
-                        }
-                      }
+        .bottom-block{   }
+      }
+      .swiperSliderCalendar{
+        .swiper-container-calendar{
+          width:270px;
+          .swiper-slide{
+            .list-block{
+              ul{
+
+                li{
+                  &.rows{
+                    div{
+                      /*width:14.5%;*/
                     }
-                  }
-                  &:after{
-                    height:0px;
+
                   }
                 }
               }
             }
           }
-          .swiper-container-calendar{
-            display:flex;
-            flex-direction:column;
-            flex: 6 ;
-            width:100%;
-            background:#fff;
-            .top-column{
-              background:#F7F7F7;
-              width:100%;
-              height:80px;
-              position:relative;
-              &:after{
-                @include after($width-after-full);
-              }
-            }
-            .swiper-wrapper{
-              .swiper-slide{
-                display:flex;
-                flex-direction: column;
-                &.last{
-                  .list-block{
-                    ul{
-                      li{
-                        &.rows{
-                          div{
+        }
 
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-                .list-block{
-                  margin-top:0px;
-                  margin-bottom:0px;
-                  ul{
-                    &:before{
-                      height:0px;
-                    }
-                    &:after{
-                      height:0px;
-                    }
-                    li{
-                      &.rows{
-                        $height:36px;
-                        height:$height;
-                        display: flex;
-                        flex-direction: row;
-                        justify-content:start;
-                        align-items:start;
-                        flex-wrap:nowrap;
+      }
+    }
+  }
+  /* iphone 4 */
+  @media (max-height: 480px) and (max-width: 350px) {
+    .modal {
+      &.achievements-modal {
+        margin-left:-156px;
+      }
+    }
+    #tab2{
+      .chart-title{
+        font-size:2.3em;
+        padding: 10px 0 5px;
+      }
+      #canvas-holder{
+        #chart-training{
+          width:200px;
+          height:200px;
+        }
+      }
+      .chart-bottom{
+        margin-top:10px;
+        .percent{
+          font-size:3.0em;
+        }
+      }
+    }
+    #page-calendar{
+      .left-column{
 
-                        &:after{
-                          @include after-light();
-                        }
-                        &:last-child{
-                          &:after{
-                            height:0px;
-                          }
-                        }
-                        div{
-                          display:flex;
-                          flex-direction:column;
-                          width:15%;
-                          justify-content:center;
-                          align-items:start;
-                          height:$height;
-                          text-align: center;
-                          position:relative;
-                          &.status{
-                            background:$status-cols-color;
-                          }
-                          &:after{
-                            @include after-right-light();
-                          }
-                        }
-                        &.checked{
-                          div{
-                            &.status{
-                              background:$blue-color;
-                            }
-                          }
-                        }
-                      }
+        .bottom-block{   }
+      }
+      .swiperSliderCalendar{
+        .swiper-container-calendar{
+          width:270px;
+          .swiper-slide{
+            .list-block{
+              ul{
+
+                li{
+                  &.rows{
+                    div{
+                      /*width:14.5%;*/
                     }
+
                   }
                 }
               }
-
             }
           }
         }
-        
-      }
-    }
-  }
-}
-/*
-	==================
-	[FILTER]
-	==================
-*/
-#page-filter{
-  .list-block{
-    margin-top:0px;
-    li{
-      label{
-        &.label-checkbox{
-
-          input[type=checkbox]:checked + .item-media + .item-inner + .item-media i.icon-form-checkbox {
-            background: rgba(0, 0, 0, 0) url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D\'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\'%20x%3D\'0px\'%20y%3D\'0px\'%20viewBox%3D\'0%200%2012%209\'%20xml%3Aspace%3D\'preserve\'%3E%3Cpolygon%20fill%3D\'%23ffffff\'%20points%3D\'12%2C0.7%2011.3%2C0%203.9%2C7.4%200.7%2C4.2%200%2C4.9%203.9%2C8.8%203.9%2C8.8%203.9%2C8.8%20\'%2F%3E%3C%2Fsvg%3E") no-repeat scroll center center / 12px 9px;
-            border: none;
-            background-color: #0198FF;
-          }
-
-        }
-        &.item-content{
-          .item-inner{
-            &:after{
-              height:0px;
-            }
-          }
-          &:after{
-            @include after($width-after-short);
-          }
-        }
-      }
-      &:last-child{
-        label{
-          &:after{
-            height:0px;
-          }
-        }
 
       }
     }
-
-
-
-
   }
-}
 
-.list-block{
-  ul li .item-content, .item-content{
-    .item-media{
-      min-width:27px;
-      .icon{
-        &.icon-0{
-          width:24px;
-          height:21px;
-          background:url('../images/icons/games/0_active.svg') no-repeat;
-        }
-        &.icon-1{
-          width:18px;
-          height:21px;
-          background:url('../images/icons/games/1_active.svg') no-repeat;
-        }
-        &.icon-2{
-          width:22px;
-          height:19px;
-          background:url('../images/icons/games/2_active.svg') no-repeat;
-        }
-        &.icon-3{
-          width:27px;
-          height:21px;
-          background:url('../images/icons/games/3_active.svg') no-repeat;
-        }
-        &.icon-4{
-          width:18px;
-          height:21px;
-          background:url('../images/icons/games/4_active.svg') no-repeat;
-        }
-        &.icon-5{
-          width:18px;
-          height:21px;
-          background:url('../images/icons/games/5_active.svg') no-repeat;
-        }
-        &.icon-6{
-          width:20px;
-          height:21px;
-          background:url('../images/icons/games/6_active.svg') no-repeat;
-        }
-        &.icon-7{
-          width:27px;
-          height:21px;
-          background:url('../images/icons/games/7_active.svg') no-repeat;
-        }
-        &.icon-8{
-          width:25px;
-          height:21px;
-          background:url('../images/icons/games/8_active.svg') no-repeat;
-        }
-        &.icon-9{
-          width:21px;
-          height:21px;
-          background:url('../images/icons/games/9_active.svg') no-repeat;
-        }
-
-        &.icon-10{
-          width:24px;
-          height:21px;
-          background:url('../images/icons/games/10_active.svg') no-repeat;
-        }
-        &.icon-11{
-          width:18px;
-          height:21px;
-          background:url('../images/icons/games/11_active.svg') no-repeat;
-        }
-        &.icon-12{
-          width:27px;
-          height:21px;
-          background:url('../images/icons/games/12_active.svg') no-repeat;
-        }
-        &.icon-13{
-          width:27px;
-          height:21px;
-          background:url('../images/icons/games/13_active.svg') no-repeat;
-        }
-        &.icon-14{
-          width:21px;
-          height:21px;
-          background:url('../images/icons/games/14_active.svg') no-repeat;
-        }
-        &.icon-15{
-          width:27px;
-          height:21px;
-          background:url('../images/icons/games/15_active.svg') no-repeat;
-        }
-        &.icon-16{
-          width:25px;
-          height:21px;
-          background:url('../images/icons/games/16_active.svg') no-repeat;
-        }
-        &.icon-17{
-          width:17px;
-          height:21px;
-          background:url('../images/icons/games/17_active.svg') no-repeat;
-        }
-        &.icon-18{
-          width:20px;
-          height:21px;
-          background:url('../images/icons/games/18_active.svg') no-repeat;
-        }
-        &.icon-19{
-          width:27px;
-          height:21px;
-          background:url('../images/icons/games/19_active.svg') no-repeat;
-        }
-        &.icon-20{
-          width:21px;
-          height:21px;
-          background:url('../images/icons/games/20_active.svg') no-repeat;
-        }
-        &.icon-21{
-          width:20px;
-          height:21px;
-          background:url('../images/icons/games/21_active.svg') no-repeat;
-        }
-        &.icon-22{
-          width:24px;
-          height:21px;
-          background:url('../images/icons/games/22_active.svg') no-repeat;
-        }
-        &.icon-23{
-          width:25px;
-          height:21px;
-          background:url('../images/icons/games/23_active.svg') no-repeat;
-        }
-        &.icon-24{
-          width:21px;
-          height:21px;
-          background:url('../images/icons/games/24_active.svg') no-repeat;
-        }
-        &.icon-25{
-          width:24px;
-          height:21px;
-          background:url('../images/icons/games/25_active.svg') no-repeat;
-        }
-        &.icon-26{
-          width:20px;
-          height:21px;
-          background:url('../images/icons/games/26_active.svg') no-repeat;
-        }
-        &.icon-27{
-          width:22px;
-          height:21px;
-          background:url('../images/icons/games/27_active.svg') no-repeat;
-        }
-        &.icon-28{
-          width:19px;
-          height:21px;
-          background:url('../images/icons/games/28_active.svg') no-repeat;
-        }
-        &.icon-29{
-          width:24px;
-          height:21px;
-          background:url('../images/icons/games/29_active.svg') no-repeat;
-        }
-        &.icon-30{
-          width:24px;
-          height:21px;
-          background:url('../images/icons/games/30_active.svg') no-repeat;
-        }
-        &.icon-31{
-          width:24px;
-          height:21px;
-          background:url('../images/icons/games/31_active.svg') no-repeat;
-        }
-        &.icon-32{
-          width:24px;
-          height:21px;
-          background:url('../images/icons/games/32_active.svg') no-repeat;
-        }
-        &.icon-33{
-          width:24px;
-          height:21px;
-          background:url('../images/icons/games/33_active.svg') no-repeat;
-        }
-        &.icon-34{
-          width:24px;
-          height:21px;
-          background:url('../images/icons/games/34_active.svg') no-repeat;
-        }
-        &.icon-35{
-          width:24px;
-          height:21px;
-          background:url('../images/icons/games/35_active.svg') no-repeat;
-        }
-        &.icon-36{
-          width:24px;
-          height:21px;
-          background:url('../images/icons/games/36_active.svg') no-repeat;
-        }
-        &.icon-37{
-          width:24px;
-          height:21px;
-          background:url('../images/icons/games/37_active.svg') no-repeat;
-        }
-        &.icon-38{
-          width:24px;
-          height:21px;
-          background:url('../images/icons/games/38_active.svg') no-repeat;
-        }
-        &.icon-39{
-          width:24px;
-          height:21px;
-          background:url('../images/icons/games/39_active.svg') no-repeat;
-        }
-        &[class*="icon-"]{
-          background-size:100% 100%;
-          background-position:center center;
-        }
-      }
-    }
-  }
-}

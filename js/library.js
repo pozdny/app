@@ -72,7 +72,7 @@ function sortArrayAsc2(arr){
     });
 }
 // создание нотификации на определенную дату
-function createNotificationDate(date, id, text){  console.log(date, id, text);
+function createNotificationDate(date, id, text){
     n.JSAPI.cancelNotif(id);
     n.JSAPI.createUnitNotif(0,date,id,_w.notification[LN].title,text,text,1000,"");
 }

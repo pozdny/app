@@ -20,6 +20,7 @@ Framework7.prototype.plugins.filter = function (app, globalPluginParams) {
             storage,
             storageGames,
             storageDatesGame,
+            storageCheckedGames,
             arrGames,
             labelArr,
             defaults = {
@@ -38,6 +39,9 @@ Framework7.prototype.plugins.filter = function (app, globalPluginParams) {
         function getStorageDatesGame(){
             storageDatesGame = storage.data.datesGame.shadule;
         }
+        function getStorageCheckedGames(){
+            storageCheckedGames = storage.data.checkedGames;
+        }
         function clearCheckBoxInStorage(){
             storage = storageGet(n.key_storage.categories);
             storage.data.checkedGames = [];
@@ -55,12 +59,11 @@ Framework7.prototype.plugins.filter = function (app, globalPluginParams) {
             labelArr.on('change', function(){
                 formData = myApp.formToJSON(options.elems.form);
                 checkbox = formData.checkbox;
-                console.log(checkbox);
                 clearCheckBoxInStorage();
                 if(checkbox.length > 0){
                     setCheckBoxToStorage(checkbox);
                 }
-            })
+            });
         }
         function getGames(){
             arrGames = [];
@@ -71,6 +74,16 @@ Framework7.prototype.plugins.filter = function (app, globalPluginParams) {
             $$.each(storageGames, function(i, val){
                 arrGames.push(val);
             });
+
+            getStorageCheckedGames();
+            $$.each(storageCheckedGames, function(i, val){
+                $$.each(arrGames, function(j, val1){
+                    if(Number(val) === val1.id){
+                        val1.checked = true;
+                    }
+                });
+            });
+
             return arrGames;
         }
         self.init = function(){
@@ -109,7 +122,7 @@ Framework7.prototype.plugins.filter = function (app, globalPluginParams) {
                         '{{#each games}}' +
                         '<li>' +
                             '<label class="label-checkbox item-content">' +
-                                '<input type="checkbox" name="checkbox" value="{{icon}}">' +
+                                '<input type="checkbox" name="checkbox" value="{{icon}}" {{#if checked}}checked{{/if}}>' +
                                 '<div class="item-media">' +
                                     '<i class="icon icon-{{icon}}"></i>' +
                                 '</div>' +

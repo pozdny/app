@@ -69,13 +69,13 @@ var _w = {
     "dif_filds":{
         en:{
             name:"Name",
-            training_name: "Training",
             filter: "Filter",
             search: "Search",
             cancel: "Cancel",
             version: "version 1.0",
             nothing_found: "Nothing found",
             date: "Date",
+            done: "Done",
             days:{
                 mn:"days",
                 ed:"day"
@@ -96,13 +96,13 @@ var _w = {
         },
         ru:{
             name:"Название тренировки",
-            training_name: "Тренировка",
             filter: "Фильтр",
             search: "Поиск",
             cancel: "Отмена",
             version: "версия 1.0",
             nothing_found: "Ничего не найдено",
             date: "Дата",
+            done: "Готово",
             days:{
                 mn:"дней",
                 ed:"день"

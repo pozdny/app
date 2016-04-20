@@ -90,7 +90,7 @@ Framework7.prototype.plugins.calendar = function (app, globalPluginParams) {    
                     this.cols.push({
                         date: Number(j),
                         dayWeek: new Date(date).getDayWeek()
-                    })
+                    });
                 }
             }
 
@@ -99,6 +99,7 @@ Framework7.prototype.plugins.calendar = function (app, globalPluginParams) {    
         var self = this,
             defaultTemplate,
             defaultTemplateTopBlock,
+            defaultTemplateLeftColumn,
             template,
             templateTopBlock,
             container,
@@ -119,7 +120,8 @@ Framework7.prototype.plugins.calendar = function (app, globalPluginParams) {    
             lengthSlide,
             fLengthSlide,
             lengthShadule,
-            activeIndex,
+            nextButton,
+            prevButton,
             defaults = {
                 closeButton: true,        // enabled/disable close button
                 closeButtonText : 'Skip', // close button text
@@ -158,7 +160,7 @@ Framework7.prototype.plugins.calendar = function (app, globalPluginParams) {    
                      if(Number(val) === val1.id){
                          val1.checked = true;
                      }
-                 })
+                 });
              });
 
              return arrGames;
@@ -233,14 +235,14 @@ Framework7.prototype.plugins.calendar = function (app, globalPluginParams) {    
             return slide;
         }
         function nextSlideAction(){
-            swiperDate.slideNext(function(){ }, 600);
+            swiperDate.slideNext(function(){ }, 300);
         }
         function prevSlideAction(){
-            swiperDate.slidePrev(function(){ }, 500);
+            swiperDate.slidePrev(function(){ }, 300);
         }
         function initNextPrevButtons(){
-            var nextButton = $$(".pagination .link.next");
-            var prevButton = $$(".pagination .link.prev");
+            nextButton = $$(".pagination .link.next");
+            prevButton = $$(".pagination .link.prev");
             nextButton.on('click', nextSlideAction);
             prevButton.on('click', prevSlideAction);
         }
@@ -253,7 +255,19 @@ Framework7.prototype.plugins.calendar = function (app, globalPluginParams) {    
             n.swiperCalendar = swiper = new Swiper('.swiper-container-calendar', {
                 direction: 'horizontal',
                 loop: options.loop,
-                pagination: options.pagination ? parentContainer.find('.top-column') : undefined
+                pagination: options.pagination ? parentContainer.find('.top-column') : undefined,
+                onSlideChangeStart: function(s) {
+                    if(s.activeIndex === 0){
+                        prevButton.removeClass('active').addClass('first');
+                    }
+                    if(s.activeIndex === 1){
+                        prevButton.removeClass('first').addClass('active');
+                        nextButton.removeClass('last').addClass('active');
+                    }
+                    if(s.activeIndex === 2){
+                        nextButton.removeClass('active').addClass('last');
+                    }
+                }
             });
         }
         function initSwiperDate() {
@@ -281,56 +295,50 @@ Framework7.prototype.plugins.calendar = function (app, globalPluginParams) {    
                 });
             }
         }
-
         /**
          * Sets the default template
          *
          * @private
          */
         function defineDefaultTemplate() {
-            defaultTemplate = '<div class="swiperSliderCalendar">' +
-                    '<div class="swiper-container-v">' +
-                        '<div class="swiper-inner">' +
-                            '<div class="calendar-block">' +
-                                '<div class="left-column">' +
-                                    '<div class="bottom-block list-block">' +
-                                        '<ul class="">' +
-                                            '{{#each games}}' +
-                                            '<li>' +
-                                                '<div class="item-media">' +
-                                                '<i class="icon icon-{{icon}} {{#if checked}}active{{/if}}"></i>' +
-                                                '</div>' +
-                                            '</li>' +
-                                            '{{/each}}' +
-                                        '</ul>' +
-                                    '</div>' +
-                                '</div>' +
-                                '<div class="swiper-container-calendar">' +
-                                    '<div class="swiper-wrapper">' +
-                                        '{{#each slides}}' +
-                                        '<div class="swiper-slide {{#if last}}last{{/if}}" id="{{id}}">' +
-                                           '<div class="list-block">' +
-                                              '<ul>' +
-                                                '{{#each rows}}' +
-                                                '<li class="rows {{#if checked}}checked{{/if}}">' +
-                                                    '{{#each cols}}' +
-                                                        '<div {{#if status}}class="status"{{/if}}></div>' +
-                                                    '{{/each}}' +
-                                                '</li>' +
-                                                '{{/each}}' +
-                                              '</ul>' +
-                                           '</div>' +
-                                        '</div>' +
-                                        '{{/each}}' +
-                                    '</div>' +
-                                '</div>' +
-
-                            '</div>' +
-
-                        '</div>' +
+            defaultTemplate =
+                '<div class="swiperSliderCalendar">' +
+                '<div class="left-column" id="calendar-left-column">' +
+            '<div class="bottom-block list-block">' +
+            '<ul class="">' +
+            '{{#each games}}' +
+            '<li>' +
+            '<div class="item-media">' +
+            '<i class="icon icon-{{icon}} {{#if checked}}active{{/if}}"></i>' +
+            '</div>' +
+            '</li>' +
+            '{{/each}}' +
+            '</ul>' +
+            '</div>' +
+            '</div>' +
+                    '<div class="swiper-container-calendar">' +
+                        '<div class="swiper-wrapper">' +
+                         '{{#each slides}}' + 
+                            '<div class="swiper-slide {{#if last}}last{{/if}}" id="{{id}}">' + 
+                                '<div class="list-block">' +
+                                    '<ul>' + 
+                                    '{{#each rows}}' + 
+                                        '<li class="rows {{#if checked}}checked{{/if}}">' + 
+                                            '{{#each cols}}' + 
+                                            '<div {{#if status}}class="status"{{/if}}></div>' + 
+                                            '{{/each}}' + 
+                                        '</li>' + 
+                                    '{{/each}}' + 
+                                    '</ul>' + 
+                                '</div>' + 
+                            '</div>' + 
+                         '{{/each}}' +
+                         '</div>' +
+                    '</div>' +
                 '</div>';
 
         }
+
         function defineDefaultTemplateTopBlock() {
             defaultTemplateTopBlock = '<div class="top-block">' +
             '<div class="left-block"></div>' +
@@ -339,7 +347,7 @@ Framework7.prototype.plugins.calendar = function (app, globalPluginParams) {    
                     '<div class="swiper-container-data">' +
                         '<div class="pagination">' +
                             '<div class="nav">' +
-                                '<a href="#" class="link prev"><div class="prev"></div></a>' +
+                                '<a href="#" class="link prev first"><div class="prev"></div></a>' +
                                 '<a href="#" class="link next"><div class="next"></div></a>' +
                             '</div>' +
                         '</div>' +
@@ -398,6 +406,7 @@ Framework7.prototype.plugins.calendar = function (app, globalPluginParams) {    
 
             }
             templateTopBlock = app._compiledTemplates.top_block;
+
         }
 
         /**
@@ -418,12 +427,14 @@ Framework7.prototype.plugins.calendar = function (app, globalPluginParams) {    
                 games: games,
                 slides:slides
             };
+            var contextGames = {
+                games: games
+            };
             var contextTopBlock = {
                 slidesDate: slidesDate
             };
-
             containerTopBlock = $$(templateTopBlock({options: options, slidesDate:contextTopBlock.slidesDate}));
-            container = $$(template({options: options, games:context.games, slides: context.slides}));
+            container = $$(template({options: options,  games:context.games, slides: context.slides}));
             swiperContainer = container.find('.swiper-container-calendar');
             parentContainerTopBlock = $$('#top-block-subnavbar-calendar');
             parentContainer = $$('#page-calendar');
@@ -431,6 +442,7 @@ Framework7.prototype.plugins.calendar = function (app, globalPluginParams) {    
             clearParentContainer(parentContainerTopBlock);
             setColors();
             parentContainerTopBlock.append(containerTopBlock);
+
             parentContainer.append(container);
             initSwiper();
             initSwiperDate();
@@ -493,6 +505,7 @@ Framework7.prototype.plugins.calendar = function (app, globalPluginParams) {    
         (function () {
             defineDefaultTemplate();
             defineDefaultTemplateTopBlock();
+            //defineDefaultTemplateLeftColumn();
             compileTemplate();
             applyOptions();
             // Open on init

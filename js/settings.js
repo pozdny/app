@@ -39,12 +39,12 @@ Framework7.prototype.plugins.settings = function (app, globalPluginParams) {
                 status: storage.settings.sounds,
                 icon: "sounds"
             });
-            obj.push({
+            /*obj.push({
                 title: "notifications",
                 name: _w.settings[LN].notifications,
                 status: storage.settings.notifications,
                 icon: "notifications"
-            });
+            });*/
             return obj;
         }
         function initFirstStatusForSettings(status, icon, checkbox){
